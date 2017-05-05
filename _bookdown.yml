@@ -1,3 +1,2 @@
 book_filename: "bookdown-demo"
-chapter_name: "Chapter "
 output_dir: "docs"
