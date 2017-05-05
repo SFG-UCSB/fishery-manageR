@@ -20,20 +20,20 @@ After navigating to the CRAN mirror site, click the download button for your ope
 
 ```{r, echo = F, warning=F}
 library(knitr)
-include_graphics('../_data/r_download.png')
+include_graphics('images/r_download.png')
 ```
 
 ### RStudio
 After installing R, visit the [RStudio Products](https://www.rstudio.com/products/rstudio/#Desktop) site and click the **DOWNLOAD RSTUDIO DESKTOP** button located partway down the page. 
 
-```{r, echo=F, fig.width = 2}
-include_graphics('../_data/rstudio_download.png')
+```{r, echo=F}
+include_graphics('images/rstudio_download.png')
 ```
 
 Next, scroll to the bottom and click on the link under **Installers** that again corresponds to your operating system of choice.
 
-```{r, echo=F, fig.width = 4}
-include_graphics('../_data/rstudio_installers.png')
+```{r, echo=F}
+include_graphics('images/rstudio_installers.png')
 ```
 
 
@@ -48,8 +48,8 @@ Packages are groups of functions that are designed to excel at certain tasks (ma
 
 To install a new package, click on the "Install" button located under the "Packages" tab in RStudio. This will open a pop-up where you can search for and install R packages hosted on CRAN. Alternatively, if you know the name of the package you want to install, you can run `install.packages('package_name')`.
 
-```{r, echo=F, fig.height = 2}
-include_graphics('../_data/package_install.png')
+```{r, echo=F}
+include_graphics('images/package_install.png')
 ```
 
 Once installed, the packages you need for an analysis are loaded by the `library('package_name')` function. 

@@ -141,7 +141,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
             <section class="normal" id="section-">
 <div id="r-r-studio" class="section level1">
-<h1><span class="header-section-number">Chapter 2</span> R &amp; R Studio</h1>
+<h1><span class="header-section-number">2</span> R &amp; R Studio</h1>
 <p><a href="https://cran.r-project.org">R</a> is a free programming language/software environment that allows users to analyze, model, and vizualize large data sets in much more powerful and complex ways than traditional spreadsheet programs like Excel or Google Sheets. Best of all, R is open source, meaning that it is freely available from the Comprehensive R Archive Network (CRAN) and anyone can contribute to making R better. In fact, numerous R packages (more on these later) are specifically designed for conducting analyses related to fisheries management. <a href="https://www.rstudio.com">RStudio</a> is the powerful graphical interface that allows users to manage their code, data, and files all in one convenient program.</p>
 <p>Though R/RStudio may seem intimidating, it is actually quite straight forward to set up and, after learning a few basics, you can start running analyses and writing your own in no time. <strong>The objective of this guide is to provide an introduction to R/RStudio basics so that interested resource managers without programming experience can start leveraging R for their management decisions.</strong></p>
 <div id="installation" class="section level2">
@@ -158,14 +158,14 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li><a href="http://lib.stat.cmu.edu/R/CRAN/">US (East Coast)</a></li>
 </ul>
 <p>After navigating to the CRAN mirror site, click the download button for your operating system of choice (Linux, Max OS X, Windows) and then click on the most recent <code>.pkg</code> file and follow the instructions to complete the installation process.</p>
-<p><img src="../_data/r_download.png" /><!-- --></p>
+<p><img src="images/r_download.png" width="805" /></p>
 </div>
 <div id="rstudio" class="section level3">
 <h3><span class="header-section-number">2.1.2</span> RStudio</h3>
 <p>After installing R, visit the <a href="https://www.rstudio.com/products/rstudio/#Desktop">RStudio Products</a> site and click the <strong>DOWNLOAD RSTUDIO DESKTOP</strong> button located partway down the page.</p>
-<p><img src="../_data/rstudio_download.png" /><!-- --></p>
+<p><img src="images/rstudio_download.png" width="251" /></p>
 <p>Next, scroll to the bottom and click on the link under <strong>Installers</strong> that again corresponds to your operating system of choice.</p>
-<p><img src="../_data/rstudio_installers.png" /><!-- --></p>
+<p><img src="images/rstudio_installers.png" width="878" /></p>
 <p>Save the <code>.dmg</code> file on your desktop, open the file after it finishes downloading, and follow the instructions to complete the installation process. You can then delete the <code>.dmg</code> file.</p>
 <p>Congratulations! You successfully completed the installation process and are one step closer to using R and RStudio for analysis!</p>
 </div>
@@ -176,7 +176,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h3><span class="header-section-number">2.2.1</span> Packages</h3>
 <p>Packages are groups of functions that are designed to excel at certain tasks (making plots, standardizing dates, reading/writing large data files, etc.). Many useful packages come standard with R when you download it, however, many more are available online.</p>
 <p>To install a new package, click on the “Install” button located under the “Packages” tab in RStudio. This will open a pop-up where you can search for and install R packages hosted on CRAN. Alternatively, if you know the name of the package you want to install, you can run <code>install.packages('package_name')</code>.</p>
-<p><img src="../_data/package_install.png" /><!-- --></p>
+<p><img src="images/package_install.png" width="1061" /></p>
 <p>Once installed, the packages you need for an analysis are loaded by the <code>library('package_name')</code> function.</p>
 <p>The following packages are commonly used by UCSB for fisheries analyses:</p>
 <ul>
