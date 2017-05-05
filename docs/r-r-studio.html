@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>A Guide to R for Fisheries Managers</title>
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+  <meta name="description" content="This is a guidebook for using R for fishery management">
+  <meta name="generator" content="bookdown 0.3 and GitBook 2.6.7">
+
+  <meta property="og:title" content="A Guide to R for Fisheries Managers" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is a guidebook for using R for fishery management" />
+  <meta name="github-repo" content="sfg-ucsb/fishery-manageR" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="A Guide to R for Fisheries Managers" />
+  
+  <meta name="twitter:description" content="This is a guidebook for using R for fishery management" />
+  
+
+<meta name="author" content="Sustainable Fisheries Group">
+
+
+<meta name="date" content="2017-05-05">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="index.html">
+<link rel="next" href="fisheries-visualizations.html">
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A Minimal Book Example</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Prerequisites</a></li>
+<li class="chapter" data-level="2" data-path="r-r-studio.html"><a href="r-r-studio.html"><i class="fa fa-check"></i><b>2</b> R &amp; R Studio</a><ul>
+<li class="chapter" data-level="2.1" data-path="r-r-studio.html"><a href="r-r-studio.html#installation"><i class="fa fa-check"></i><b>2.1</b> Installation</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="r-r-studio.html"><a href="r-r-studio.html#r"><i class="fa fa-check"></i><b>2.1.1</b> R</a></li>
+<li class="chapter" data-level="2.1.2" data-path="r-r-studio.html"><a href="r-r-studio.html#rstudio"><i class="fa fa-check"></i><b>2.1.2</b> RStudio</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="r-r-studio.html"><a href="r-r-studio.html#getting-started-with-rstudio"><i class="fa fa-check"></i><b>2.2</b> Getting Started with RStudio</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="r-r-studio.html"><a href="r-r-studio.html#packages"><i class="fa fa-check"></i><b>2.2.1</b> Packages</a></li>
+<li class="chapter" data-level="2.2.2" data-path="r-r-studio.html"><a href="r-r-studio.html#helpful-resources"><i class="fa fa-check"></i><b>2.2.2</b> Helpful Resources</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="fisheries-visualizations.html"><a href="fisheries-visualizations.html"><i class="fa fa-check"></i><b>3</b> Fisheries Visualizations</a><ul>
+<li class="chapter" data-level="3.1" data-path="fisheries-visualizations.html"><a href="fisheries-visualizations.html#load-libraries"><i class="fa fa-check"></i><b>3.1</b> Load libraries</a></li>
+<li class="chapter" data-level="3.2" data-path="fisheries-visualizations.html"><a href="fisheries-visualizations.html#load-data"><i class="fa fa-check"></i><b>3.2</b> Load data</a></li>
+<li class="chapter" data-level="3.3" data-path="fisheries-visualizations.html"><a href="fisheries-visualizations.html#plot-data"><i class="fa fa-check"></i><b>3.3</b> Plot data</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">A Guide to R for Fisheries Managers</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="r-r-studio" class="section level1">
+<h1><span class="header-section-number">Chapter 2</span> R &amp; R Studio</h1>
+<p><a href="https://cran.r-project.org">R</a> is a free programming language/software environment that allows users to analyze, model, and vizualize large data sets in much more powerful and complex ways than traditional spreadsheet programs like Excel or Google Sheets. Best of all, R is open source, meaning that it is freely available from the Comprehensive R Archive Network (CRAN) and anyone can contribute to making R better. In fact, numerous R packages (more on these later) are specifically designed for conducting analyses related to fisheries management. <a href="https://www.rstudio.com">RStudio</a> is the powerful graphical interface that allows users to manage their code, data, and files all in one convenient program.</p>
+<p>Though R/RStudio may seem intimidating, it is actually quite straight forward to set up and, after learning a few basics, you can start running analyses and writing your own in no time. <strong>The objective of this guide is to provide an introduction to R/RStudio basics so that interested resource managers without programming experience can start leveraging R for their management decisions.</strong></p>
+<div id="installation" class="section level2">
+<h2><span class="header-section-number">2.1</span> Installation</h2>
+<p>R and RStudio are <strong>separate</strong> programs and that need to be installed and updated individually. If you do not keep both relatively up-to-date you will likely run into problems.</p>
+<div id="r" class="section level3">
+<h3><span class="header-section-number">2.1.1</span> R</h3>
+<p>To install R, go to the <a href="https://cran.r-project.org/mirrors.html">list of CRAN mirrors</a> (universities and other organizations where you can download R from) and click on a link for a location near you. A few options are listed below.</p>
+<ul>
+<li><a href="https://repo.bppt.go.id/cran/">Indonesia</a></li>
+<li><a href="https://cran.stat.upd.edu.ph">Philippines</a></li>
+<li><a href="https://cran.fiocruz.br">Brazil</a></li>
+<li><a href="https://cran.cnr.berkeley.edu">US (West Coast)</a></li>
+<li><a href="http://lib.stat.cmu.edu/R/CRAN/">US (East Coast)</a></li>
+</ul>
+<p>After navigating to the CRAN mirror site, click the download button for your operating system of choice (Linux, Max OS X, Windows) and then click on the most recent <code>.pkg</code> file and follow the instructions to complete the installation process.</p>
+<p><img src="_data/r_download.png" width="805" /></p>
+</div>
+<div id="rstudio" class="section level3">
+<h3><span class="header-section-number">2.1.2</span> RStudio</h3>
+<p>After installing R, visit the <a href="https://www.rstudio.com/products/rstudio/#Desktop">RStudio Products</a> site and click the <strong>DOWNLOAD RSTUDIO DESKTOP</strong> button located partway down the page.</p>
+<p><img src="_data/rstudio_download.png" width="251" /></p>
+<p>Next, scroll to the bottom and click on the link under <strong>Installers</strong> that again corresponds to your operating system of choice.</p>
+<p><img src="_data/rstudio_installers.png" width="878" /></p>
+<p>Save the <code>.dmg</code> file on your desktop, open the file after it finishes downloading, and follow the instructions to complete the installation process. You can then delete the <code>.dmg</code> file.</p>
+<p>Congratulations! You successfully completed the installation process and are one step closer to using R and RStudio for analysis!</p>
+</div>
+</div>
+<div id="getting-started-with-rstudio" class="section level2">
+<h2><span class="header-section-number">2.2</span> Getting Started with RStudio</h2>
+<div id="packages" class="section level3">
+<h3><span class="header-section-number">2.2.1</span> Packages</h3>
+<p>Packages are groups of functions that are designed to excel at certain tasks (making plots, standardizing dates, reading/writing large data files, etc.). Many useful packages come standard with R when you download it, however, many more are available online.</p>
+<p>To install a new package, click on the “Install” button located under the “Packages” tab in RStudio. This will open a pop-up where you can search for and install R packages hosted on CRAN. Alternatively, if you know the name of the package you want to install, you can run <code>install.packages('package_name')</code>.</p>
+<p><img src="_data/package_install.png" width="1061" /></p>
+<p>Once installed, the packages you need for an analysis are loaded by the <code>library('package_name')</code> function.</p>
+<p>The following packages are commonly used by UCSB for fisheries analyses:</p>
+<ul>
+<li><strong>tidyverse</strong> - The tidyverse package actually contains numerous seperate packages for loading and writing data files (<strong>readr</strong>), data processing (<strong>dplyr</strong> &amp; <strong>tidyr</strong>), plotting (<strong>ggplot2</strong>), and functional programming (<strong>purrr</strong>)</li>
+<li><strong>readxl</strong> - read and write data from/to Excel workbooks, including workbooks with multiple worksheets</li>
+<li><strong>sf</strong>, <strong>rgeos</strong>, <strong>rgdal</strong> - Key packages for spatial analyses similar to those done with ArcGIS</li>
+<li><strong>rmarkdown</strong> - Use R code to author reproducible reports, presentations, and websites</li>
+<li><strong>shiny</strong> - Create web applications using R</li>
+</ul>
+</div>
+<div id="helpful-resources" class="section level3">
+<h3><span class="header-section-number">2.2.2</span> Helpful Resources</h3>
+<ul>
+<li><a href="http://stat545.com/block000_r-rstudio-install.html">Installing R and RStudio</a> by Jenny Bryan</li>
+</ul>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="fisheries-visualizations.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
+
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/01-r_for_fisheries.Rmd",
+"text": "Edit"
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    if (location.protocol !== "file:" && /^https?:/.test(script.src))
+      script.src  = script.src.replace(/^https?:/, '');
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
