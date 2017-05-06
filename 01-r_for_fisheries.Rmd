@@ -1,13 +1,9 @@
-
-# R & R Studio
-[R](https://cran.r-project.org) is a free programming language/software environment that allows users to analyze, model, and vizualize large data sets in much more powerful and complex ways than traditional spreadsheet programs like Excel or Google Sheets. Best of all, R is open source, meaning that it is freely available from the Comprehensive R Archive Network (CRAN) and anyone can contribute to making R better. In fact, numerous R packages (more on these later) are specifically designed for conducting analyses related to fisheries management. [RStudio](https://www.rstudio.com) is the powerful graphical interface that allows users to manage their code, data, and files all in one convenient program. 
-
+# Installation
 Though R/RStudio may seem intimidating, it is actually quite straight forward to set up and, after learning a few basics, you can start running analyses and writing your own in no time. **The objective of this guide is to provide an introduction to R/RStudio basics so that interested resource managers without programming experience can start leveraging R for their management decisions.** 
 
-## Installation
 R and RStudio are **separate** programs and that need to be installed and updated individually. If you do not keep both relatively up-to-date you will likely run into problems. 
 
-### R
+## R
 To install R, go to the [list of CRAN mirrors](https://cran.r-project.org/mirrors.html) (universities and other organizations where you can download R from) and click on a link for a location near you. A few options are listed below.
 
 + [Indonesia](https://repo.bppt.go.id/cran/)
@@ -23,7 +19,7 @@ library(knitr)
 include_graphics('images/r_download.png')
 ```
 
-### RStudio
+## RStudio
 After installing R, visit the [RStudio Products](https://www.rstudio.com/products/rstudio/#Desktop) site and click the **DOWNLOAD RSTUDIO DESKTOP** button located partway down the page. 
 
 ```{r, echo=F}
@@ -62,5 +58,5 @@ The following packages are commonly used by UCSB for fisheries analyses:
 + **rmarkdown** - Use R code to author reproducible reports, presentations, and websites
 + **shiny** - Create web applications using R
 
-### Helpful Resources
+## Helpful Resources
 + [Installing R and RStudio](http://stat545.com/block000_r-rstudio-install.html) by Jenny Bryan

@@ -33,7 +33,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="r-r-studio.html">
+<link rel="prev" href="installation.html">
 
 
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
@@ -104,16 +104,14 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li><a href="./">A Guide to R for Fisheries Analysis</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Prerequisites</a></li>
-<li class="chapter" data-level="2" data-path="r-r-studio.html"><a href="r-r-studio.html"><i class="fa fa-check"></i><b>2</b> R &amp; R Studio</a><ul>
-<li class="chapter" data-level="2.1" data-path="r-r-studio.html"><a href="r-r-studio.html#installation"><i class="fa fa-check"></i><b>2.1</b> Installation</a><ul>
-<li class="chapter" data-level="2.1.1" data-path="r-r-studio.html"><a href="r-r-studio.html#r"><i class="fa fa-check"></i><b>2.1.1</b> R</a></li>
-<li class="chapter" data-level="2.1.2" data-path="r-r-studio.html"><a href="r-r-studio.html#rstudio"><i class="fa fa-check"></i><b>2.1.2</b> RStudio</a></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Overview</a></li>
+<li class="chapter" data-level="2" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>2</b> Installation</a><ul>
+<li class="chapter" data-level="2.1" data-path="installation.html"><a href="installation.html#r"><i class="fa fa-check"></i><b>2.1</b> R</a></li>
+<li class="chapter" data-level="2.2" data-path="installation.html"><a href="installation.html#rstudio"><i class="fa fa-check"></i><b>2.2</b> RStudio</a></li>
+<li class="chapter" data-level="2.3" data-path="installation.html"><a href="installation.html#getting-started-with-rstudio"><i class="fa fa-check"></i><b>2.3</b> Getting Started with RStudio</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="installation.html"><a href="installation.html#packages"><i class="fa fa-check"></i><b>2.3.1</b> Packages</a></li>
 </ul></li>
-<li class="chapter" data-level="2.2" data-path="r-r-studio.html"><a href="r-r-studio.html#getting-started-with-rstudio"><i class="fa fa-check"></i><b>2.2</b> Getting Started with RStudio</a><ul>
-<li class="chapter" data-level="2.2.1" data-path="r-r-studio.html"><a href="r-r-studio.html#packages"><i class="fa fa-check"></i><b>2.2.1</b> Packages</a></li>
-<li class="chapter" data-level="2.2.2" data-path="r-r-studio.html"><a href="r-r-studio.html#helpful-resources"><i class="fa fa-check"></i><b>2.2.2</b> Helpful Resources</a></li>
-</ul></li>
+<li class="chapter" data-level="2.4" data-path="installation.html"><a href="installation.html#helpful-resources"><i class="fa fa-check"></i><b>2.4</b> Helpful Resources</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="fisheries-visualizations.html"><a href="fisheries-visualizations.html"><i class="fa fa-check"></i><b>3</b> Fisheries Visualizations</a><ul>
 <li class="chapter" data-level="3.1" data-path="fisheries-visualizations.html"><a href="fisheries-visualizations.html#load-libraries"><i class="fa fa-check"></i><b>3.1</b> Load libraries</a></li>
@@ -191,7 +189,7 @@ life_history_parameters &lt;-<span class="st"> </span><span class="kw">read_csv<
 <span class="st">  </span><span class="kw">geom_vline</span>(<span class="kw">aes</span>(<span class="dt">xintercept=</span>life_history_parameters$m95),<span class="dt">color=</span><span class="st">&quot;red&quot;</span>) +<span class="st"> </span>## Add a red vertical line for m95, the length at which 95% of fish are mature. Any fish below this length may be immature. Use the life_history_parameter data frame to get this value.
 <span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Length [cm]&quot;</span>) +<span class="st"> </span>## Change x-axis label
 <span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Length histogram of Caesio cuning in the catch</span><span class="ch">\n</span><span class="st">Length at 95% maturity shown as a red line.</span><span class="ch">\n</span><span class="st">L_Infinity shown as a black line.&quot;</span>) ## Add figure title</code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
 <p>You’ll notice that a few of the fish are much older than a fish that is theoretically infinitely old! This does not necessarily mean it is impossible for fish to reach these lengths, but rather that the average fish reaches asymptotic age at this length. However, lengths longer than this should still be flagged as possible measurement errors. In fact, it appears that the two measurements greater than 200cm were indeed measurement errors, so let’s filter those out from the data.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">landings_data &lt;-<span class="st"> </span>landings_data %&gt;%
 <span class="st">  </span><span class="kw">filter</span>(Length_cm &lt;<span class="st"> </span><span class="dv">200</span>) ## Re-write landings data frame to only include measurements with lengths less than 200cm
@@ -204,7 +202,7 @@ landings_data %&gt;%<span class="st"> </span>## Start with the landings data fra
 <span class="st">  </span><span class="kw">geom_vline</span>(<span class="kw">aes</span>(<span class="dt">xintercept=</span>life_history_parameters$m95),<span class="dt">color=</span><span class="st">&quot;red&quot;</span>) +<span class="st"> </span>## Add a red line form95, the length at which 95% of fish are mature. Any fish below this length may be immature. Use the life_history_parameter data frame to get this value. +
 <span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Length [cm]&quot;</span>) +<span class="st"> </span>## Change x-axis label
 <span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Length histogram of Caesio cuning in the catch</span><span class="ch">\n</span><span class="st">Length at 95% maturity shown as a red line.</span><span class="ch">\n</span><span class="st">L_Infinity shown as a black line.&quot;</span>) ## Add figure title</code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
 <p>Now things look more reasonable! Most fish in the catch also appear to be mature, which is a good sign for the sustainability of the fishery.</p>
 <p>You might also be interested in seeing how the size composition varies by gear type. It appears as if the size structure is about the same from each gear, although by far the most amount of fish are caught using speargun. Very few fish are caught using trolling.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">landings_data %&gt;%<span class="st"> </span>## Start with the landings data frame
@@ -217,7 +215,7 @@ landings_data %&gt;%<span class="st"> </span>## Start with the landings data fra
 <span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Length [cm]&quot;</span>) +<span class="st"> </span>## Change x-axis label
 <span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Length histogram of Caesio cuning in the catch by gear type</span><span class="ch">\n</span><span class="st">Length at 95% maturity shown as a red line.</span><span class="ch">\n</span><span class="st">L_Infinity shown as a black line.&quot;</span>) +<span class="st"> </span>## Add figure title
 <span class="st">  </span><span class="kw">facet_wrap</span>(~Gear) ## This tells the figure to plot by all different gear types</code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
 <p>Next we can calculate the percentage of mature fish in the catch. Over 97% of the fish are mature throughout the time series, which is a great sign! This matches up with what we see in the histogram.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">landings_data %&gt;%<span class="st"> </span>## Start with the landings data frame
 <span class="st">  </span><span class="co">#filter(Year == 2014) %&gt;% ## Only look at length measurements from 2014</span>
@@ -247,7 +245,7 @@ landings_data %&gt;%<span class="st"> </span>## Start with the landings data fra
 <span class="st">  </span><span class="kw">geom_line</span>() +<span class="st"> </span>## Also add a line connecting the points
 <span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Daily Landings [kg/day]&quot;</span>) +<span class="st"> </span>## Change the y-axis title
 <span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Daily landings of Caesio cuning&quot;</span>) ## Add a figure title</code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
 <p>It is a little diffcult to observe trends here since there is a lot of variation between days, other than that there was no data collected between 2006 and 2010. Instead, you may wish to aggregate the catch data by year in order to look at trends in annual landings. Because this particular survey only samples the catch on certain days, it does not represent the total volume of landed catch. Therefore, it’s important to normalize the sampled catch by the number of sampling days. This will mean that trends represent actual increases or decreases in catch, not just increases or decreases in how frequently the catch is sampled.</p>
 <p>Looking at this plot, it now becomes more clear that landings decrease significantly between 2004 and 2010, but have been increasing during the last few years. This could be indicative of a recovering fishery, or could mean increasing fishing pressure.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">landings_data %&gt;%<span class="st"> </span>## Start with the landings data frame
@@ -260,7 +258,7 @@ landings_data %&gt;%<span class="st"> </span>## Start with the landings data fra
 <span class="st">  </span><span class="kw">geom_line</span>() +<span class="st"> </span>## Also add a line connecting the points
 <span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Normalized annual Landings [kg/survey day/year]&quot;</span>) +<span class="st"> </span>## Change the y-axis title
 <span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Normalized annual landings of Caesio cuning&quot;</span>) ## Add figure title</code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-18-1.png" width="672" /></p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
 <p>Again, you may be interested in looking across different gear types. Doing so, it now becomes clear that the recent increase in catch seems to be concentrated in speargun and trap fishing. Meanwhile, catch from muroami, a very destructive type of gear where nets are driven into the reef, has dropped to 0 since a ban of that gear in 2012 - a good sign that mangement regulation is working.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">landings_data %&gt;%<span class="st"> </span>## Start with the landings data frame
 <span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Date =</span> <span class="kw">mdy</span>(Date)) %&gt;%<span class="st"> </span>## Turn the date column into a date variable that R recognizes
@@ -273,7 +271,7 @@ landings_data %&gt;%<span class="st"> </span>## Start with the landings data fra
 <span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Normalized annual Landings [kg/survey day/year]&quot;</span>) +<span class="st"> </span>## Change the y-axis title
 <span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Normalized annual landings of Caesio cuning by gear type&quot;</span>)  +<span class="st"> </span>## Add figure title
 <span class="st">  </span><span class="kw">facet_wrap</span>(~Gear) ## This tells the figure to plot by all different gear types</code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-18-1.png" width="672" /></p>
 <p>Finally, you may also be interested in plotting median catch-per-unit-effort (CPUE). CPUE is calculated by dividing the catch of each fishing trip by the number of hours fished during that trip. The median is taken in order to remove outliers - some fishers are much more efficient than others.</p>
 <p>CPUE appears to have increased significantly during the last years. This may be due to increasing abundance in the water, which would be a good thing, but may also be indicative of increased gear efficiency coinciding with the transition to traps and spearguns, which may be concerning.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">landings_data %&gt;%<span class="st"> </span>## Start with the landings data frame
@@ -288,7 +286,7 @@ landings_data %&gt;%<span class="st"> </span>## Start with the landings data fra
 <span class="st">  </span><span class="kw">geom_line</span>() +<span class="st"> </span>## Also add a line connecting the points
 <span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Median CPUE [kg/hour]&quot;</span>) +<span class="st"> </span>## Change the y-axis title
 <span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Median CPUE for Caesio cuning&quot;</span>) ## Add figure title</code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-20-1.png" width="672" /></p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
 <p>When looking at all data together - almost all fish in the catch are mature, catch is increasing, and CPUE is increasing - all signs point to a fairly healthy fishery, which is likely recovering since the ban of muroami fishing nets.</p>
 
 </div>
@@ -298,7 +296,7 @@ landings_data %&gt;%<span class="st"> </span>## Start with the landings data fra
           </div>
         </div>
       </div>
-<a href="r-r-studio.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="installation.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 
 
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -338,17 +336,6 @@ gitbook.start({
 });
 </script>
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
-    if (location.protocol !== "file:" && /^https?:/.test(script.src))
-      script.src  = script.src.replace(/^https?:/, '');
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
 </body>
 
 </html>
