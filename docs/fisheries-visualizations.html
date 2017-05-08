@@ -115,7 +115,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="3" data-path="fisheries-visualizations.html"><a href="fisheries-visualizations.html"><i class="fa fa-check"></i><b>3</b> Fisheries Visualizations</a><ul>
 <li class="chapter" data-level="3.1" data-path="fisheries-visualizations.html"><a href="fisheries-visualizations.html#load-libraries"><i class="fa fa-check"></i><b>3.1</b> Load libraries</a></li>
-<li class="chapter" data-level="3.2" data-path="fisheries-visualizations.html"><a href="fisheries-visualizations.html#load-data---easter-egg"><i class="fa fa-check"></i><b>3.2</b> Load data - Easter Egg</a></li>
+<li class="chapter" data-level="3.2" data-path="fisheries-visualizations.html"><a href="fisheries-visualizations.html#load-data"><i class="fa fa-check"></i><b>3.2</b> Load data</a></li>
 <li class="chapter" data-level="3.3" data-path="fisheries-visualizations.html"><a href="fisheries-visualizations.html#plot-data"><i class="fa fa-check"></i><b>3.3</b> Plot data</a></li>
 </ul></li>
 <li class="divider"></li>
@@ -140,7 +140,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
             <section class="normal" id="section-">
 <div id="fisheries-visualizations" class="section level1">
 <h1><span class="header-section-number">3</span> Fisheries Visualizations</h1>
-<p>This short document will walk you through some basic fisheries visualizations. You will first load packages that contain useful functions. You will next load your data. Finally, you’ll plot your data in a number of different ways, looking for outliers along the way, and also seeing what interesting things you can say about the data.</p>
+<p>This short document will walk you through some basic fisheries visualizations. You will first load packages that contain useful functions. You will next load your data. Finally, you’ll plot your data in a number of different ways, and also seeing what interesting things you can say about the fishery using these data</p>
 <p>This is a very quick introduction, but a great resource for learning more is a free book called <a href="http://r4ds.had.co.nz/">R for Data Science</a>.</p>
 <div id="load-libraries" class="section level2">
 <h2><span class="header-section-number">3.1</span> Load libraries</h2>
@@ -149,8 +149,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyverse) 
 <span class="kw">library</span>(lubridate) </code></pre></div>
 </div>
-<div id="load-data---easter-egg" class="section level2">
-<h2><span class="header-section-number">3.2</span> Load data - Easter Egg</h2>
+<div id="load-data" class="section level2">
+<h2><span class="header-section-number">3.2</span> Load data</h2>
 <p>Next, you’ll load the data you’ll be using for the analysis. First load the landings data which includes catch, effort, and length measurements. The data are stored as a csv under a “data” folder. Store these data to a data frame called “landings_data.” Next, load the life history parameter data file. These data are also stored as a csv under a “data” folder. Store these data to a data frame called “life_history_parameters.”</p>
 <p>As data are loaded in, you’ll see that R automatically determines what type of variable each column represents - integers (for numbers), characters (for words), etc.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">landings_data &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;_data/sample_landings_data.csv&quot;</span>)
@@ -180,45 +180,27 @@ life_history_parameters &lt;-<span class="st"> </span><span class="kw">read_csv<
 <div id="plot-data" class="section level2">
 <h2><span class="header-section-number">3.3</span> Plot data</h2>
 <p>Let’s first look at the length data from the catch, which gives an indication of the size structure and health of the population. To do this in R, you start by taking the landings data and working through a series of “pipes”, which progressively analyze the data from one step to the next and are shown with the “%&gt;%” operation. Essentially, the output of one line is fed into the input of the next line. In all of the code below, there are some helpful comments to tell you what each line is doing. Comments start with the “#” operation, and are not evaluated by R - they are simply there to document the code.</p>
-<p>Let’s look at the length data for 2014. We’ll create a histogram of the length data, which shows how many individuals of each size class were measured in the catch. On the histogram, we’ll also include the length at which fish mature to get a sense of how sustainable the catch is - the catch should be composed mostly of mature fish. This information comes from the life history parameter data input file. We’ll also include the length of a theoretically infinitely old fish to see if there are any outliers - we wouldn’t expect for there to be any fish longer than this!</p>
+<p>Let’s look at the length data for 2014, which is the most recent year of data available. We first filter the data to be only from 2014. We then create a histogram of the length data, which shows how many individuals of each size class were measured in the catch. On the histogram, we’ll also a vertical line to show the length at which fish mature to get a sense of how sustainable the catch is - the catch should be composed mostly of mature fish. This information comes from the life history parameter data input file.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">landings_data %&gt;%<span class="st"> </span>## Start with the landings data frame
 <span class="st">  </span><span class="kw">filter</span>(Year ==<span class="st"> </span><span class="dv">2014</span>) %&gt;%<span class="st"> </span>## Filter data to only look at length measurements from 2014
 <span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(Length_cm)) +<span class="st"> </span>## Plot length data
 <span class="st">  </span><span class="kw">geom_histogram</span>() +<span class="st"> </span>## Plot a histogram of the length data
-<span class="st">  </span><span class="kw">geom_vline</span>(<span class="kw">aes</span>(<span class="dt">xintercept=</span>life_history_parameters$L_inf),<span class="dt">color=</span><span class="st">&quot;black&quot;</span>) +<span class="st"> </span>## Add a black vertical line for L infinity, the length of a theoretically infinitely old fish. No measured fish should be greater than this length. Use the life_history_parameter data frame to get this value. You can use the &quot;$&quot; operator to grab a specific column from a data frame. In this case, you are grabbing the column title &quot;L_inf&quot; from &quot;life_history_parameters&quot;
-<span class="st">  </span><span class="kw">geom_vline</span>(<span class="kw">aes</span>(<span class="dt">xintercept=</span>life_history_parameters$m95),<span class="dt">color=</span><span class="st">&quot;red&quot;</span>) +<span class="st"> </span>## Add a red vertical line for m95, the length at which 95% of fish are mature. Any fish below this length may be immature. Use the life_history_parameter data frame to get this value.
 <span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Length [cm]&quot;</span>) +<span class="st"> </span>## Change x-axis label
-<span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Length histogram of Caesio cuning in the catch</span><span class="ch">\n</span><span class="st">Length at 95% maturity shown as a red line.</span><span class="ch">\n</span><span class="st">L_Infinity shown as a black line.&quot;</span>) ## Add figure title</code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
-<p>You’ll notice that a few of the fish are much older than a fish that is theoretically infinitely old! This does not necessarily mean it is impossible for fish to reach these lengths, but rather that the average fish reaches asymptotic age at this length. However, lengths longer than this should still be flagged as possible measurement errors. In fact, it appears that the two measurements greater than 200cm were indeed measurement errors, so let’s filter those out from the data.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">landings_data &lt;-<span class="st"> </span>landings_data %&gt;%
-<span class="st">  </span><span class="kw">filter</span>(Length_cm &lt;<span class="st"> </span><span class="dv">200</span>) ## Re-write landings data frame to only include measurements with lengths less than 200cm
-
-landings_data %&gt;%<span class="st"> </span>## Start with the landings data frame
+<span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Length histogram of Caesio cuning in the catch</span><span class="ch">\n</span><span class="st">Length at 95% maturity shown as a red line.&quot;</span>) +<span class="st"> </span>## Add figure title
+<span class="st">  </span><span class="kw">geom_vline</span>(<span class="kw">aes</span>(<span class="dt">xintercept=</span>life_history_parameters$m95),<span class="dt">color=</span><span class="st">&quot;red&quot;</span>) ## Add a red vertical line for m95, the length at which 95% of fish are mature. Any fish below this length may be immature. Use the life_history_parameter data frame to get this value.</code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-43-1.png" width="672" /></p>
+<p>You might also be interested in seeing how the size composition varies by gear type. You can recreate the figure about, but separting the histograms out by gear type using ggplot’s “facet” functionality. It appears as if the size structure is about the same from each gear, although by far the most amount of fish are caught using speargun. Very few fish are caught using trolling.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">landings_data %&gt;%<span class="st"> </span>## Start with the landings data frame
 <span class="st">  </span><span class="kw">filter</span>(Year ==<span class="st"> </span><span class="dv">2014</span>) %&gt;%<span class="st"> </span>## Filter data to only look at length measurements from 2014
 <span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(Length_cm)) +<span class="st"> </span>## Plot annual landings versus year
 <span class="st">  </span><span class="kw">geom_histogram</span>() +<span class="st"> </span>## Plot a histogram of the length data
-<span class="st">  </span><span class="kw">geom_vline</span>(<span class="kw">aes</span>(<span class="dt">xintercept=</span>life_history_parameters$L_inf)) +<span class="st"> </span>## Add a black line for L infinity, the length of a theoretically infinitely old fish. No measured fish should be greater than this length. Use the life_history_parameter data frame to get this value.
-<span class="st">  </span><span class="kw">geom_vline</span>(<span class="kw">aes</span>(<span class="dt">xintercept=</span>life_history_parameters$m95),<span class="dt">color=</span><span class="st">&quot;red&quot;</span>) +<span class="st"> </span>## Add a red line form95, the length at which 95% of fish are mature. Any fish below this length may be immature. Use the life_history_parameter data frame to get this value. +
 <span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Length [cm]&quot;</span>) +<span class="st"> </span>## Change x-axis label
-<span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Length histogram of Caesio cuning in the catch</span><span class="ch">\n</span><span class="st">Length at 95% maturity shown as a red line.</span><span class="ch">\n</span><span class="st">L_Infinity shown as a black line.&quot;</span>) ## Add figure title</code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
-<p>Now things look more reasonable! Most fish in the catch also appear to be mature, which is a good sign for the sustainability of the fishery.</p>
-<p>You might also be interested in seeing how the size composition varies by gear type. It appears as if the size structure is about the same from each gear, although by far the most amount of fish are caught using speargun. Very few fish are caught using trolling.</p>
+<span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Length histogram of Caesio cuning in the catch by gear type</span><span class="ch">\n</span><span class="st">Length at 95% maturity shown as a red line.&quot;</span>) +<span class="st"> </span>## Add figure title
+<span class="st">    </span><span class="kw">geom_vline</span>(<span class="kw">aes</span>(<span class="dt">xintercept=</span>life_history_parameters$m95),<span class="dt">color=</span><span class="st">&quot;red&quot;</span>) +<span class="st"> </span>## Add a red line form95, the length at which 95% of fish are mature. Any fish below this length may be immature. Use the life_history_parameter data frame to get this value.
+<span class="st">  </span><span class="kw">facet_wrap</span>(~Gear) ## This tells the figure to plot by all different gear types, known as facetting</code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-44-1.png" width="672" /></p>
+<p>Next we can calculate the percentage of mature fish in the catch in every year of the data frame. To do this, we add a column to the data frame that represents whether each fish is mature or not (represented by a 1 or 0), group the data frame by year, and then summarize for each year the percentage of mature fish out of the total number of sampled fish. Over 90% of the fish are mature throughout the time series, which is a great sign! This matches up with what we see in the histogram.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">landings_data %&gt;%<span class="st"> </span>## Start with the landings data frame
-<span class="st">  </span><span class="kw">filter</span>(Year ==<span class="st"> </span><span class="dv">2014</span>) %&gt;%<span class="st"> </span>## Filter data to only look at length measurements from 2014
-<span class="st">  </span><span class="kw">filter</span>(Length_cm &lt;<span class="st"> </span>life_history_parameters$L_inf) %&gt;%<span class="st"> </span>## Filter out any observations greater than L_infinity. These are likely errors.
-<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(Length_cm)) +<span class="st"> </span>## Plot annual landings versus year
-<span class="st">  </span><span class="kw">geom_histogram</span>() +<span class="st"> </span>## Plot a histogram of the length data
-<span class="st">  </span><span class="kw">geom_vline</span>(<span class="kw">aes</span>(<span class="dt">xintercept=</span>life_history_parameters$L_inf)) +<span class="st"> </span>## Add a black line for L infinity, the length of a theoretically infinitely old fish. No measured fish should be greater than this length. Use the life_history_parameter data frame to get this value.
-<span class="st">  </span><span class="kw">geom_vline</span>(<span class="kw">aes</span>(<span class="dt">xintercept=</span>life_history_parameters$m95),<span class="dt">color=</span><span class="st">&quot;red&quot;</span>) +<span class="st"> </span>## Add a red line form95, the length at which 95% of fish are mature. Any fish below this length may be immature. Use the life_history_parameter data frame to get this value. +
-<span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Length [cm]&quot;</span>) +<span class="st"> </span>## Change x-axis label
-<span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Length histogram of Caesio cuning in the catch by gear type</span><span class="ch">\n</span><span class="st">Length at 95% maturity shown as a red line.</span><span class="ch">\n</span><span class="st">L_Infinity shown as a black line.&quot;</span>) +<span class="st"> </span>## Add figure title
-<span class="st">  </span><span class="kw">facet_wrap</span>(~Gear) ## This tells the figure to plot by all different gear types</code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
-<p>Next we can calculate the percentage of mature fish in the catch. Over 97% of the fish are mature throughout the time series, which is a great sign! This matches up with what we see in the histogram.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">landings_data %&gt;%<span class="st"> </span>## Start with the landings data frame
-<span class="st">  </span><span class="co">#filter(Year == 2014) %&gt;% ## Only look at length measurements from 2014</span>
 <span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Mature =</span> <span class="kw">ifelse</span>(Length_cm &gt;<span class="st"> </span>life_history_parameters$m95,<span class="dv">1</span>,<span class="dv">0</span>)) %&gt;%<span class="st"> </span>## Add a column to the data that indicates whether each length measurement is from a mature or immature fish. If it&#39;s mature, this value should be 1; if immature, 0.
 <span class="st">  </span><span class="kw">group_by</span>(Year) %&gt;%<span class="st"> </span>## Group by year so we can see the percent mature for every year
 <span class="st">  </span><span class="kw">summarize</span>(<span class="dt">Percent_Mature =</span> <span class="kw">sum</span>(Mature) /<span class="st"> </span><span class="kw">n</span>() *<span class="st"> </span><span class="dv">100</span>) ## The percentage mature is equal to the  number of mature fish divided by the total number of fish and multiplied by 100</code></pre></div>
@@ -226,27 +208,26 @@ landings_data %&gt;%<span class="st"> </span>## Start with the landings data fra
 ##    Year Percent_Mature
 ##   &lt;int&gt;          &lt;dbl&gt;
 ## 1  2003       98.57595
-## 2  2004       97.97639
-## 3  2005       98.60465
+## 2  2004       98.62306
+## 3  2005       97.73371
 ## 4  2006      100.00000
-## 5  2010       91.81692
+## 5  2010       91.80556
 ## 6  2011       99.77629
 ## 7  2012       99.65398
 ## 8  2013       99.46164
 ## 9  2014       99.55709</code></pre>
-<p>Next, lets plot a time series of daily landings data.</p>
+<p>Next, let’s plot a time series of daily landings data. To do this, we first need to tell R that the “Date” column represents actual dates so that it can work with this format. We next group the data frame by date, so that we can next summarize the summed weight caught on each date. We then plot this using ggplot.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">landings_data %&gt;%<span class="st"> </span>## Start with the landings data frame
 <span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Date =</span> <span class="kw">mdy</span>(Date)) %&gt;%<span class="st"> </span>## Turn the date column into a date variable that R recognizes
-<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">landings_kg =</span> Weight_g/<span class="dv">1000</span>) %&gt;%<span class="st"> </span>## Create a new column in the data frame that is landings in kilograms instead of grams
 <span class="st">  </span><span class="kw">group_by</span>(Date) %&gt;%<span class="st"> </span>## Group the data by date so we can calculate the total landings by date
-<span class="st">  </span><span class="kw">summarize</span>(<span class="dt">daily_landings =</span> <span class="kw">sum</span>(landings_kg)) %&gt;%<span class="st"> </span>## For each date, sumamrize the sum of all daily landings
+<span class="st">  </span><span class="kw">summarize</span>(<span class="dt">daily_landings =</span> <span class="kw">sum</span>(Weight_g/<span class="dv">1000</span>)) %&gt;%<span class="st"> </span>## For each date, sumamrize the sum of all daily landings
 <span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x=</span>Date,<span class="dt">y=</span>daily_landings)) +<span class="st"> </span>## Plot daily landings versus date
 <span class="st">  </span><span class="kw">geom_point</span>() +<span class="st"> </span>## Make a scatter plot
 <span class="st">  </span><span class="kw">geom_line</span>() +<span class="st"> </span>## Also add a line connecting the points
 <span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Daily Landings [kg/day]&quot;</span>) +<span class="st"> </span>## Change the y-axis title
 <span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Daily landings of Caesio cuning&quot;</span>) ## Add a figure title</code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
-<p>It is a little diffcult to observe trends here since there is a lot of variation between days, other than that there was no data collected between 2006 and 2010. Instead, you may wish to aggregate the catch data by year in order to look at trends in annual landings. Because this particular survey only samples the catch on certain days, it does not represent the total volume of landed catch. Therefore, it’s important to normalize the sampled catch by the number of sampling days. This will mean that trends represent actual increases or decreases in catch, not just increases or decreases in how frequently the catch is sampled.</p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-46-1.png" width="672" /></p>
+<p>It is a little diffcult to observe trends here since there is a lot of variation between days, other than that there was no data collected between 2006 and 2010. Instead, you may wish to aggregate the catch data by year in order to look at trends in annual landings. This is very similar to the plot above, but we now group and summarize by Year instead of by Date. Because this particular survey only samples the catch on certain days, it does not represent the total volume of landed catch. Therefore, it’s important to not only sum the amount of catch each year, but also normalize the sampled catch by the number of sampling days. This will mean that trends represent actual increases or decreases in catch, not just increases or decreases in how frequently the catch is sampled.</p>
 <p>Looking at this plot, it now becomes more clear that landings decrease significantly between 2004 and 2010, but have been increasing during the last few years. This could be indicative of a recovering fishery, or could mean increasing fishing pressure.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">landings_data %&gt;%<span class="st"> </span>## Start with the landings data frame
 <span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Date =</span> <span class="kw">mdy</span>(Date)) %&gt;%<span class="st"> </span>## Turn the date column into a date variable that R recognizes
@@ -258,8 +239,8 @@ landings_data %&gt;%<span class="st"> </span>## Start with the landings data fra
 <span class="st">  </span><span class="kw">geom_line</span>() +<span class="st"> </span>## Also add a line connecting the points
 <span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Normalized annual Landings [kg/survey day/year]&quot;</span>) +<span class="st"> </span>## Change the y-axis title
 <span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Normalized annual landings of Caesio cuning&quot;</span>) ## Add figure title</code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
-<p>Again, you may be interested in looking across different gear types. Doing so, it now becomes clear that the recent increase in catch seems to be concentrated in speargun and trap fishing. Meanwhile, catch from muroami, a very destructive type of gear where nets are driven into the reef, has dropped to 0 since a ban of that gear in 2012 - a good sign that mangement regulation is working.</p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-47-1.png" width="672" /></p>
+<p>Again, you may be interested in looking across different gear types. Here, we now group the data frame by both the year and the gear type in order to summarize the total landings by year and by gear. To plot, we again use ggplot’s faceting functionality. Doing so, it now becomes clear that the recent increase in catch seems to be concentrated in speargun and trap fishing. Meanwhile, catch from muroami, a very destructive type of gear where nets are driven into the reef, has dropped to 0 since a ban of that gear in 2012 - a good sign that mangement regulation is working.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">landings_data %&gt;%<span class="st"> </span>## Start with the landings data frame
 <span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Date =</span> <span class="kw">mdy</span>(Date)) %&gt;%<span class="st"> </span>## Turn the date column into a date variable that R recognizes
 <span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Year =</span> <span class="kw">year</span>(Date)) %&gt;%<span class="st"> </span>## Create a year column using a year format R recognizes
@@ -271,7 +252,7 @@ landings_data %&gt;%<span class="st"> </span>## Start with the landings data fra
 <span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Normalized annual Landings [kg/survey day/year]&quot;</span>) +<span class="st"> </span>## Change the y-axis title
 <span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Normalized annual landings of Caesio cuning by gear type&quot;</span>)  +<span class="st"> </span>## Add figure title
 <span class="st">  </span><span class="kw">facet_wrap</span>(~Gear) ## This tells the figure to plot by all different gear types</code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-18-1.png" width="672" /></p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-48-1.png" width="672" /></p>
 <p>Finally, you may also be interested in plotting median catch-per-unit-effort (CPUE). CPUE is calculated by dividing the catch of each fishing trip by the number of hours fished during that trip. The median is taken in order to remove outliers - some fishers are much more efficient than others.</p>
 <p>CPUE appears to have increased significantly during the last years. This may be due to increasing abundance in the water, which would be a good thing, but may also be indicative of increased gear efficiency coinciding with the transition to traps and spearguns, which may be concerning.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">landings_data %&gt;%<span class="st"> </span>## Start with the landings data frame
@@ -286,7 +267,7 @@ landings_data %&gt;%<span class="st"> </span>## Start with the landings data fra
 <span class="st">  </span><span class="kw">geom_line</span>() +<span class="st"> </span>## Also add a line connecting the points
 <span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Median CPUE [kg/hour]&quot;</span>) +<span class="st"> </span>## Change the y-axis title
 <span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Median CPUE for Caesio cuning&quot;</span>) ## Add figure title</code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-49-1.png" width="672" /></p>
 <p>When looking at all data together - almost all fish in the catch are mature, catch is increasing, and CPUE is increasing - all signs point to a fairly healthy fishery, which is likely recovering since the ban of muroami fishing nets.</p>
 
 </div>
