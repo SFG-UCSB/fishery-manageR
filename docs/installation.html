@@ -12,7 +12,7 @@
 
   <meta property="og:title" content="A Guide to R for Fisheries Managers" />
   <meta property="og:type" content="book" />
-  
+  <meta property="og:url" content="https://sfg-ucsb.github.io/fishery-manageR/" />
   
   <meta property="og:description" content="This is a guidebook for using R for fishery management" />
   <meta name="github-repo" content="sfg-ucsb/fishery-manageR" />
@@ -23,18 +23,16 @@
   <meta name="twitter:description" content="This is a guidebook for using R for fishery management" />
   
 
-<meta name="author" content="Sustainable Fisheries Group">
 
 
-<meta name="date" content="2017-05-08">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
-  
+  <link rel="shortcut icon" href="images/SFG_BW.png" type="image/x-icon">
 <link rel="prev" href="index.html">
-<link rel="next" href="loading-packages.html">
+<link rel="next" href="data-entry-management.html">
 
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -104,7 +102,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li><a href="./">A Guide to R for Fisheries Analysis</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Overview</a></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Objective</a></li>
 <li class="chapter" data-level="2" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>2</b> Installation</a><ul>
 <li class="chapter" data-level="2.1" data-path="installation.html"><a href="installation.html#r"><i class="fa fa-check"></i><b>2.1</b> R</a></li>
 <li class="chapter" data-level="2.2" data-path="installation.html"><a href="installation.html#rstudio"><i class="fa fa-check"></i><b>2.2</b> RStudio</a></li>
@@ -113,17 +111,26 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="2.4" data-path="installation.html"><a href="installation.html#helpful-resources"><i class="fa fa-check"></i><b>2.4</b> Helpful Resources</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="loading-packages.html"><a href="loading-packages.html"><i class="fa fa-check"></i><b>3</b> Loading packages</a></li>
-<li class="chapter" data-level="4" data-path="loading-fisheries-data.html"><a href="loading-fisheries-data.html"><i class="fa fa-check"></i><b>4</b> Loading Fisheries Data</a></li>
-<li class="chapter" data-level="5" data-path="basic-fisheries-statistics.html"><a href="basic-fisheries-statistics.html"><i class="fa fa-check"></i><b>5</b> Basic Fisheries Statistics</a><ul>
-<li class="chapter" data-level="5.1" data-path="basic-fisheries-statistics.html"><a href="basic-fisheries-statistics.html#calculating-landings"><i class="fa fa-check"></i><b>5.1</b> Calculating landings</a></li>
-<li class="chapter" data-level="5.2" data-path="basic-fisheries-statistics.html"><a href="basic-fisheries-statistics.html#calculating-catch-per-unit-effort-cpue"><i class="fa fa-check"></i><b>5.2</b> Calculating Catch-per-Unit-Effort (CPUE)</a></li>
-<li class="chapter" data-level="5.3" data-path="basic-fisheries-statistics.html"><a href="basic-fisheries-statistics.html#calculating-percent-mature"><i class="fa fa-check"></i><b>5.3</b> Calculating percent mature</a></li>
+<li class="chapter" data-level="3" data-path="data-entry-management.html"><a href="data-entry-management.html"><i class="fa fa-check"></i><b>3</b> Data Entry &amp; Management</a><ul>
+<li class="chapter" data-level="3.1" data-path="data-entry-management.html"><a href="data-entry-management.html#using-flat-files-and-an-open-data-format"><i class="fa fa-check"></i><b>3.1</b> Using “flat” files and an open data format</a></li>
+<li class="chapter" data-level="3.2" data-path="data-entry-management.html"><a href="data-entry-management.html#organize-data-in-a-tidy-format-with-unique-records-in-rows-not-columns"><i class="fa fa-check"></i><b>3.2</b> Organize data in a tidy format with unique records in rows, not columns</a></li>
+<li class="chapter" data-level="3.3" data-path="data-entry-management.html"><a href="data-entry-management.html#describe-data-in-a-metadata-file"><i class="fa fa-check"></i><b>3.3</b> Describe data in a metadata file</a></li>
+<li class="chapter" data-level="3.4" data-path="data-entry-management.html"><a href="data-entry-management.html#use-clear-and-concise-descriptive-names-for-data-files-and-variable-names"><i class="fa fa-check"></i><b>3.4</b> Use clear and concise descriptive names for data files and variable names</a></li>
+<li class="chapter" data-level="3.5" data-path="data-entry-management.html"><a href="data-entry-management.html#always-use-consistent-formats-for-data-values-and-if-necessary-put-units-in-a-separate-column"><i class="fa fa-check"></i><b>3.5</b> Always use consistent formats for data values and (if necessary) put units in a separate column</a></li>
+<li class="chapter" data-level="3.6" data-path="data-entry-management.html"><a href="data-entry-management.html#always-store-an-uncorrected-original-version-of-the-data-file-and-back-up-your-data"><i class="fa fa-check"></i><b>3.6</b> Always store an uncorrected original version of the data file and BACK UP YOUR DATA!!!</a></li>
+<li class="chapter" data-level="3.7" data-path="data-entry-management.html"><a href="data-entry-management.html#additional-resources"><i class="fa fa-check"></i><b>3.7</b> Additional Resources</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="plotting-fisheries-data.html"><a href="plotting-fisheries-data.html"><i class="fa fa-check"></i><b>6</b> Plotting Fisheries Data</a><ul>
-<li class="chapter" data-level="6.1" data-path="plotting-fisheries-data.html"><a href="plotting-fisheries-data.html#plot-landings-data"><i class="fa fa-check"></i><b>6.1</b> Plot landings data</a></li>
-<li class="chapter" data-level="6.2" data-path="plotting-fisheries-data.html"><a href="plotting-fisheries-data.html#plot-cpue-data"><i class="fa fa-check"></i><b>6.2</b> Plot CPUE data</a></li>
-<li class="chapter" data-level="6.3" data-path="plotting-fisheries-data.html"><a href="plotting-fisheries-data.html#plot-length-data"><i class="fa fa-check"></i><b>6.3</b> Plot length data</a></li>
+<li class="chapter" data-level="4" data-path="loading-packages.html"><a href="loading-packages.html"><i class="fa fa-check"></i><b>4</b> Loading packages</a></li>
+<li class="chapter" data-level="5" data-path="loading-fisheries-data.html"><a href="loading-fisheries-data.html"><i class="fa fa-check"></i><b>5</b> Loading Fisheries Data</a></li>
+<li class="chapter" data-level="6" data-path="basic-fisheries-statistics.html"><a href="basic-fisheries-statistics.html"><i class="fa fa-check"></i><b>6</b> Basic Fisheries Statistics</a><ul>
+<li class="chapter" data-level="6.1" data-path="basic-fisheries-statistics.html"><a href="basic-fisheries-statistics.html#calculating-landings"><i class="fa fa-check"></i><b>6.1</b> Calculating landings</a></li>
+<li class="chapter" data-level="6.2" data-path="basic-fisheries-statistics.html"><a href="basic-fisheries-statistics.html#calculating-catch-per-unit-effort-cpue"><i class="fa fa-check"></i><b>6.2</b> Calculating Catch-per-Unit-Effort (CPUE)</a></li>
+<li class="chapter" data-level="6.3" data-path="basic-fisheries-statistics.html"><a href="basic-fisheries-statistics.html#calculating-percent-mature"><i class="fa fa-check"></i><b>6.3</b> Calculating percent mature</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="plotting-fisheries-data.html"><a href="plotting-fisheries-data.html"><i class="fa fa-check"></i><b>7</b> Plotting Fisheries Data</a><ul>
+<li class="chapter" data-level="7.1" data-path="plotting-fisheries-data.html"><a href="plotting-fisheries-data.html#plot-landings-data"><i class="fa fa-check"></i><b>7.1</b> Plot landings data</a></li>
+<li class="chapter" data-level="7.2" data-path="plotting-fisheries-data.html"><a href="plotting-fisheries-data.html#plot-cpue-data"><i class="fa fa-check"></i><b>7.2</b> Plot CPUE data</a></li>
+<li class="chapter" data-level="7.3" data-path="plotting-fisheries-data.html"><a href="plotting-fisheries-data.html#plot-length-data"><i class="fa fa-check"></i><b>7.3</b> Plot length data</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -203,7 +210,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
         </div>
       </div>
 <a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="loading-packages.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
+<a href="data-entry-management.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
 
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>

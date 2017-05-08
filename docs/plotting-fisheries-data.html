@@ -12,7 +12,7 @@
 
   <meta property="og:title" content="A Guide to R for Fisheries Managers" />
   <meta property="og:type" content="book" />
-  
+  <meta property="og:url" content="https://sfg-ucsb.github.io/fishery-manageR/" />
   
   <meta property="og:description" content="This is a guidebook for using R for fishery management" />
   <meta name="github-repo" content="sfg-ucsb/fishery-manageR" />
@@ -23,16 +23,14 @@
   <meta name="twitter:description" content="This is a guidebook for using R for fishery management" />
   
 
-<meta name="author" content="Sustainable Fisheries Group">
 
 
-<meta name="date" content="2017-05-08">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
-  
+  <link rel="shortcut icon" href="images/SFG_BW.png" type="image/x-icon">
 <link rel="prev" href="basic-fisheries-statistics.html">
 
 
@@ -104,7 +102,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li><a href="./">A Guide to R for Fisheries Analysis</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Overview</a></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Objective</a></li>
 <li class="chapter" data-level="2" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>2</b> Installation</a><ul>
 <li class="chapter" data-level="2.1" data-path="installation.html"><a href="installation.html#r"><i class="fa fa-check"></i><b>2.1</b> R</a></li>
 <li class="chapter" data-level="2.2" data-path="installation.html"><a href="installation.html#rstudio"><i class="fa fa-check"></i><b>2.2</b> RStudio</a></li>
@@ -113,17 +111,26 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="2.4" data-path="installation.html"><a href="installation.html#helpful-resources"><i class="fa fa-check"></i><b>2.4</b> Helpful Resources</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="loading-packages.html"><a href="loading-packages.html"><i class="fa fa-check"></i><b>3</b> Loading packages</a></li>
-<li class="chapter" data-level="4" data-path="loading-fisheries-data.html"><a href="loading-fisheries-data.html"><i class="fa fa-check"></i><b>4</b> Loading Fisheries Data</a></li>
-<li class="chapter" data-level="5" data-path="basic-fisheries-statistics.html"><a href="basic-fisheries-statistics.html"><i class="fa fa-check"></i><b>5</b> Basic Fisheries Statistics</a><ul>
-<li class="chapter" data-level="5.1" data-path="basic-fisheries-statistics.html"><a href="basic-fisheries-statistics.html#calculating-landings"><i class="fa fa-check"></i><b>5.1</b> Calculating landings</a></li>
-<li class="chapter" data-level="5.2" data-path="basic-fisheries-statistics.html"><a href="basic-fisheries-statistics.html#calculating-catch-per-unit-effort-cpue"><i class="fa fa-check"></i><b>5.2</b> Calculating Catch-per-Unit-Effort (CPUE)</a></li>
-<li class="chapter" data-level="5.3" data-path="basic-fisheries-statistics.html"><a href="basic-fisheries-statistics.html#calculating-percent-mature"><i class="fa fa-check"></i><b>5.3</b> Calculating percent mature</a></li>
+<li class="chapter" data-level="3" data-path="data-entry-management.html"><a href="data-entry-management.html"><i class="fa fa-check"></i><b>3</b> Data Entry &amp; Management</a><ul>
+<li class="chapter" data-level="3.1" data-path="data-entry-management.html"><a href="data-entry-management.html#using-flat-files-and-an-open-data-format"><i class="fa fa-check"></i><b>3.1</b> Using “flat” files and an open data format</a></li>
+<li class="chapter" data-level="3.2" data-path="data-entry-management.html"><a href="data-entry-management.html#organize-data-in-a-tidy-format-with-unique-records-in-rows-not-columns"><i class="fa fa-check"></i><b>3.2</b> Organize data in a tidy format with unique records in rows, not columns</a></li>
+<li class="chapter" data-level="3.3" data-path="data-entry-management.html"><a href="data-entry-management.html#describe-data-in-a-metadata-file"><i class="fa fa-check"></i><b>3.3</b> Describe data in a metadata file</a></li>
+<li class="chapter" data-level="3.4" data-path="data-entry-management.html"><a href="data-entry-management.html#use-clear-and-concise-descriptive-names-for-data-files-and-variable-names"><i class="fa fa-check"></i><b>3.4</b> Use clear and concise descriptive names for data files and variable names</a></li>
+<li class="chapter" data-level="3.5" data-path="data-entry-management.html"><a href="data-entry-management.html#always-use-consistent-formats-for-data-values-and-if-necessary-put-units-in-a-separate-column"><i class="fa fa-check"></i><b>3.5</b> Always use consistent formats for data values and (if necessary) put units in a separate column</a></li>
+<li class="chapter" data-level="3.6" data-path="data-entry-management.html"><a href="data-entry-management.html#always-store-an-uncorrected-original-version-of-the-data-file-and-back-up-your-data"><i class="fa fa-check"></i><b>3.6</b> Always store an uncorrected original version of the data file and BACK UP YOUR DATA!!!</a></li>
+<li class="chapter" data-level="3.7" data-path="data-entry-management.html"><a href="data-entry-management.html#additional-resources"><i class="fa fa-check"></i><b>3.7</b> Additional Resources</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="plotting-fisheries-data.html"><a href="plotting-fisheries-data.html"><i class="fa fa-check"></i><b>6</b> Plotting Fisheries Data</a><ul>
-<li class="chapter" data-level="6.1" data-path="plotting-fisheries-data.html"><a href="plotting-fisheries-data.html#plot-landings-data"><i class="fa fa-check"></i><b>6.1</b> Plot landings data</a></li>
-<li class="chapter" data-level="6.2" data-path="plotting-fisheries-data.html"><a href="plotting-fisheries-data.html#plot-cpue-data"><i class="fa fa-check"></i><b>6.2</b> Plot CPUE data</a></li>
-<li class="chapter" data-level="6.3" data-path="plotting-fisheries-data.html"><a href="plotting-fisheries-data.html#plot-length-data"><i class="fa fa-check"></i><b>6.3</b> Plot length data</a></li>
+<li class="chapter" data-level="4" data-path="loading-packages.html"><a href="loading-packages.html"><i class="fa fa-check"></i><b>4</b> Loading packages</a></li>
+<li class="chapter" data-level="5" data-path="loading-fisheries-data.html"><a href="loading-fisheries-data.html"><i class="fa fa-check"></i><b>5</b> Loading Fisheries Data</a></li>
+<li class="chapter" data-level="6" data-path="basic-fisheries-statistics.html"><a href="basic-fisheries-statistics.html"><i class="fa fa-check"></i><b>6</b> Basic Fisheries Statistics</a><ul>
+<li class="chapter" data-level="6.1" data-path="basic-fisheries-statistics.html"><a href="basic-fisheries-statistics.html#calculating-landings"><i class="fa fa-check"></i><b>6.1</b> Calculating landings</a></li>
+<li class="chapter" data-level="6.2" data-path="basic-fisheries-statistics.html"><a href="basic-fisheries-statistics.html#calculating-catch-per-unit-effort-cpue"><i class="fa fa-check"></i><b>6.2</b> Calculating Catch-per-Unit-Effort (CPUE)</a></li>
+<li class="chapter" data-level="6.3" data-path="basic-fisheries-statistics.html"><a href="basic-fisheries-statistics.html#calculating-percent-mature"><i class="fa fa-check"></i><b>6.3</b> Calculating percent mature</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="plotting-fisheries-data.html"><a href="plotting-fisheries-data.html"><i class="fa fa-check"></i><b>7</b> Plotting Fisheries Data</a><ul>
+<li class="chapter" data-level="7.1" data-path="plotting-fisheries-data.html"><a href="plotting-fisheries-data.html#plot-landings-data"><i class="fa fa-check"></i><b>7.1</b> Plot landings data</a></li>
+<li class="chapter" data-level="7.2" data-path="plotting-fisheries-data.html"><a href="plotting-fisheries-data.html#plot-cpue-data"><i class="fa fa-check"></i><b>7.2</b> Plot CPUE data</a></li>
+<li class="chapter" data-level="7.3" data-path="plotting-fisheries-data.html"><a href="plotting-fisheries-data.html#plot-length-data"><i class="fa fa-check"></i><b>7.3</b> Plot length data</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -146,10 +153,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
             <section class="normal" id="section-">
 <div id="plotting-fisheries-data" class="section level1">
-<h1><span class="header-section-number">6</span> Plotting Fisheries Data</h1>
+<h1><span class="header-section-number">7</span> Plotting Fisheries Data</h1>
 <p>This short document will walk you through how to make make some basic fisheries plots. Once you’ve analyzed the data as in the previous step to create summary statistics, you can take these data frames and feed them into ggplot. When using ggplot, start with your data frame, initialize the ggplot, and then use the <code>+</code> operation to add additional features to the plot.</p>
 <div id="plot-landings-data" class="section level2">
-<h2><span class="header-section-number">6.1</span> Plot landings data</h2>
+<h2><span class="header-section-number">7.1</span> Plot landings data</h2>
 <p>Let’s plot a time series of annual landings data. We start with the annual landings data we made in the previous step, and then feed this into a ggplot. It appears landings were going down between 2004 and 2011, but have been increasing significantly since then.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Start with the annual_landings data frame you created in the last step
 annual_landings %&gt;%
@@ -163,7 +170,7 @@ annual_landings %&gt;%
 <span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Normalized annual Landings [kg/survey day/year]&quot;</span>) +<span class="st"> </span>
 <span class="st">  </span>## Add figure title
 <span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Normalized annual landings of Caesio cuning&quot;</span>) </code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-20-1.png" width="672" /></p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-24-1.png" width="672" /></p>
 <p>Again, you may be interested in looking across different gear types. To plot, we use ggplot’s faceting functionality. Doing so, it now becomes clear that the recent increase in catch seems to be concentrated in speargun and trap fishing. Meanwhile, catch from muroami, a very destructive type of gear where nets are driven into the reef, has dropped to 0 since a ban of that gear in 2012 - a good sign that mangement regulation is working.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Start with the landings data frame
 annual_gear_landings %&gt;%<span class="st"> </span>
@@ -181,10 +188,10 @@ annual_gear_landings %&gt;%<span class="st"> </span>
 <span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Normalized annual landings of Caesio cuning&quot;</span>) +
 <span class="st">  </span>## This tells the figure to plot by all different gear types
 <span class="st">  </span><span class="kw">facet_wrap</span>(~Gear) </code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-21-1.png" width="672" /></p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-25-1.png" width="672" /></p>
 </div>
 <div id="plot-cpue-data" class="section level2">
-<h2><span class="header-section-number">6.2</span> Plot CPUE data</h2>
+<h2><span class="header-section-number">7.2</span> Plot CPUE data</h2>
 <p>You may also be interested in plotting median catch-per-unit-effort (CPUE). You take your CPUE data frame made in the last step and feed it into ggplot.</p>
 <p>CPUE appears to have increased significantly during the last years. This may be due to increasing abundance in the water, which would be a good thing, but may also be indicative of increased gear efficiency coinciding with the transition to traps and spearguns, which may be concerning.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Start with the CPUE data frame
@@ -199,10 +206,10 @@ cpue_data %&gt;%<span class="st"> </span>
 <span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Median CPUE [kg/hour]&quot;</span>) +<span class="st"> </span>
 <span class="st">  </span>## Add figure title
 <span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Median CPUE for Caesio cuning&quot;</span>) </code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-22-1.png" width="672" /></p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-26-1.png" width="672" /></p>
 </div>
 <div id="plot-length-data" class="section level2">
-<h2><span class="header-section-number">6.3</span> Plot length data</h2>
+<h2><span class="header-section-number">7.3</span> Plot length data</h2>
 <p>Finally, let’s first look at the length data from the catch, which gives an indication of the size structure and health of the population. Let’s look at the length data for 2014, which is the most recent year of data available. We first filter the data to be only from 2014. We then create a histogram of the length data, which shows how many individuals of each size class were measured in the catch. On the histogram, we’ll also a vertical line to show the length at which fish mature to get a sense of how sustainable the catch is - the catch should be composed mostly of mature fish. This information comes from the life history parameter data input file.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Start with the landings data frame
 landings_data %&gt;%<span class="st"> </span>
@@ -218,7 +225,7 @@ landings_data %&gt;%<span class="st"> </span>
 <span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Length histogram of Caesio cuning in the catch</span><span class="ch">\n</span><span class="st">Length at 95% maturity shown as a red line.&quot;</span>) +<span class="st"> </span>
 <span class="st">  </span>## Add a red vertical line for m95, the length at which 95% of fish are mature. Any fish below this length may be immature. Use the life_history_parameter data frame to get this value.
 <span class="st">  </span><span class="kw">geom_vline</span>(<span class="kw">aes</span>(<span class="dt">xintercept=</span>life_history_parameters$m95),<span class="dt">color=</span><span class="st">&quot;red&quot;</span>) </code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-23-1.png" width="672" /></p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-27-1.png" width="672" /></p>
 <p>You might also be interested in seeing how the size composition varies by gear type. You can recreate the figure about, but separting the histograms out by gear type using ggplot’s “facet” functionality. It appears as if the size structure is about the same from each gear, although by far the most amount of fish are caught using speargun. Very few fish are caught using trolling.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Start with the landings data frame
 landings_data %&gt;%<span class="st"> </span>
@@ -236,7 +243,7 @@ landings_data %&gt;%<span class="st"> </span>
 <span class="st">  </span><span class="kw">geom_vline</span>(<span class="kw">aes</span>(<span class="dt">xintercept=</span>life_history_parameters$m95),<span class="dt">color=</span><span class="st">&quot;red&quot;</span>) +<span class="st"> </span>
 <span class="st">  </span>## This tells the figure to plot by all different gear types, known as facetting
 <span class="st">  </span><span class="kw">facet_wrap</span>(~Gear) </code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-24-1.png" width="672" /></p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-28-1.png" width="672" /></p>
 <p>Looking at these plots - generally increasing catch, CPUE, and a healthy size structure - indicates that the population is likely doing fairly well, and is may be recovering since the ban of muroami fishing gear in 2012.</p>
 
 </div>

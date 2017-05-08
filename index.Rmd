@@ -1,7 +1,5 @@
 --- 
 title: "A Guide to R for Fisheries Managers"
-author: "Sustainable Fisheries Group"
-date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 output: bookdown::gitbook
 documentclass: book
@@ -9,17 +7,26 @@ bibliography: [book.bib, packages.bib]
 biblio-style: apalike
 link-citations: yes
 github-repo: sfg-ucsb/fishery-manageR
+url: https\://sfg-ucsb.github.io/fishery-manageR/
 description: "This is a guidebook for using R for fishery management"
+favicon: "images/SFG_BW.png"
 ---
-# Overview
-[R](https://cran.r-project.org) is a free programming language/software environment that allows users to analyze, model, and vizualize large data sets in much more powerful and complex ways than traditional spreadsheet programs like Excel or Google Sheets. Best of all, R is open source, meaning that it is freely available from the Comprehensive R Archive Network (CRAN) and anyone can contribute to making R better. In fact, numerous R packages (more on these later) are specifically designed for conducting analyses related to fisheries management. [RStudio](https://www.rstudio.com) is the powerful graphical interface that allows users to manage their code, data, and files all in one convenient program.
 
 ```{r include=FALSE}
 knitr::opts_chunk$set(warning = F, message = F, error = F)
-```
 
-```{r eval=TRUE}
 library(tidyverse)
 library(lubridate) 
 library(knitr)
 ```
+
+# Objective
+> The purpose of this guidebook is to provide an introduction to using the powerful programming language R to conduct analyses commonly used for fisheries management
+
+[R](https://cran.r-project.org) is a free programming language/software environment that allows users to analyze, model, and vizualize large data sets in much more powerful and complex ways than traditional spreadsheet programs like Excel or Google Sheets. Best of all, R is open source, meaning that it is freely available from the Comprehensive R Archive Network (CRAN) and anyone can contribute to making R better. In fact, numerous R packages (more on these later) are specifically designed for conducting analyses related to fisheries management. [RStudio](https://www.rstudio.com) is the powerful graphical interface that allows users to manage their code, data, and files all in one convenient program.
+
+```{r, echo = F, warning=F, fig.align='center'}
+include_graphics('images/SFG-logotype-side-ucsb-062513.uc.png')
+```
+
+

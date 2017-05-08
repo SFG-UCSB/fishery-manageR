@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>A Guide to R for Fisheries Managers</title>
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+  <meta name="description" content="This is a guidebook for using R for fishery management">
+  <meta name="generator" content="bookdown 0.3 and GitBook 2.6.7">
+
+  <meta property="og:title" content="A Guide to R for Fisheries Managers" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is a guidebook for using R for fishery management" />
+  <meta name="github-repo" content="sfg-ucsb/fishery-manageR" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="A Guide to R for Fisheries Managers" />
+  
+  <meta name="twitter:description" content="This is a guidebook for using R for fishery management" />
+  
+
+<meta name="author" content="Sustainable Fisheries Group">
+
+
+<meta name="date" content="2017-05-08">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="data-entry-management.html">
+<link rel="next" href="loading-packages.html">
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A Guide to R for Fisheries Analysis</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Overview</a></li>
+<li class="chapter" data-level="2" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>2</b> Installation</a></li>
+<li class="chapter" data-level="3" data-path="data-entry-management.html"><a href="data-entry-management.html"><i class="fa fa-check"></i><b>3</b> Data Entry &amp; Management</a><ul>
+<li class="chapter" data-level="3.1" data-path="data-entry-management.html"><a href="data-entry-management.html#using-flat-files-and-an-open-data-format"><i class="fa fa-check"></i><b>3.1</b> Using “flat” files and an open data format</a></li>
+<li class="chapter" data-level="3.2" data-path="data-entry-management.html"><a href="data-entry-management.html#organize-data-in-a-tidy-format-with-unique-records-in-rows-not-columns"><i class="fa fa-check"></i><b>3.2</b> Organize data in a tidy format with unique records in rows, not columns</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="describe-data-in-a-metadata-file.html"><a href="describe-data-in-a-metadata-file.html"><i class="fa fa-check"></i><b>4</b> Describe data in a metadata file</a><ul>
+<li class="chapter" data-level="4.1" data-path="describe-data-in-a-metadata-file.html"><a href="describe-data-in-a-metadata-file.html#use-clear-and-concise-descriptive-names-for-data-files-and-variable-names"><i class="fa fa-check"></i><b>4.1</b> Use clear and concise descriptive names for data files and variable names</a></li>
+<li class="chapter" data-level="4.2" data-path="describe-data-in-a-metadata-file.html"><a href="describe-data-in-a-metadata-file.html#always-use-consistent-formats-for-data-values-and-if-necessary-put-units-in-a-separate-column"><i class="fa fa-check"></i><b>4.2</b> Always use consistent formats for data values and (if necessary) put units in a separate column</a></li>
+<li class="chapter" data-level="4.3" data-path="describe-data-in-a-metadata-file.html"><a href="describe-data-in-a-metadata-file.html#always-store-an-uncorrected-original-version-of-the-data-file-and-back-up-your-data"><i class="fa fa-check"></i><b>4.3</b> Always store an uncorrected original version of the data file and BACK UP YOUR DATA!!!</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="describe-data-in-a-metadata-file.html"><a href="describe-data-in-a-metadata-file.html#additional-resources"><i class="fa fa-check"></i><b>4.3.1</b> Additional Resources</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="loading-packages.html"><a href="loading-packages.html"><i class="fa fa-check"></i><b>5</b> Loading packages</a></li>
+<li class="chapter" data-level="6" data-path="loading-fisheries-data.html"><a href="loading-fisheries-data.html"><i class="fa fa-check"></i><b>6</b> Loading Fisheries Data</a></li>
+<li class="chapter" data-level="7" data-path="basic-fisheries-statistics.html"><a href="basic-fisheries-statistics.html"><i class="fa fa-check"></i><b>7</b> Basic Fisheries Statistics</a></li>
+<li class="chapter" data-level="8" data-path="plotting-fisheries-data.html"><a href="plotting-fisheries-data.html"><i class="fa fa-check"></i><b>8</b> Plotting Fisheries Data</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">A Guide to R for Fisheries Managers</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="describe-data-in-a-metadata-file" class="section level1">
+<h1><span class="header-section-number">4</span> Describe data in a metadata file</h1>
+<p>Your raw <strong>flat data files should only include data, no comments</strong>. Rather than using complicated spreadsheets, create a metadata document, often called “README”, that includes (at a minimum) what data you are collecting, how and when the data were collected, where the data is stored, and who owns the data. This file should also include a “data dictionary” that describes each variable and associated unit in the data file (see example below). Be as specific as possible; for example, the description for fish length variables should include whether it is fork length, total length, or standard length.</p>
+<p><img src="images/data_mgmt_3.png" width="488" /></p>
+<div id="use-clear-and-concise-descriptive-names-for-data-files-and-variable-names" class="section level2">
+<h2><span class="header-section-number">4.1</span> Use clear and concise descriptive names for data files and variable names</h2>
+<p>File names are the easiest way to explain the contents of a data file. Capturing the place, time, and content of the data, even in an abbreviated fashion, can be extremely useful. For example, consider naming a fish catch monitoring file “muni_fishcatch_month_year.csv”, replacing “muni”, “month”, and “year” with the appropriate values. Similarly, each column in your data should contain a unique variable and be given a clear but concise name that uses letters, numbers, dashes, dots, or underscores. Lastly, always use plain ASCII text, as certain marks (e.g., accents) or characters (e.g., Chinese or Japanese) are not widely supported.</p>
+<p>File and variable names should NOT be overly long or contain spaces or special characters (e.g. <em>&amp;$%@) + <strong>YES:</strong> filename: </em>muni_fishcatch_month_year.csv* | variables: <em>year; first_name; last.name; TotalLength</em> + <strong>NO:</strong> filename: <em>November 2007.csv</em> | variables: <em>Start Year; First Name; Total weight (kg); $ Value</em></p>
+</div>
+<div id="always-use-consistent-formats-for-data-values-and-if-necessary-put-units-in-a-separate-column" class="section level2">
+<h2><span class="header-section-number">4.2</span> Always use consistent formats for data values and (if necessary) put units in a separate column</h2>
+<p>When entering data, <strong>do not mix text and numeric responses</strong>, or include both text and numbers in the same response. Periods are okay to include for numeric responses but <strong>avoid commas</strong> (commas indicate a new value in a .csv file). For text values, such as a person’s name or location, take care not to change capitalization, spelling, spacing, etc. (e.g. John, john, jon) as this will generate confusion. <strong>Consider using identification codes for variables with many possible categories (e.g., local species name, gear type)</strong>. Units should always be in their own column or absent entirely but explained in the metadata file. Also, <strong>do not use color coding</strong>, it cannot be interpreted by other software (data in red below are just to demonstrate improper data entries).</p>
+<p><img src="images/data_mgmt_4.png" width="804" /></p>
+<p>When reporting full dates, use standardized formats since date representations vary between the United States and the rest of the world. For example, 01-09-17 will likely be interpreted as January 9th, 2017 in the U.S. but September 1st, 2017 or September 17th, 2001 in other countries. Therefore, always record dates using the international standard of YYYY-MM-DD as prescribed by the International Organization of Standards (ISO) standard ISO 8601 (2004). It is also generally good to have separate columns for <strong>month</strong> and <strong>year</strong>.</p>
+</div>
+<div id="always-store-an-uncorrected-original-version-of-the-data-file-and-back-up-your-data" class="section level2">
+<h2><span class="header-section-number">4.3</span> Always store an uncorrected original version of the data file and BACK UP YOUR DATA!!!</h2>
+<p>When you make changes or corrections to the original data file you could easily make a mistake. To avoid compromising your original raw data, always store an unadjusted copy of the data file and <strong>do not make any changes or adjustments to this copy</strong> (make it “read-only” if possible). Make a duplicate file if corrections or adjustments are required and be sure to document what changes were made in the metadata file. Lastly, <strong>ALWAYS BACK UP YOUR DATA</strong> by keeping at least <strong>three</strong> copies of the file in different locations (e.g., desktop, external hard drive, the cloud).</p>
+<div id="additional-resources" class="section level3">
+<h3><span class="header-section-number">4.3.1</span> Additional Resources</h3>
+<ul>
+<li><a href="https://www.nceas.ucsb.edu/files/news/ESAdatamng09.pdf" class="uri">https://www.nceas.ucsb.edu/files/news/ESAdatamng09.pdf</a></li>
+<li><a href="http://ucsd.libguides.com/c.php?g=90957&amp;p=585435" class="uri">http://ucsd.libguides.com/c.php?g=90957&amp;p=585435</a></li>
+</ul>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="data-entry-management.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="loading-packages.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
+
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/02-data_mgmt.Rmd",
+"text": "Edit"
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
