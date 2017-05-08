@@ -1,0 +1,76 @@
+# Basic Fisheries Statistics
+
+```{r include=FALSE}
+knitr::opts_chunk$set(warning = F, message = F, error = F)
+```
+
+This short document will walk you through how to calculate some basic fisheries statistics This is a very quick introduction, but a great resource for learning more is a free book called [R for Data Science](http://r4ds.had.co.nz/). Additionally, you can always use R's built in help functionality by using a question mark followed by a function name. For example, typing `?ggplot` into the console will bring up a help document on ggplot.
+
+
+## Calculating landings
+
+One of the first analyses you may be interested in is calculating annual landings in the fishery. To do this in R, you start by taking the landings data and working through a series of "pipes", which progressively analyze the data from one step to the next and are shown with the `%>%` operation. Essentially, the output of one line is fed into the input of the next line.   In all of the code below, there are also some helpful comments to tell you what each line is doing. Comments start with the `#` operation, and are not evaluated by R - they are simply there to document the code. 
+
+To calcualte annual landings, take your `landings_data` data frame, group the data by year, and then summarize the data for each year by summing the total weight of all fish caught in each year. While summarizing the annual data, you can also convert from grams to kilograms to grabs. Also, because this particular survey only samples the catch on certain days, it does not represent the total volume of landed catch. Therefore, it's important to not only sum the amount of catch each year, but also normalize the sampled catch by the number of sampling days. This will mean that trends represent actual increases or decreases in catch, not just increases or decreases in how frequently the catch is sampled.
+
+```{r}
+## Start with the landings data frame
+annual_landings <- landings_data %>% 
+  ## First, group the data by year
+  group_by(Year) %>% 
+  ## Next, summarize the total annual landings per year. Also convert from grams to kilograms by dividing by 1000. Also, normalize the annual catch by the number of survey days each year.
+  summarize(Annual_Landings_kg_sampling_day = sum(Weight_g,na.rm=TRUE)/1000/n_distinct(Date))
+
+## Display a table of the annual landings data
+annual_landings
+```
+
+You may be interested in looking at landings across different gear types. Here, we now group the data frame by both the year and the gear type in order to summarize the total landings by year and by gear.
+
+```{r}
+## Start with the landings data frame
+annual_gear_landings <- landings_data %>% 
+  ## First, group the data by year
+  group_by(Year,Gear) %>% 
+  # Next, summarize the total annual landings per year. Also convert from grams to kilograms by dividing by 1000. Also, normalize the annual catch by the number of survey days each year.
+  summarize(Annual_Landings_kg_sampling_day = sum(Weight_g,na.rm=TRUE)/1000/n_distinct(Date))
+
+## Display a table of the annual landings data by gear type
+annual_gear_landings
+```
+
+## Calculating Catch-per-Unit-Effort (CPUE)
+You may also be interested in calculating catch-per-unit-effort (CPUE). CPUE is calculated by dividing the catch of each fishing trip by the number of hours fished during that trip. This gives CPUE in units of kilograms per hour. The median is taken in order to remove outliers - some fishers are much more efficient than others.
+
+
+
+```{r}
+## Start with the landings data frame
+cpue_data <- landings_data %>% 
+  ## Group by year and Trip ID so that you can calculate CPUE for every trip in every year
+  group_by(Year,Trip_ID) %>% 
+  ## For each year and trip ID, calculate the CPUE for each trip by dividing the sum of the catch, converted from grams to kilograms, by the trip by the number of fishing hours
+  summarize(Trip_CPUE = sum(Weight_g/1000) / mean(Effort_Hours)) %>% 
+  ## Next, just group by year so we can calculate median CPUE for each year across all trips in the year
+  group_by(Year) %>% 
+  ## Calculate median CPUE for each year
+  summarize(Median_CPUE_kg_hour = median(Trip_CPUE))
+
+cpue_data
+```
+## Calculating percent mature
+
+You may also wish to analyze your lengt data. An interesting analysis is to determine the percentage of mature fish in the catch in every year of the data frame. To do this, we add a column to the data frame that represents whether each fish is mature or not (represented by a 1 or 0), group the data frame by year, and then summarize for each year the percentage of mature fish out of the total number of sampled fish. To determine if a fish is mature or not, it is compared against *m95*, the length at which 95% of fish are mature.
+
+Over 90% of the fish are mature throughout the time series, which is a great sign! This matches up with what we see in the histogram.
+
+```{r}
+## Start with the landings data frame
+landings_data %>% 
+  ## Add a column to the data that indicates whether each length measurement is from a mature or immature fish. If it's mature, this value should be 1; if immature, 0.
+  mutate(Mature = ifelse(Length_cm > life_history_parameters$m95,1,0)) %>% 
+  ## Group by year so we can see the percent mature for every year
+  group_by(Year) %>% 
+  ## The percentage mature is equal to the  number of mature fish divided by the total number of fish and multiplied by 100
+  summarize(Percent_Mature = sum(Mature) / n() * 100) 
+```

@@ -33,8 +33,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="index.html">
-<link rel="next" href="loading-packages.html">
+<link rel="prev" href="loading-packages.html">
+<link rel="next" href="basic-fisheries-statistics.html">
 
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -145,65 +145,50 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="installation" class="section level1">
-<h1><span class="header-section-number">2</span> Installation</h1>
-<p>Though R/RStudio may seem intimidating, it is actually quite straight forward to set up and, after learning a few basics, you can start running analyses and writing your own in no time. <strong>The objective of this guide is to provide an introduction to R/RStudio basics so that interested resource managers without programming experience can start leveraging R for their management decisions.</strong></p>
-<p>R and RStudio are <strong>separate</strong> programs and that need to be installed and updated individually. If you do not keep both relatively up-to-date you will likely run into problems.</p>
-<div id="r" class="section level2">
-<h2><span class="header-section-number">2.1</span> R</h2>
-<p>To install R, go to the <a href="https://cran.r-project.org/mirrors.html">list of CRAN mirrors</a> (universities and other organizations where you can download R from) and click on a link for a location near you. A few options are listed below.</p>
-<ul>
-<li><a href="https://repo.bppt.go.id/cran/">Indonesia</a></li>
-<li><a href="https://cran.stat.upd.edu.ph">Philippines</a></li>
-<li><a href="https://cran.fiocruz.br">Brazil</a></li>
-<li><a href="https://cran.cnr.berkeley.edu">US (West Coast)</a></li>
-<li><a href="http://lib.stat.cmu.edu/R/CRAN/">US (East Coast)</a></li>
-</ul>
-<p>After navigating to the CRAN mirror site, click the download button for your operating system of choice (Linux, Max OS X, Windows) and then click on the most recent <code>.pkg</code> file and follow the instructions to complete the installation process.</p>
-<p><img src="images/r_download.png" width="805" /></p>
-</div>
-<div id="rstudio" class="section level2">
-<h2><span class="header-section-number">2.2</span> RStudio</h2>
-<p>After installing R, visit the <a href="https://www.rstudio.com/products/rstudio/#Desktop">RStudio Products</a> site and click the <strong>DOWNLOAD RSTUDIO DESKTOP</strong> button located partway down the page.</p>
-<p><img src="images/rstudio_download.png" width="251" /></p>
-<p>Next, scroll to the bottom and click on the link under <strong>Installers</strong> that again corresponds to your operating system of choice.</p>
-<p><img src="images/rstudio_installers.png" width="878" /></p>
-<p>Save the <code>.dmg</code> file on your desktop, open the file after it finishes downloading, and follow the instructions to complete the installation process. You can then delete the <code>.dmg</code> file.</p>
-<p>Congratulations! You successfully completed the installation process and are one step closer to using R and RStudio for analysis!</p>
-</div>
-<div id="getting-started-with-rstudio" class="section level2">
-<h2><span class="header-section-number">2.3</span> Getting Started with RStudio</h2>
-<div id="packages" class="section level3">
-<h3><span class="header-section-number">2.3.1</span> Packages</h3>
-<p>Packages are groups of functions that are designed to excel at certain tasks (making plots, standardizing dates, reading/writing large data files, etc.). Many useful packages come standard with R when you download it, however, many more are available online.</p>
-<p>To install a new package, click on the “Install” button located under the “Packages” tab in RStudio. This will open a pop-up where you can search for and install R packages hosted on CRAN. Alternatively, if you know the name of the package you want to install, you can run <code>install.packages('package_name')</code>.</p>
-<p><img src="images/package_install.png" width="1061" /></p>
-<p>Once installed, the packages you need for an analysis are loaded by the <code>library('package_name')</code> function.</p>
-<p>The following packages are commonly used by UCSB for fisheries analyses:</p>
-<ul>
-<li><strong>tidyverse</strong> - The tidyverse package actually contains numerous seperate packages for loading and writing data files (<strong>readr</strong>), data processing (<strong>dplyr</strong> &amp; <strong>tidyr</strong>), plotting (<strong>ggplot2</strong>), and functional programming (<strong>purrr</strong>)</li>
-<li><strong>readxl</strong> - read and write data from/to Excel workbooks, including workbooks with multiple worksheets</li>
-<li><strong>sf</strong>, <strong>rgeos</strong>, <strong>rgdal</strong> - Key packages for spatial analyses similar to those done with ArcGIS</li>
-<li><strong>rmarkdown</strong> - Use R code to author reproducible reports, presentations, and websites</li>
-<li><strong>shiny</strong> - Create web applications using R</li>
-</ul>
-</div>
-</div>
-<div id="helpful-resources" class="section level2">
-<h2><span class="header-section-number">2.4</span> Helpful Resources</h2>
-<ul>
-<li><a href="http://stat545.com/block000_r-rstudio-install.html">Installing R and RStudio</a> by Jenny Bryan</li>
-</ul>
+<div id="loading-fisheries-data" class="section level1">
+<h1><span class="header-section-number">4</span> Loading Fisheries Data</h1>
+<p>Next, you’ll load the data you’ll be using for the analysis using the <code>read_csv</code> function. First load the landings data which includes catch, effort, and length measurements. The data are stored as a csv under a “data” folder. Store these data to a data frame called <code>landings_data</code>. Next, load the life history parameter data file. These data are also stored as a csv under a “data” folder. Store these data to a data frame called <code>life_history_parameters</code>.</p>
+<p>As data are loaded in, you’ll see that R automatically determines what type of variable each column represents - integers (for numbers), characters (for words), etc.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">landings_data &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;_data/sample_landings_data.csv&quot;</span>)
 
-</div>
+life_history_parameters &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;_data/life_history_parameters.csv&quot;</span>)</code></pre></div>
+<p>Let’s take a quick look at what’s in each of these data frames. We can use the <code>head</code> function to get a quick summary.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(landings_data)</code></pre></div>
+<pre><code>## # A tibble: 6 × 8
+##    Year    Date Trip_ID Effort_Hours  Gear       Species Length_cm
+##   &lt;int&gt;   &lt;chr&gt;   &lt;int&gt;        &lt;int&gt; &lt;chr&gt;         &lt;chr&gt;     &lt;dbl&gt;
+## 1  2003 4/30/03       1           10  Trap Caesio cuning        36
+## 2  2003 4/30/03       1           10  Trap Caesio cuning        29
+## 3  2003 4/30/03       1           10  Trap Caesio cuning        34
+## 4  2003 4/30/03       1           10  Trap Caesio cuning        36
+## 5  2003 4/30/03       1           10  Trap Caesio cuning        34
+## 6  2003 4/30/03       1           10  Trap Caesio cuning        28
+## # ... with 1 more variables: Weight_g &lt;dbl&gt;</code></pre>
+<p>The <code>landings_data</code> data frame is from a fishery-dependent landing site survey. The species included in this data set is <em>Caesio cuning</em>, a yellowtail fusilier. The survey is conducted every few days at a major landing site, and thus is just a sub-sample of the total catch. However, it is conducted throughout the year and during each season, and at the largest landings site with fishers using several different gear types and fishing throughout the entire species range, so it is fairly representative of the total catch. You can see the data frame has eight columns, with each row being an individual fish catch measurement. The columns include the year and date when the measurement was collected, the fishing trip ID, how many hours were fished for each trip, what gear was used, the species, the length of the fish, and the weight of the fish. We’ll be able to use these data to create length-frequency histograms that describe the size structure of the population, as well as trends in catch and CPUE.</p>
+<p>One thing we should do is format the year and date columns to ensure that R knows these represent years and dates as we humans think of them. We can use the <code>mdy</code> and <code>year</code> functions from the lubridate package to do this.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Start with the landings data frame
+landings_data &lt;-<span class="st"> </span>landings_data %&gt;%<span class="st"> </span>
+<span class="st">  </span>## Turn the date column into a date format that R recognizes
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Date =</span> <span class="kw">mdy</span>(Date)) %&gt;%<span class="st"> </span>
+<span class="st">  </span>## Create a year column using a year format R recognizes
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Year =</span> <span class="kw">year</span>(Date))</code></pre></div>
+<p>Let’s next look at the <code>life_history_parameters</code> data frame.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(life_history_parameters)</code></pre></div>
+<pre><code>## # A tibble: 1 × 11
+##         Species              Common L_inf     k    t0         M     Wa
+##           &lt;chr&gt;               &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;  &lt;dbl&gt;
+## 1 Caesio cuning Yellowtail fusilier  62.2  0.32 -0.42 0.8915981 0.0208
+## # ... with 4 more variables: Wb &lt;dbl&gt;, m50 &lt;dbl&gt;, m95 &lt;dbl&gt;, maxAge &lt;int&gt;</code></pre>
+<p>The <code>life_history_parameters</code> data frame includes several important life history parameters that were found doing a literature review of this species. <em>L_infinity</em>, <em>k</em>, and <em>t0</em> describe the age-to-length relationship using the von Bertalanffy growth equation. <em>M</em> represents natural mortality. <em>Wa</em> and <em>Wb</em> describe the length-to-weight relationship. <em>m50</em> and <em>m95</em> describe the lengths at which 50% and 95% of the fish are mature, respecitvely. <em>maxAge</em> is the maximum age of the fish.</p>
+
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="loading-packages.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
+<a href="loading-packages.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="basic-fisheries-statistics.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
 
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
@@ -231,7 +216,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/rstudio/bookdown-demo/edit/master/01-r_for_fisheries.Rmd",
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/04-loading_fisheries_data.Rmd",
 "text": "Edit"
 },
 "download": null,

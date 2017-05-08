@@ -1,0 +1,13 @@
+# Loading packages
+
+```{r include=FALSE}
+knitr::opts_chunk$set(warning = F, message = F, error = F)
+```
+The first step in any analysis is the load the packages you will need for your analysis. Loading packages allows you to use powerful functions not included in "base" R.
+
+For this analysis, you will use the tidyverse package, which actually loads a group of useful packages including `tidyr`, `dplyr`, `readr`, and `ggplot2`. `tidyr` and `dplyr` are very handy packages for manipulating data, `readr` is great for loading in data such as csv files, while `ggplot2` is one of the best packages from plotting data. `lubridate` is another very handy package for dealing with dates and times.
+
+```{r}
+library(tidyverse) 
+library(lubridate) 
+```

@@ -1,0 +1,40 @@
+# Loading Fisheries Data
+
+```{r include=FALSE}
+knitr::opts_chunk$set(warning = F, message = F, error = F)
+```
+
+Next, you'll load the data you'll be using for the analysis using the `read_csv` function. First load the landings data which includes catch, effort, and length measurements. The data are stored as a csv under a "data" folder. Store these data to a data frame called `landings_data`. Next, load the life history parameter data file. These data are also stored as a csv under a "data" folder. Store these data to a data frame called `life_history_parameters`.
+
+As data are loaded in, you'll see that R automatically determines what type of variable each column represents - integers (for numbers), characters (for words), etc.
+```{r}
+landings_data <- read_csv("_data/sample_landings_data.csv")
+
+life_history_parameters <- read_csv("_data/life_history_parameters.csv")
+```
+
+Let's take a quick look at what's in each of these data frames. We can use the `head` function to get a quick summary.
+
+```{r}
+head(landings_data)
+```
+
+The `landings_data` data frame is from a fishery-dependent landing site survey. The species included in this data set is *Caesio cuning*, a yellowtail fusilier. The survey is conducted every few days at a major landing site, and thus is just a sub-sample of the total catch. However, it is conducted throughout the year and during each season, and at the largest landings site with fishers using several different gear types and fishing throughout the entire species range, so it is fairly representative of the total catch. You can see the data frame has eight columns, with each row being an individual fish catch measurement. The columns include the year and date when the measurement was collected, the fishing trip ID, how many hours were fished for each trip, what gear was used, the species, the length of the fish, and the weight of the fish. We'll be able to use these data to create length-frequency histograms that describe the size structure of the population, as well as trends in catch and CPUE. 
+
+One thing we should do is format the year and date columns to ensure that R knows these represent years and dates as we humans think of them. We can use the `mdy` and `year` functions from the lubridate package to do this.
+
+```{r}
+## Start with the landings data frame
+landings_data <- landings_data %>% 
+  ## Turn the date column into a date format that R recognizes
+  mutate(Date = mdy(Date)) %>% 
+  ## Create a year column using a year format R recognizes
+  mutate(Year = year(Date))
+```
+
+Let's next look at the `life_history_parameters` data frame.
+
+```{r}
+head(life_history_parameters)
+```
+The `life_history_parameters` data frame includes several important life history parameters that were found doing a literature review of this species. *L_infinity*, *k*, and *t0* describe the age-to-length relationship using the von Bertalanffy growth equation. *M* represents natural mortality. *Wa* and *Wb* describe the length-to-weight relationship. *m50* and *m95* describe the lengths at which 50% and 95% of the fish are mature, respecitvely. *maxAge* is the maximum age of the fish.

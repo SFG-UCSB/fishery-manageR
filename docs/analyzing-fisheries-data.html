@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>A Guide to R for Fisheries Managers</title>
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+  <meta name="description" content="This is a guidebook for using R for fishery management">
+  <meta name="generator" content="bookdown 0.3 and GitBook 2.6.7">
+
+  <meta property="og:title" content="A Guide to R for Fisheries Managers" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is a guidebook for using R for fishery management" />
+  <meta name="github-repo" content="sfg-ucsb/fishery-manageR" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="A Guide to R for Fisheries Managers" />
+  
+  <meta name="twitter:description" content="This is a guidebook for using R for fishery management" />
+  
+
+<meta name="author" content="Sustainable Fisheries Group">
+
+
+<meta name="date" content="2017-05-08">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="loading-fisheries-data.html">
+<link rel="next" href="plotting-fisheries-data.html">
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A Guide to R for Fisheries Analysis</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Overview</a></li>
+<li class="chapter" data-level="2" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>2</b> Installation</a><ul>
+<li class="chapter" data-level="2.1" data-path="installation.html"><a href="installation.html#r"><i class="fa fa-check"></i><b>2.1</b> R</a></li>
+<li class="chapter" data-level="2.2" data-path="installation.html"><a href="installation.html#rstudio"><i class="fa fa-check"></i><b>2.2</b> RStudio</a></li>
+<li class="chapter" data-level="2.3" data-path="installation.html"><a href="installation.html#getting-started-with-rstudio"><i class="fa fa-check"></i><b>2.3</b> Getting Started with RStudio</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="installation.html"><a href="installation.html#packages"><i class="fa fa-check"></i><b>2.3.1</b> Packages</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="installation.html"><a href="installation.html#helpful-resources"><i class="fa fa-check"></i><b>2.4</b> Helpful Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="loading-packages.html"><a href="loading-packages.html"><i class="fa fa-check"></i><b>3</b> Loading packages</a></li>
+<li class="chapter" data-level="4" data-path="loading-fisheries-data.html"><a href="loading-fisheries-data.html"><i class="fa fa-check"></i><b>4</b> Loading Fisheries Data</a></li>
+<li class="chapter" data-level="5" data-path="analyzing-fisheries-data.html"><a href="analyzing-fisheries-data.html"><i class="fa fa-check"></i><b>5</b> Analyzing Fisheries Data</a><ul>
+<li class="chapter" data-level="5.1" data-path="analyzing-fisheries-data.html"><a href="analyzing-fisheries-data.html#calculating-landings"><i class="fa fa-check"></i><b>5.1</b> Calculating landings</a></li>
+<li class="chapter" data-level="5.2" data-path="analyzing-fisheries-data.html"><a href="analyzing-fisheries-data.html#calculating-catch-per-unit-effort-cpue"><i class="fa fa-check"></i><b>5.2</b> Calculating Catch-per-Unit-Effort (CPUE)</a></li>
+<li class="chapter" data-level="5.3" data-path="analyzing-fisheries-data.html"><a href="analyzing-fisheries-data.html#calculating-percent-mature"><i class="fa fa-check"></i><b>5.3</b> Calculating percent mature</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="plotting-fisheries-data.html"><a href="plotting-fisheries-data.html"><i class="fa fa-check"></i><b>6</b> Plotting Fisheries Data</a><ul>
+<li class="chapter" data-level="6.1" data-path="plotting-fisheries-data.html"><a href="plotting-fisheries-data.html#plot-landings-data"><i class="fa fa-check"></i><b>6.1</b> Plot landings data</a></li>
+<li class="chapter" data-level="6.2" data-path="plotting-fisheries-data.html"><a href="plotting-fisheries-data.html#plot-cpue-data"><i class="fa fa-check"></i><b>6.2</b> Plot CPUE data</a></li>
+<li class="chapter" data-level="6.3" data-path="plotting-fisheries-data.html"><a href="plotting-fisheries-data.html#plot-length-data"><i class="fa fa-check"></i><b>6.3</b> Plot length data</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">A Guide to R for Fisheries Managers</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="analyzing-fisheries-data" class="section level1">
+<h1><span class="header-section-number">5</span> Analyzing Fisheries Data</h1>
+<p>This short document will walk you through how to make make some basic fisheries analyses</p>
+<div id="calculating-landings" class="section level2">
+<h2><span class="header-section-number">5.1</span> Calculating landings</h2>
+<p>One of the first analyses you may be interested in is calculating annual landings in the fishery. To do this in R, you start by taking the landings data and working through a series of “pipes”, which progressively analyze the data from one step to the next and are shown with the <code>%&gt;%</code> operation. Essentially, the output of one line is fed into the input of the next line. In all of the code below, there are also some helpful comments to tell you what each line is doing. Comments start with the <code>#</code> operation, and are not evaluated by R - they are simply there to document the code.</p>
+<p>To calcualte annual landings, take your <code>landings_data</code> data frame, group the data by year, and then summarize the data for each year by summing the total weight of all fish caught in each year. While summarizing the annual data, you can also convert from grams to kilograms to grabs. Also, because this particular survey only samples the catch on certain days, it does not represent the total volume of landed catch. Therefore, it’s important to not only sum the amount of catch each year, but also normalize the sampled catch by the number of sampling days. This will mean that trends represent actual increases or decreases in catch, not just increases or decreases in how frequently the catch is sampled.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Start with the landings data frame
+annual_landings &lt;-<span class="st"> </span>landings_data %&gt;%<span class="st"> </span>
+<span class="st">  </span>## First, group the data by year
+<span class="st">  </span><span class="kw">group_by</span>(Year) %&gt;%<span class="st"> </span>
+<span class="st">  </span>## Next, summarize the total annual landings per year. Also convert from grams to kilograms by dividing by 1000. Also, normalize the annual catch by the number of survey days each year.
+<span class="st">  </span><span class="kw">summarize</span>(<span class="dt">Annual_Landings_kg_sampling_day =</span> <span class="kw">sum</span>(Weight_g,<span class="dt">na.rm=</span><span class="ot">TRUE</span>)/<span class="dv">1000</span>/<span class="kw">n_distinct</span>(Date))
+
+## Display a table of the annual landings data
+annual_landings</code></pre></div>
+<pre><code>## # A tibble: 9 × 2
+##    Year Annual_Landings_kg_sampling_day
+##   &lt;dbl&gt;                           &lt;dbl&gt;
+## 1  2003                       7.5863749
+## 2  2004                       8.6999112
+## 3  2005                       6.5296765
+## 4  2006                       5.3027336
+## 5  2010                       0.7894718
+## 6  2011                       1.0963514
+## 7  2012                       0.8058094
+## 8  2013                       4.1994209
+## 9  2014                      19.0824869</code></pre>
+<p>You may be interested in looking at landings across different gear types. Here, we now group the data frame by both the year and the gear type in order to summarize the total landings by year and by gear.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Start with the landings data frame
+annual_gear_landings &lt;-<span class="st"> </span>landings_data %&gt;%<span class="st"> </span>
+<span class="st">  </span>## First, group the data by year
+<span class="st">  </span><span class="kw">group_by</span>(Year,Gear) %&gt;%<span class="st"> </span>
+<span class="st">  </span><span class="co"># Next, summarize the total annual landings per year. Also convert from grams to kilograms by dividing by 1000. Also, normalize the annual catch by the number of survey days each year.</span>
+<span class="st">  </span><span class="kw">summarize</span>(<span class="dt">Annual_Landings_kg_sampling_day =</span> <span class="kw">sum</span>(Weight_g,<span class="dt">na.rm=</span><span class="ot">TRUE</span>)/<span class="dv">1000</span>/<span class="kw">n_distinct</span>(Date))
+
+## Display a table of the annual landings data by gear type
+annual_gear_landings</code></pre></div>
+<pre><code>## Source: local data frame [39 x 3]
+## Groups: Year [?]
+## 
+##     Year     Gear Annual_Landings_kg_sampling_day
+##    &lt;dbl&gt;    &lt;chr&gt;                           &lt;dbl&gt;
+## 1   2003  Gillnet                        1.916200
+## 2   2003 Handline                        1.062857
+## 3   2003  Muroami                        9.915162
+## 4   2003     Trap                        3.325739
+## 5   2004  Gillnet                        1.396434
+## 6   2004 Handline                        3.037152
+## 7   2004  Muroami                        7.568703
+## 8   2004 Speargun                        4.738203
+## 9   2004     Trap                        4.571908
+## 10  2004 Trolling                        1.462182
+## # ... with 29 more rows</code></pre>
+</div>
+<div id="calculating-catch-per-unit-effort-cpue" class="section level2">
+<h2><span class="header-section-number">5.2</span> Calculating Catch-per-Unit-Effort (CPUE)</h2>
+<p>You may also be interested in calculating catch-per-unit-effort (CPUE). CPUE is calculated by dividing the catch of each fishing trip by the number of hours fished during that trip. This gives CPUE in units of kilograms per hour. The median is taken in order to remove outliers - some fishers are much more efficient than others.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Start with the landings data frame
+cpue_data &lt;-<span class="st"> </span>landings_data %&gt;%<span class="st"> </span>
+<span class="st">  </span>## Group by year and Trip ID so that you can calculate CPUE for every trip in every year
+<span class="st">  </span><span class="kw">group_by</span>(Year,Trip_ID) %&gt;%<span class="st"> </span>
+<span class="st">  </span>## For each year and trip ID, calculate the CPUE for each trip by dividing the sum of the catch, converted from grams to kilograms, by the trip by the number of fishing hours
+<span class="st">  </span><span class="kw">summarize</span>(<span class="dt">Trip_CPUE =</span> <span class="kw">sum</span>(Weight_g/<span class="dv">1000</span>) /<span class="st"> </span><span class="kw">mean</span>(Effort_Hours)) %&gt;%<span class="st"> </span>
+<span class="st">  </span>## Next, just group by year so we can calculate median CPUE for each year across all trips in the year
+<span class="st">  </span><span class="kw">group_by</span>(Year) %&gt;%<span class="st"> </span>
+<span class="st">  </span>## Calculate median CPUE for each year
+<span class="st">  </span><span class="kw">summarize</span>(<span class="dt">Median_CPUE_kg_hour =</span> <span class="kw">median</span>(Trip_CPUE))
+
+cpue_data</code></pre></div>
+<pre><code>## # A tibble: 9 × 2
+##    Year Median_CPUE_kg_hour
+##   &lt;dbl&gt;               &lt;dbl&gt;
+## 1  2003          0.31834277
+## 2  2004          0.26070028
+## 3  2005          0.40145105
+## 4  2006          0.44029501
+## 5  2010          0.01742840
+## 6  2011          0.03123217
+## 7  2012          0.03123217
+## 8  2013          0.19638408
+## 9  2014          0.88216281</code></pre>
+</div>
+<div id="calculating-percent-mature" class="section level2">
+<h2><span class="header-section-number">5.3</span> Calculating percent mature</h2>
+<p>You may also wish to analyze your lengt data. An interesting analysis is to determine the percentage of mature fish in the catch in every year of the data frame. To do this, we add a column to the data frame that represents whether each fish is mature or not (represented by a 1 or 0), group the data frame by year, and then summarize for each year the percentage of mature fish out of the total number of sampled fish. To determine if a fish is mature or not, it is compared against <em>m95</em>, the length at which 95% of fish are mature.</p>
+<p>Over 90% of the fish are mature throughout the time series, which is a great sign! This matches up with what we see in the histogram.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Start with the landings data frame
+landings_data %&gt;%<span class="st"> </span>
+<span class="st">  </span>## Add a column to the data that indicates whether each length measurement is from a mature or immature fish. If it&#39;s mature, this value should be 1; if immature, 0.
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Mature =</span> <span class="kw">ifelse</span>(Length_cm &gt;<span class="st"> </span>life_history_parameters$m95,<span class="dv">1</span>,<span class="dv">0</span>)) %&gt;%<span class="st"> </span>
+<span class="st">  </span>## Group by year so we can see the percent mature for every year
+<span class="st">  </span><span class="kw">group_by</span>(Year) %&gt;%<span class="st"> </span>
+<span class="st">  </span>## The percentage mature is equal to the  number of mature fish divided by the total number of fish and multiplied by 100
+<span class="st">  </span><span class="kw">summarize</span>(<span class="dt">Percent_Mature =</span> <span class="kw">sum</span>(Mature) /<span class="st"> </span><span class="kw">n</span>() *<span class="st"> </span><span class="dv">100</span>) </code></pre></div>
+<pre><code>## # A tibble: 9 × 2
+##    Year Percent_Mature
+##   &lt;dbl&gt;          &lt;dbl&gt;
+## 1  2003       98.57595
+## 2  2004       98.62306
+## 3  2005       97.73371
+## 4  2006      100.00000
+## 5  2010       91.80556
+## 6  2011       99.77629
+## 7  2012       99.65398
+## 8  2013       99.46164
+## 9  2014       99.55709</code></pre>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="loading-fisheries-data.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="plotting-fisheries-data.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
+
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/05-analyzing_fisheries_data.Rmd",
+"text": "Edit"
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
