@@ -26,7 +26,7 @@
 <meta name="author" content="Sustainable Fisheries Group">
 
 
-<meta name="date" content="2017-05-05">
+<meta name="date" content="2017-05-08">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -115,7 +115,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="3" data-path="fisheries-visualizations.html"><a href="fisheries-visualizations.html"><i class="fa fa-check"></i><b>3</b> Fisheries Visualizations</a><ul>
 <li class="chapter" data-level="3.1" data-path="fisheries-visualizations.html"><a href="fisheries-visualizations.html#load-libraries"><i class="fa fa-check"></i><b>3.1</b> Load libraries</a></li>
-<li class="chapter" data-level="3.2" data-path="fisheries-visualizations.html"><a href="fisheries-visualizations.html#load-data"><i class="fa fa-check"></i><b>3.2</b> Load data</a></li>
+<li class="chapter" data-level="3.2" data-path="fisheries-visualizations.html"><a href="fisheries-visualizations.html#load-data---easter-egg"><i class="fa fa-check"></i><b>3.2</b> Load data - Easter Egg</a></li>
 <li class="chapter" data-level="3.3" data-path="fisheries-visualizations.html"><a href="fisheries-visualizations.html#plot-data"><i class="fa fa-check"></i><b>3.3</b> Plot data</a></li>
 </ul></li>
 <li class="divider"></li>
@@ -149,8 +149,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyverse) 
 <span class="kw">library</span>(lubridate) </code></pre></div>
 </div>
-<div id="load-data" class="section level2">
-<h2><span class="header-section-number">3.2</span> Load data</h2>
+<div id="load-data---easter-egg" class="section level2">
+<h2><span class="header-section-number">3.2</span> Load data - Easter Egg</h2>
 <p>Next, you’ll load the data you’ll be using for the analysis. First load the landings data which includes catch, effort, and length measurements. The data are stored as a csv under a “data” folder. Store these data to a data frame called “landings_data.” Next, load the life history parameter data file. These data are also stored as a csv under a “data” folder. Store these data to a data frame called “life_history_parameters.”</p>
 <p>As data are loaded in, you’ll see that R automatically determines what type of variable each column represents - integers (for numbers), characters (for words), etc.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">landings_data &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;_data/sample_landings_data.csv&quot;</span>)

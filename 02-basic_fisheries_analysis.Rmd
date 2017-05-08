@@ -19,7 +19,7 @@ library(tidyverse)
 library(lubridate) 
 ```
 
-## Load data
+## Load data - Easter Egg
 Next, you'll load the data you'll be using for the analysis. First load the landings data which includes catch, effort, and length measurements. The data are stored as a csv under a "data" folder. Store these data to a data frame called "landings_data." Next, load the life history parameter data file. These data are also stored as a csv under a "data" folder. Store these data to a data frame called "life_history_parameters."
 
 As data are loaded in, you'll see that R automatically determines what type of variable each column represents - integers (for numbers), characters (for words), etc.
