@@ -1,0 +1,6 @@
+# Data Entry & Management
+
+The careful entry, documentation, and management of data is essential to any data-related project. Being strategic about this process will keep the project organized, protect against data loss, and facilitate analysis and data sharing.
+
+## Using “flat” files and an open data format
+Raw data should be entered as a “flat” table and saved using an open data format, such as .csv (comma separated values). “Flat” data files are tables where the first “header” row contains the variables in the dataset and there is no internal hierarchy to the data. Nested columns and rows make analysis of the raw data outside of the original file very difficult.
