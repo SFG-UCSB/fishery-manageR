@@ -4,9 +4,14 @@
 knitr::opts_chunk$set(warning = F, message = F, error = F)
 ```
 
-Next, you'll load the data you'll be using for the analysis using the `read_csv` function. First load the landings data which includes catch, effort, and length measurements. The data are stored as a csv under a "data" folder. Store these data to a data frame called `landings_data`. Next, load the life history parameter data file. These data are also stored as a csv under a "data" folder. Store these data to a data frame called `life_history_parameters`.
+Next, you'll load the data you'll be using for the analysis using the `read_csv` function. First, create a new folder in your working directory called "_data". Next, download the following two files onto your computer. Right click on each link, and save it into your "_data" folder.
 
-As data are loaded in, you'll see that R automatically determines what type of variable each column represents - integers (for numbers), characters (for words), etc.
+[Right click and save-link-as to download landings data](https://raw.githubusercontent.com/SFG-UCSB/fishery-manageR/master/_data/sample_landings_data.csv)
+
+[Right click and save-link-as to download life history data](https://raw.githubusercontent.com/SFG-UCSB/fishery-manageR/master/_data/life_history_parameters.csv)
+
+Next, you'll load these two csv files into R. First load the landings data which includes catch, effort, and length measurements and store these data to a data frame called `landings_data`. Next, load the life history parameter data file and store these data to a data frame called `life_history_parameters`.
+
 ```{r}
 landings_data <- read_csv("_data/sample_landings_data.csv")
 
@@ -19,7 +24,7 @@ Let's take a quick look at what's in each of these data frames. We can use the `
 head(landings_data)
 ```
 
-The `landings_data` data frame is from a fishery-dependent landing site survey. The species included in this data set is *Caesio cuning*, a yellowtail fusilier. The survey is conducted every few days at a major landing site, and thus is just a sub-sample of the total catch. However, it is conducted throughout the year and during each season, and at the largest landings site with fishers using several different gear types and fishing throughout the entire species range, so it is fairly representative of the total catch. You can see the data frame has eight columns, with each row being an individual fish catch measurement. The columns include the year and date when the measurement was collected, the fishing trip ID, how many hours were fished for each trip, what gear was used, the species, the length of the fish, and the weight of the fish. We'll be able to use these data to create length-frequency histograms that describe the size structure of the population, as well as trends in catch and CPUE. 
+The `landings_data` data frame is from a fishery-dependent landing site survey. The species included in this data set is *Caesio cuning*, a yellowtail fusilier. You can see the data frame has eight columns, with each row being an individual fish catch measurement. The columns include the year and date when the measurement was collected, the fishing trip ID, how many hours were fished for each trip, what gear was used, the species, the length of the fish, and the weight of the fish. We'll be able to use these data to create length-frequency histograms that describe the size structure of the population, as well as trends in catch and CPUE. 
 
 One thing we should do is format the year and date columns to ensure that R knows these represent years and dates as we humans think of them. We can use the `mdy` and `year` functions from the lubridate package to do this.
 

@@ -154,68 +154,73 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
             <section class="normal" id="section-">
 <div id="basic-fisheries-statistics" class="section level1">
 <h1><span class="header-section-number">6</span> Basic Fisheries Statistics</h1>
-<p>This short document will walk you through how to calculate some basic fisheries statistics This is a very quick introduction, but a great resource for learning more is a free book called <a href="http://r4ds.had.co.nz/">R for Data Science</a>. Additionally, you can always use R’s built in help functionality by using a question mark followed by a function name. For example, typing <code>?ggplot</code> into the console will bring up a help document on ggplot.</p>
 <div id="calculating-landings" class="section level2">
 <h2><span class="header-section-number">6.1</span> Calculating landings</h2>
-<p>One of the first analyses you may be interested in is calculating annual landings in the fishery. To do this in R, you start by taking the landings data and working through a series of “pipes”, which progressively analyze the data from one step to the next and are shown with the <code>%&gt;%</code> operation. Essentially, the output of one line is fed into the input of the next line. In all of the code below, there are also some helpful comments to tell you what each line is doing. Comments start with the <code>#</code> operation, and are not evaluated by R - they are simply there to document the code.</p>
-<p>To calcualte annual landings, take your <code>landings_data</code> data frame, group the data by year, and then summarize the data for each year by summing the total weight of all fish caught in each year. While summarizing the annual data, you can also convert from grams to kilograms to grabs. Also, because this particular survey only samples the catch on certain days, it does not represent the total volume of landed catch. Therefore, it’s important to not only sum the amount of catch each year, but also normalize the sampled catch by the number of sampling days. This will mean that trends represent actual increases or decreases in catch, not just increases or decreases in how frequently the catch is sampled.</p>
+<p>One of the first analyses you may be interested in is calculating annual landings in the fishery. To do this in R, you start by taking the landings data frame we loaded into R, and working through a series of “pipes”, which progressively analyze the data from one step to the next and are shown with the <code>%&gt;%</code> operation. Essentially, the output of one line is fed into the input of the next line. In all of the code below, there are also some helpful comments to tell you what each line is doing. Comments start with the <code>#</code> operation, and are not evaluated by R - they are simply there to document the code.</p>
+<p>To calcualte annual landings, take your <code>landings_data</code> data frame, add a column for weight of individual fish in kilograms by using the <code>mutate</code> function, group the data by year by using the <code>group_by</code> function, and then summarize the data for each year by summing the total weight of all fish caught in each year using the <code>summarize</code> and <code>sum</code> functions.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Start with the landings data frame
 annual_landings &lt;-<span class="st"> </span>landings_data %&gt;%<span class="st"> </span>
-<span class="st">  </span>## First, group the data by year
+<span class="st">  </span>## Add colomn for kilograms by dividing gram column by 1000
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Weight_kg =</span> Weight_g /<span class="st"> </span><span class="dv">1000</span>) %&gt;%
+<span class="st">  </span>## Group the data by year
 <span class="st">  </span><span class="kw">group_by</span>(Year) %&gt;%<span class="st"> </span>
-<span class="st">  </span>## Next, summarize the total annual landings per year. Also convert from grams to kilograms by dividing by 1000. Also, normalize the annual catch by the number of survey days each year.
-<span class="st">  </span><span class="kw">summarize</span>(<span class="dt">Annual_Landings_kg_sampling_day =</span> <span class="kw">sum</span>(Weight_g,<span class="dt">na.rm=</span><span class="ot">TRUE</span>)/<span class="dv">1000</span>/<span class="kw">n_distinct</span>(Date))
+<span class="st">  </span>## Next, summarize the total annual landings per year
+<span class="st">  </span><span class="kw">summarize</span>(<span class="dt">Annual_Landings_kg =</span> <span class="kw">sum</span>(Weight_kg,<span class="dt">na.rm=</span><span class="ot">TRUE</span>))
 
 ## Display a table of the annual landings data
 annual_landings</code></pre></div>
 <pre><code>## # A tibble: 9 × 2
-##    Year Annual_Landings_kg_sampling_day
-##   &lt;dbl&gt;                           &lt;dbl&gt;
-## 1  2003                       7.5863749
-## 2  2004                       8.6999112
-## 3  2005                       6.5296765
-## 4  2006                       5.3027336
-## 5  2010                       0.7894718
-## 6  2011                       1.0963514
-## 7  2012                       0.8058094
-## 8  2013                       4.1994209
-## 9  2014                      19.0824869</code></pre>
+##    Year Annual_Landings_kg
+##   &lt;dbl&gt;              &lt;dbl&gt;
+## 1  2003          311.04137
+## 2  2004          565.49423
+## 3  2005          163.24191
+## 4  2006           37.11914
+## 5  2010          131.84178
+## 6  2011          156.77825
+## 7  2012          101.53198
+## 8  2013          579.52008
+## 9  2014         1278.52662</code></pre>
 <p>You may be interested in looking at landings across different gear types. Here, we now group the data frame by both the year and the gear type in order to summarize the total landings by year and by gear.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Start with the landings data frame
 annual_gear_landings &lt;-<span class="st"> </span>landings_data %&gt;%<span class="st"> </span>
-<span class="st">  </span>## First, group the data by year
+<span class="st">  </span>## Add colomn for kilograms by dividing gram column by 1000
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Weight_kg =</span> Weight_g /<span class="st"> </span><span class="dv">1000</span>) %&gt;%
+<span class="st">  </span>## Group the data by year and gear type
 <span class="st">  </span><span class="kw">group_by</span>(Year,Gear) %&gt;%<span class="st"> </span>
-<span class="st">  </span><span class="co"># Next, summarize the total annual landings per year. Also convert from grams to kilograms by dividing by 1000. Also, normalize the annual catch by the number of survey days each year.</span>
-<span class="st">  </span><span class="kw">summarize</span>(<span class="dt">Annual_Landings_kg_sampling_day =</span> <span class="kw">sum</span>(Weight_g,<span class="dt">na.rm=</span><span class="ot">TRUE</span>)/<span class="dv">1000</span>/<span class="kw">n_distinct</span>(Date))
+<span class="st">  </span><span class="co"># Next, summarize the total annual landings per year and gear type</span>
+<span class="st">  </span><span class="kw">summarize</span>(<span class="dt">Annual_Landings_kg =</span> <span class="kw">sum</span>(Weight_kg,<span class="dt">na.rm=</span><span class="ot">TRUE</span>))
 
 ## Display a table of the annual landings data by gear type
 annual_gear_landings</code></pre></div>
 <pre><code>## Source: local data frame [39 x 3]
 ## Groups: Year [?]
 ## 
-##     Year     Gear Annual_Landings_kg_sampling_day
-##    &lt;dbl&gt;    &lt;chr&gt;                           &lt;dbl&gt;
-## 1   2003  Gillnet                        1.916200
-## 2   2003 Handline                        1.062857
-## 3   2003  Muroami                        9.915162
-## 4   2003     Trap                        3.325739
-## 5   2004  Gillnet                        1.396434
-## 6   2004 Handline                        3.037152
-## 7   2004  Muroami                        7.568703
-## 8   2004 Speargun                        4.738203
-## 9   2004     Trap                        4.571908
-## 10  2004 Trolling                        1.462182
+##     Year     Gear Annual_Landings_kg
+##    &lt;dbl&gt;    &lt;chr&gt;              &lt;dbl&gt;
+## 1   2003  Gillnet          13.413401
+## 2   2003 Handline           3.188572
+## 3   2003  Muroami         247.879049
+## 4   2003     Trap          46.560347
+## 5   2004  Gillnet           4.189301
+## 6   2004 Handline          57.705893
+## 7   2004  Muroami         370.866460
+## 8   2004 Speargun           9.476406
+## 9   2004     Trap         118.869619
+## 10  2004 Trolling           4.386547
 ## # ... with 29 more rows</code></pre>
 </div>
 <div id="calculating-catch-per-unit-effort-cpue" class="section level2">
 <h2><span class="header-section-number">6.2</span> Calculating Catch-per-Unit-Effort (CPUE)</h2>
-<p>You may also be interested in calculating catch-per-unit-effort (CPUE). CPUE is calculated by dividing the catch of each fishing trip by the number of hours fished during that trip. This gives CPUE in units of kilograms per hour. The median is taken in order to remove outliers - some fishers are much more efficient than others.</p>
+<p>You may also be interested in calculating catch-per-unit-effort (CPUE). CPUE is calculated by dividing the catch of each fishing trip by the number of hours fished during that trip. This gives CPUE in units of kilograms per hour. The median for every year is then calculated in order to remove outliers - some fishers are much more efficient than others.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Start with the landings data frame
 cpue_data &lt;-<span class="st"> </span>landings_data %&gt;%<span class="st"> </span>
+<span class="st">  </span>## Add colomn for kilograms by dividing gram column by 1000
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Weight_kg =</span> Weight_g /<span class="st"> </span><span class="dv">1000</span>) %&gt;%
 <span class="st">  </span>## Group by year and Trip ID so that you can calculate CPUE for every trip in every year
 <span class="st">  </span><span class="kw">group_by</span>(Year,Trip_ID) %&gt;%<span class="st"> </span>
 <span class="st">  </span>## For each year and trip ID, calculate the CPUE for each trip by dividing the sum of the catch, converted from grams to kilograms, by the trip by the number of fishing hours
-<span class="st">  </span><span class="kw">summarize</span>(<span class="dt">Trip_CPUE =</span> <span class="kw">sum</span>(Weight_g/<span class="dv">1000</span>) /<span class="st"> </span><span class="kw">mean</span>(Effort_Hours)) %&gt;%<span class="st"> </span>
+<span class="st">  </span><span class="kw">summarize</span>(<span class="dt">Trip_CPUE =</span> <span class="kw">sum</span>(Weight_kg) /<span class="st"> </span><span class="kw">mean</span>(Effort_Hours)) %&gt;%<span class="st"> </span>
 <span class="st">  </span>## Next, just group by year so we can calculate median CPUE for each year across all trips in the year
 <span class="st">  </span><span class="kw">group_by</span>(Year) %&gt;%<span class="st"> </span>
 <span class="st">  </span>## Calculate median CPUE for each year
@@ -237,8 +242,8 @@ cpue_data</code></pre></div>
 </div>
 <div id="calculating-percent-mature" class="section level2">
 <h2><span class="header-section-number">6.3</span> Calculating percent mature</h2>
-<p>You may also wish to analyze your lengt data. An interesting analysis is to determine the percentage of mature fish in the catch in every year of the data frame. To do this, we add a column to the data frame that represents whether each fish is mature or not (represented by a 1 or 0), group the data frame by year, and then summarize for each year the percentage of mature fish out of the total number of sampled fish. To determine if a fish is mature or not, it is compared against <em>m95</em>, the length at which 95% of fish are mature.</p>
-<p>Over 90% of the fish are mature throughout the time series, which is a great sign! This matches up with what we see in the histogram.</p>
+<p>You may also wish to analyze your length data. One analysis would be to determine the percentage of mature fish in the catch in every year of the data frame. To do this, we add a column to the data frame using the <code>mutate</code> function that represents whether each fish is mature or not (represented by a 1 or 0), group the data frame by year, and then summarize for each year the percentage of mature fish out of the total number of sampled fish. To determine if a fish is mature or not, it is compared against <em>m95</em>, the length at which 95% of fish are mature. The value for <code>m95</code> can be taken from the <code>life_history_parameters</code> data frame and is referenced using a <code>$</code> and the code <code>life_history_parameters$m95</code>.</p>
+<p>Over 90% of the fish are mature throughout the time series, which is a great sign!</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Start with the landings data frame
 landings_data %&gt;%<span class="st"> </span>
 <span class="st">  </span>## Add a column to the data that indicates whether each length measurement is from a mature or immature fish. If it&#39;s mature, this value should be 1; if immature, 0.

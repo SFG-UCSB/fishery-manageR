@@ -154,36 +154,36 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
             <section class="normal" id="section-">
 <div id="plotting-fisheries-data" class="section level1">
 <h1><span class="header-section-number">7</span> Plotting Fisheries Data</h1>
-<p>This short document will walk you through how to make make some basic fisheries plots. Once you’ve analyzed the data as in the previous step to create summary statistics, you can take these data frames and feed them into ggplot. When using ggplot, start with your data frame, initialize the ggplot, and then use the <code>+</code> operation to add additional features to the plot.</p>
+<p>This document will now walk you through how to make make some basic fisheries plots using the data frames you created in the previous analysis section and the <code>ggplot</code> plotting function. When using <code>ggplot</code>, start with your data frame, initialize the ggplot, and then use the <code>+</code> operation to add additional features to the plot.</p>
 <div id="plot-landings-data" class="section level2">
 <h2><span class="header-section-number">7.1</span> Plot landings data</h2>
-<p>Let’s plot a time series of annual landings data. We start with the annual landings data we made in the previous step, and then feed this into a ggplot. It appears landings were going down between 2004 and 2011, but have been increasing significantly since then.</p>
+<p>Let’s plot a time series of annual landings data. We start with the annual landings data we made in the previous step, and then feed this into a ggplot. It appears landings were going down between 2004 and 2011, but have been increasing since then.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Start with the annual_landings data frame you created in the last step
 annual_landings %&gt;%
 <span class="st">  </span>## Initialize a ggplot of annual landings versus year
-<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x=</span>Year,<span class="dt">y=</span>Annual_Landings_kg_sampling_day)) +
+<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x=</span>Year,<span class="dt">y=</span>Annual_Landings_kg)) +
 <span class="st">  </span>## Tell ggplot that the plot type should be a scatter plot
 <span class="st">  </span><span class="kw">geom_point</span>() +
 <span class="st">  </span>## Also add a line connecting the points
 <span class="st">  </span><span class="kw">geom_line</span>() +<span class="st"> </span>
 <span class="st">  </span>## Change the y-axis title
-<span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Normalized annual Landings [kg/survey day/year]&quot;</span>) +<span class="st"> </span>
+<span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Annual Landings [kg/year]&quot;</span>) +<span class="st"> </span>
 <span class="st">  </span>## Add figure title
-<span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Normalized annual landings of Caesio cuning&quot;</span>) </code></pre></div>
+<span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Annual landings of Caesio cuning&quot;</span>) </code></pre></div>
 <p><img src="bookdown-demo_files/figure-html/unnamed-chunk-24-1.png" width="672" /></p>
-<p>Again, you may be interested in looking across different gear types. To plot, we use ggplot’s faceting functionality. Doing so, it now becomes clear that the recent increase in catch seems to be concentrated in speargun and trap fishing. Meanwhile, catch from muroami, a very destructive type of gear where nets are driven into the reef, has dropped to 0 since a ban of that gear in 2012 - a good sign that mangement regulation is working.</p>
+<p>Again, you may be interested in looking across different gear types. To plot, we use ggplot’s faceting functionality. You can use the <code>facet_wrap</code> function and facet by gear type. Doing so, it now becomes clear that the recent increase in catch seems to be concentrated in speargun and trap fishing. Meanwhile, catch from muroami, a very destructive type of gear where nets are driven into the reef, has dropped to 0 since a ban of that gear in 2012 - a good sign that mangement regulation is working.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Start with the landings data frame
 annual_gear_landings %&gt;%<span class="st"> </span>
 <span class="st">  </span>## First, group the data by year
 <span class="st">  </span><span class="kw">group_by</span>(Year,Gear) %&gt;%<span class="st"> </span>
 <span class="st">  </span>## Initialize a ggplot of annual landings versus year
-<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x=</span>Year,<span class="dt">y=</span>Annual_Landings_kg_sampling_day)) +
+<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x=</span>Year,<span class="dt">y=</span>Annual_Landings_kg)) +
 <span class="st">  </span>## Tell ggplot that the plot type should be a scatter plot
 <span class="st">  </span><span class="kw">geom_point</span>() +
 <span class="st">  </span>## Also add a line connecting the points
 <span class="st">  </span><span class="kw">geom_line</span>() +<span class="st"> </span>
 <span class="st">  </span>## Change the y-axis title
-<span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Normalized annual Landings [kg/survey day/year]&quot;</span>) +<span class="st"> </span>
+<span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Normalized annual Landings [kg/year]&quot;</span>) +<span class="st"> </span>
 <span class="st">  </span>## Add figure title
 <span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Normalized annual landings of Caesio cuning&quot;</span>) +
 <span class="st">  </span>## This tells the figure to plot by all different gear types
@@ -210,7 +210,7 @@ cpue_data %&gt;%<span class="st"> </span>
 </div>
 <div id="plot-length-data" class="section level2">
 <h2><span class="header-section-number">7.3</span> Plot length data</h2>
-<p>Finally, let’s first look at the length data from the catch, which gives an indication of the size structure and health of the population. Let’s look at the length data for 2014, which is the most recent year of data available. We first filter the data to be only from 2014. We then create a histogram of the length data, which shows how many individuals of each size class were measured in the catch. On the histogram, we’ll also a vertical line to show the length at which fish mature to get a sense of how sustainable the catch is - the catch should be composed mostly of mature fish. This information comes from the life history parameter data input file.</p>
+<p>Finally, let’s first look at the length data from the catch, which gives an indication of the size structure and health of the population. Let’s look at the length data for 2014, which is the most recent year of data available. We first filter the data to be only from 2014 using the <code>filter</code> function. We then create a histogram of the length data, which shows how many individuals of each size class were measured in the catch. On the histogram, we’ll also a vertical line to show the length at which fish mature to get a sense of how sustainable the catch is - the catch should be composed mostly of mature fish. This information comes from the life history parameter data input file.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Start with the landings data frame
 landings_data %&gt;%<span class="st"> </span>
 <span class="st">  </span>## Filter data to only look at length measurements from 2014

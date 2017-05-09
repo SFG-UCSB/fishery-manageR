@@ -154,8 +154,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
             <section class="normal" id="section-">
 <div id="loading-packages" class="section level1">
 <h1><span class="header-section-number">4</span> Loading packages</h1>
+<p>The next few sections will walk you through how to calculate some basic fisheries statistics and plot the results. This is a very quick introduction, but a great resource for learning more is a free book called <a href="http://r4ds.had.co.nz/">R for Data Science</a>. Additionally, you can always use R’s built in help functionality by using a question mark followed by a function name. For example, typing <code>?ggplot</code> into the console will bring up a help document on ggplot.</p>
 <p>The first step in any analysis is the load the packages you will need for your analysis. Loading packages allows you to use powerful functions not included in “base” R.</p>
 <p>For this analysis, you will use the tidyverse package, which actually loads a group of useful packages including <code>tidyr</code>, <code>dplyr</code>, <code>readr</code>, and <code>ggplot2</code>. <code>tidyr</code> and <code>dplyr</code> are very handy packages for manipulating data, <code>readr</code> is great for loading in data such as csv files, while <code>ggplot2</code> is one of the best packages from plotting data. <code>lubridate</code> is another very handy package for dealing with dates and times.</p>
+<p>If you haven’t done so yet, follow the instructions in the Installation section to load the <code>tidyverse</code> and <code>lubridate</code> packages which will be used in the example. You can then type the following lines into the console to load them into your current R session.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyverse) 
 <span class="kw">library</span>(lubridate) </code></pre></div>
 
