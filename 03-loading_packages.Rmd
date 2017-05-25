@@ -4,13 +4,13 @@
 knitr::opts_chunk$set(warning = F, message = F, error = F)
 ```
 
-The next few sections will walk you through how to calculate some basic fisheries statistics and plot the results. This is a very quick introduction, but a great resource for learning more is a free book called [R for Data Science](http://r4ds.had.co.nz/). Additionally, you can always use R's built in help functionality by using a question mark followed by a function name. For example, typing `?ggplot` into the console will bring up a help document on ggplot.
+The next few sections of this quick introduction to R will walk you through how to calculate some basic fisheries statistics and plot the results. If you are interested in learning more, another great resource is a free book called [R for Data Science](http://r4ds.had.co.nz/). Additionally, you can always use R's built in help functionality by using a question mark followed by a function name. For example, typing `?ggplot` into the console will bring up a help document on ggplot.
 
-The first step in any analysis is the load the packages you will need for your analysis. Loading packages allows you to use powerful functions not included in "base" R.
+The first step in any analysis is to load the packages you will need for your analysis. Loading packages allows you to use powerful functions not included in "base" R.
 
 For this analysis, you will use the tidyverse package, which actually loads a group of useful packages including `tidyr`, `dplyr`, `readr`, and `ggplot2`. `tidyr` and `dplyr` are very handy packages for manipulating data, `readr` is great for loading in data such as csv files, while `ggplot2` is one of the best packages from plotting data. `lubridate` is another very handy package for dealing with dates and times.
 
-If you haven't done so yet, follow the instructions in the Installation section to load the `tidyverse` and `lubridate` packages which will be used in the example. You can then type the following lines into the console to load them into your current R session.
+If you haven't done so yet, follow the instructions in the [Installation] section to load the `tidyverse` and `lubridate` packages which will be used in the example. You can then type the following lines into the console to load them into your current R session.
 
 ```{r}
 library(tidyverse) 
