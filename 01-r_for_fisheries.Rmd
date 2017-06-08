@@ -33,7 +33,7 @@ include_graphics('images/rstudio_installers.png')
 ```
 
 
-Save the `.dmg` file on your desktop, open the file after it finishes downloading, and follow the instructions to complete the installation process. You can then delete the `.dmg` file.
+Save the `.dmg` file on your desktop. Once it finishes downloading, open the file and follow the instructions to complete the installation process. You may then delete the `.dmg` file.
 
 Congratulations! You successfully completed the installation process and are one step closer to using R and RStudio for analysis!
 
@@ -52,11 +52,11 @@ Once installed, the packages you need for an analysis are loaded by the `library
 
 The following packages are commonly used by UCSB for fisheries analyses:
 
-+ **tidyverse** - The tidyverse package actually contains numerous seperate packages for loading and writing data files (**readr**), data processing (**dplyr** & **tidyr**), plotting (**ggplot2**), and functional programming (**purrr**)
-+ **readxl** - read and write data from/to Excel workbooks, including workbooks with multiple worksheets
++ **tidyverse** -  Contains numerous seperate packages for loading and writing data files (**readr**), data processing (**dplyr** & **tidyr**), plotting (**ggplot2**), and functional programming (**purrr**)
++ **readxl** - Reads and writes data from/to Excel workbooks, including workbooks with multiple worksheets
 + **sf**, **rgeos**, **rgdal** - Key packages for spatial analyses similar to those done with ArcGIS
-+ **rmarkdown** - Use R code to author reproducible reports, presentations, and websites
-+ **shiny** - Create web applications using R
++ **rmarkdown** - Uses R code to author reproducible reports, presentations, and websites
++ **shiny** - Creates web applications using R
 
 ## Helpful Resources
 + [Installing R and RStudio](http://stat545.com/block000_r-rstudio-install.html) by Jenny Bryan
