@@ -6,7 +6,7 @@ knitr::opts_chunk$set(warning = F, message = F, error = F)
 
 ## Calculating landings
 
-One of the first analyses you may be interested in is calculating annual landings in the fishery. To do this in R, you start by taking the landings data frame we loaded into R, and working through a series of "pipes", which progressively analyze the data from one step to the next and are shown with the `%>%` operation. Essentially, the output of one line is fed into the input of the next line.   In all of the code below, there are also some helpful comments to tell you what each line is doing. Comments start with the `#` operation, and are not evaluated by R - they are simply there to document the code. To learn more about data wrangling, the [Data Wrangling with dplyr and tidyr Cheat Sheet](https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf) is very helpful.
+One of the first analyses you may be interested in is calculating annual landings in the fishery. To do this in R, you start by taking the landings data frame we loaded into R, and working through a series of "pipes", designated by the `%>%` operation, which progressively analyzes the data from one step to the next and are shown with the. Essentially, the output of one line is fed into the input of the next line.   In all of the code below, there are also some helpful comments to tell you what each line is doing. Comments start with the `#` operation, and are not evaluated by R - they are simply there to document the code. To learn more about data wrangling, the [Data Wrangling with dplyr and tidyr Cheat Sheet](https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf) is very helpful.
 
 To calcualte annual landings, take your `landings_data` data frame, add a column for weight of individual fish in kilograms by using the `mutate` function, group the data by year by using the `group_by` function, and then summarize the data for each year by summing the total weight of all fish caught in each year using the `summarize` and `sum` functions.
 
@@ -58,14 +58,13 @@ cpue_data <- landings_data %>%
   ## Calculate median CPUE for each year
   summarize(Median_CPUE_kg_hour = median(Trip_CPUE))
 
+## Display a table of the CPUE data
 cpue_data
 ```
 
 ## Calculating percent mature
 
 You may also wish to analyze your length data. One analysis would be to determine the percentage of mature fish in the catch in every year of the data frame. To do this, we add a column to the data frame using the `mutate` function that represents whether each fish is mature or not (represented by a 1 or 0), group the data frame by year, and then summarize for each year the percentage of mature fish out of the total number of sampled fish. To determine if a fish is mature or not, it is compared against *m95*, the length at which 95% of fish are mature. The value for `m95` can be taken from the `life_history_parameters` data frame and is referenced using a `$` and the code `life_history_parameters$m95`.
-
-Over 90% of the fish are mature throughout the time series, which is a great sign!
 
 ```{r}
 ## Start with the landings data frame
@@ -77,3 +76,5 @@ landings_data %>%
   ## The percentage mature is equal to the  number of mature fish divided by the total number of fish and multiplied by 100
   summarize(Percent_Mature = sum(Mature) / n() * 100) 
 ```
+
+Over 90% of the fish are mature throughout the time series, which is a great sign!
