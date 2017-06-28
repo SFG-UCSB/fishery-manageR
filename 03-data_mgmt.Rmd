@@ -5,7 +5,7 @@ The careful entry, documentation, and management of data is essential to any dat
 ## Best Practices
 
 1. **Using “flat” files and an open data format**  
-Raw data should be entered as a “flat” table and saved using an open data format, such as .csv (comma separated values). “Flat” data files are tables where the first “header” row contains the variables in the dataset and there is no internal hierarchy to the data. Nested columns and rows make analysis of the raw data outside of the original file very difficult.
+Raw data should be entered as a “flat” table and saved using an open data format, such as .csv (comma separated values). “Flat” data files are tables where the first “header” row contains the variables in the data set and there is no internal hierarchy to the data. Nested columns and rows make analysis of the raw data outside of the original file very difficult.
 
 ```{r, echo = F, warning=F}
 library(knitr)
@@ -39,9 +39,10 @@ When entering data, **do not mix text and numeric responses**, or include both t
 include_graphics('images/data_mgmt_4.png')
 ```
 
+6. **Use standardized formats for dates**
 When reporting full dates, use standardized formats since date representations vary between the United States and the rest of the world. For example, 01-09-17 will likely be interpreted as January 9th, 2017 in the U.S. but September 1st, 2017 or September 17th, 2001 in other countries. Therefore, always record dates using the international standard of YYYY-MM-DD as prescribed by the International Organization of Standards (ISO) standard ISO 8601 (2004). It is also generally good to have separate columns for **month** and **year** to facilitate analyses that are only interested in certain months or years (e.g. what are the average landings in March?).
 
-6. **Always store an uncorrected original version of the data file and BACK UP YOUR DATA!!!**  
+7. **Always store an uncorrected original version of the data file and BACK UP YOUR DATA!!!**  
 When you make changes or corrections to the original data file you could easily make a mistake. To avoid compromising your original raw data, always store an unadjusted copy of the data file and **do not make any changes or adjustments to this copy** (make it “read-only” if possible). Make a duplicate file if corrections or adjustments are required and be sure to describe what changes were made in the metadata file. Lastly, **ALWAYS BACK UP YOUR DATA** by keeping at least **three** copies of the file in different locations (e.g., desktop, external hard drive, the cloud).
 
 ### Helpful Resources

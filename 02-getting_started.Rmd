@@ -47,4 +47,4 @@ The following packages are commonly used by UCSB for fisheries analyses:
 + **shiny** - Creates web applications using R
 
 ### Helpful Resources
-[Jenny Bryan's Guide to Installing R and RStudio](http://stat545.com/block000_r-rstudio-install.html)
++ [Jenny Bryan's Guide to Installing R and RStudio](http://stat545.com/block000_r-rstudio-install.html)

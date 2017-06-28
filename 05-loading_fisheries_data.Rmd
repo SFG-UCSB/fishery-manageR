@@ -42,4 +42,4 @@ Let's next look at the `life_history_parameters` data frame.
 ```{r}
 head(life_history_parameters)
 ```
-The `life_history_parameters` data frame includes several important life history parameters that were found doing a literature review of this species. *L_infinity*, *k*, and *t0* describe the age-to-length relationship using the von Bertalanffy growth equation. *M* represents natural mortality. *Wa* and *Wb* describe the length-to-weight relationship. *m50* and *m95* describe the lengths at which 50% and 95% of the fish are mature, respecitvely. *maxAge* is the maximum age of the fish.
+The `life_history_parameters` data frame includes several important life history parameters that were found doing a literature review of this species. *L_infinity*, *k*, and *t0* describe the age-to-length relationship using the von Bertalanffy growth equation. *M* represents natural mortality. *Wa* and *Wb* describe the length-to-weight relationship. *m50* and *m95* describe the lengths at which 50% and 95% of the fish are mature, respectively. *maxAge* is the maximum age of the fish.

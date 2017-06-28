@@ -7,7 +7,7 @@ knitr::opts_chunk$set(warning = F, message = F, error = F)
 ## Calculating Landings
 One of the first analyses you may be interested in is calculating annual landings in the fishery. To do this in R, you start by taking the landings data frame we loaded into R, and working through a series of "pipes", designated by the `%>%` operation, which progressively analyzes the data from one step to the next. Essentially, the output of one line is fed into the input of the next line. There are also some helpful comments to tell you what each line is doing in the code blocks below. Comments start with the `#` operation, and are not evaluated by R - they are simply there to document the code. 
 
-To calcualte annual landings, take your `landings_data` data frame, add a column for weight of individual fish in kilograms by using the `mutate` function, group the data by year by using the `group_by` function, and then summarize the data for each year by summing the total weight of all fish caught in each year using the `summarize` and `sum` functions.
+To calculate annual landings, take your `landings_data` data frame, add a column for weight of individual fish in kilograms by using the `mutate` function, group the data by year by using the `group_by` function, and then summarize the data for each year by summing the total weight of all fish caught in each year using the `summarize` and `sum` functions.
 
 ```{r}
 ## Start with the landings data frame
@@ -23,7 +23,7 @@ annual_landings <- landings_data %>%
 annual_landings
 ```
 
-Note the use of `na.rm = TRUE` in the code above. This is an important **argument** of many R functions (`sum()` in this case) and it tells R what to do with `NA` values in your data. Here, we are telling R to first remove `NA` values before calculating the sum of the `Weight_kg` variable.  By default, many functions will return `NA` if **any** value is `NA`, which is often not desireable.  
+Note the use of `na.rm = TRUE` in the code above. This is an important **argument** of many R functions (`sum()` in this case) and it tells R what to do with `NA` values in your data. Here, we are telling R to first remove `NA` values before calculating the sum of the `Weight_kg` variable.  By default, many functions will return `NA` if **any** value is `NA`, which is often not desirable.  
 
 You may be interested in looking at landings across different gear types. Here, we now group the data frame by both the year and the gear type in order to summarize the total landings by year and by gear.
 

@@ -199,7 +199,7 @@ annual_gear_landings %&gt;%<span class="st"> </span>
 <span class="st">  </span>## This tells the figure to plot by all different gear types
 <span class="st">  </span><span class="kw">facet_wrap</span>(~Gear) </code></pre></div>
 <p><img src="bookdown-demo_files/figure-html/unnamed-chunk-26-1.png" width="672" /></p>
-<p>It now becomes clear that the recent increase in catch seems to be concentrated in speargun and trap fishing. Meanwhile, catch from muroami, a very destructive type of gear where nets are driven into the reef, has dropped to 0 since a ban of that gear in 2012 - a good sign that mangement regulation is working.</p>
+<p>It now becomes clear that the recent increase in catch seems to be concentrated in speargun and trap fishing. Meanwhile, catch from muroami, a very destructive type of gear where nets are driven into the reef, has dropped to 0 since a ban of that gear in 2012 - a good sign that management regulation is working.</p>
 </div>
 <div id="plotting-cpue" class="section level2">
 <h2><span class="header-section-number">8.2</span> Plotting CPUE</h2>
@@ -237,7 +237,7 @@ landings_data %&gt;%<span class="st"> </span>
 <span class="st">  </span>## Add a red vertical line for m95, the length at which 95% of fish are mature. Any fish below this length may be immature. Use the life_history_parameter data frame to get this value.
 <span class="st">  </span><span class="kw">geom_vline</span>(<span class="kw">aes</span>(<span class="dt">xintercept=</span>life_history_parameters$m95),<span class="dt">color=</span><span class="st">&quot;red&quot;</span>) </code></pre></div>
 <p><img src="bookdown-demo_files/figure-html/unnamed-chunk-28-1.png" width="672" /></p>
-<p>You might also be interested in seeing how the size composition varies by gear type. You can recreate the figure above, but separte the histograms out by gear type using ggplot’s “facet” function.</p>
+<p>You might also be interested in seeing how the size composition varies by gear type. You can recreate the figure above, but separate the histograms out by gear type using ggplot’s “facet” function.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Start with the landings data frame
 landings_data %&gt;%<span class="st"> </span>
 <span class="st">  </span>## Filter data to only look at length measurements from 2014

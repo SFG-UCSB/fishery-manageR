@@ -48,7 +48,7 @@ annual_gear_landings %>%
   facet_wrap(~Gear) 
 ```
 
-It now becomes clear that the recent increase in catch seems to be concentrated in speargun and trap fishing. Meanwhile, catch from muroami, a very destructive type of gear where nets are driven into the reef, has dropped to 0 since a ban of that gear in 2012 -  a good sign that mangement regulation is working.
+It now becomes clear that the recent increase in catch seems to be concentrated in speargun and trap fishing. Meanwhile, catch from muroami, a very destructive type of gear where nets are driven into the reef, has dropped to 0 since a ban of that gear in 2012 -  a good sign that management regulation is working.
 
 ## Plotting CPUE
 
@@ -91,7 +91,7 @@ landings_data %>%
   geom_vline(aes(xintercept=life_history_parameters$m95),color="red") 
 ```
 
-You might also be interested in seeing how the size composition varies by gear type. You can recreate the figure above, but separte the histograms out by gear type using ggplot's "facet" function.
+You might also be interested in seeing how the size composition varies by gear type. You can recreate the figure above, but separate the histograms out by gear type using ggplot's "facet" function.
 
 ```{r}
 ## Start with the landings data frame
