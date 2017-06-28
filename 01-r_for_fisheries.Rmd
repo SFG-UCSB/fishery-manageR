@@ -37,5 +37,5 @@ Save the `.dmg` file on your desktop. Once it finishes downloading, open the fil
 
 Congratulations! You successfully completed the installation process and are one step closer to using R and RStudio for analysis!
 
-## Helpful Resources
+### Helpful Resources
 + [Installing R and RStudio](http://stat545.com/block000_r-rstudio-install.html) by Jenny Bryan
