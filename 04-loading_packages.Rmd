@@ -1,10 +1,8 @@
-# Loading packages
+# Packages
 
 ```{r include=FALSE}
 knitr::opts_chunk$set(warning = F, message = F, error = F)
 ```
-
-The next few sections of this quick introduction to R will walk you through how to calculate some basic fisheries statistics and plot the results. If you are interested in learning more, another great resource is a free book called [R for Data Science](http://r4ds.had.co.nz/). Additionally, you can always use R's built in help functionality by using a question mark followed by a function name. For example, typing `?ggplot` into the console will bring up a help document on ggplot.
 
 The first step in any analysis is to load the packages you will need for your analysis. Loading packages allows you to use powerful functions not included in "base" R.
 
@@ -16,3 +14,5 @@ If you haven't done so yet, follow the instructions in the [Installation] sectio
 library(tidyverse) 
 library(lubridate) 
 ```
+
+The next few sections of this quick introduction to R will walk you through how to calculate some basic fisheries statistics and plot the results. 

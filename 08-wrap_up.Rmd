@@ -1,0 +1,29 @@
+# Wrapping Up
+
+Congratulations! You've completed our introduction to R and are ready to start using it to conduct fishery analyses. We think you'll find, like us, that R will dramatically expand your ability to ask interesting and important questions about your data. Furthermore, by doing all your data processing, analysis, and plotting in R you can develop a streamlined work flow that is entirely reproducible and does not jeopardize the integrity of your raw data.  
+
+R is a very powerful and flexible tool. Once you become comfortable with the types of analyses outlined in this tutorial you can start using R to run fishery models or build your own. 
+
+## R Packages for Fishery Analysis
+Fortunately, there are already numerous R [packages][Packages] available that are specifically designed for different types of fisheries analyses. The following four packages all contain very useful functions, and numerous other packages are available. Before jumping into these packages, however, we recommend you become familiar with R and more basic analyses first. Also, keep in mind that **R is an open-source language**, which means that *anyone* can submit packages. You should therefore always be sure to read the package documentation and double check your work to be sure things are performing as expected.
+
++ [TropFishR](https://cran.r-project.org/web/packages/TropFishR/vignettes/tutorial.html) - Fish stock assessment methods and fisheries models based on the FAO Manual "Introduction to tropical fish stock assessment" by P. Sparre and S.C. Venema. Focus is the analysis of length-frequency data and data-poor fisheries.
++ [DLMTool](http://www.datalimitedtoolkit.org) - Implementation of management procedures for data-limited fisheries
++ [LBSPR](https://cran.r-project.org/web/packages/LBSPR/vignettes/LBSPR.html) - Functions to run the Length-Based Spawning Potential Ratio (LBSPR) method. The LBSPR package can be used in two ways: 1) simulating the expected length composition, growth curve, and SPR and yield curves using the LBSPR model and 2) fitting to empirical length data to provide an estimate of the spawning potential ratio (SPR).
++ [fishmethods](https://www.rdocumentation.org/packages/fishmethods/versions/1.10-2) - Fishery science methods and models from published literature
+
+All four of these packages are available on CRAN and can be downloaded directly in RStudio by running the following command:
+
+```{r, eval=FALSE, echo=TRUE}
+install.packages(c('TropFishR','DLMTool', 'LBSPR', 'fishmethods'))
+```
+
+## Additional Resources
+Throughout this guidebook we provided links to additional useful R resources. We now include all of these resources below for your convenience. 
+
++ [R for Data Science](http://r4ds.had.co.nz/)
++ [Cookbook for R](http://www.cookbook-r.com)
++ [RStudio Cheat Sheets](https://www.rstudio.com/resources/cheatsheets/)
++ [Jenny Bryan's Stat 545 Course Syllabus](http://stat545.com/topics.html)
++ [Simple Guidelines for Effective Data Management](https://www.nceas.ucsb.edu/files/news/ESAdatamng09.pdf)
++ [Research Data Management](http://ucsd.libguides.com/c.php?g=90957&p=585435)

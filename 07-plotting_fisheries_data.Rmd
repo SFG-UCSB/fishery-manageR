@@ -4,9 +4,9 @@
 knitr::opts_chunk$set(warning = F, message = F, error = F)
 ```
 
-This document will now walk you through how to make make some basic fisheries plots using the data frames you created in the previous analysis section and the `ggplot` plotting function. When using `ggplot`, start with your data frame, initialize the ggplot, and then use the `+` operation to add additional features to the plot. To learn more about `ggplot`, the [Data Visualization with ggplot2 Cheat Sheet](https://www.rstudio.com/wp-content/uploads/2016/11/ggplot2-cheatsheet-2.1.pdf) is a very helpful resource, as is this [ggplot cookbook](http://www.cookbook-r.com/Graphs/).
+This document will now walk you through how to make make some basic fisheries plots using the data frames you created in the previous analysis section and the `ggplot` plotting function. When using `ggplot`, first start with your data frame and initialize the ggplot by specifying the plot's *aesthetics* (variables) using `aes()`. Then use the `+` operation to add at least one *geometry* (type of plot, such as a scatter plot) and any additional features to the plot. To learn more about `ggplot`, the [Data Visualization with ggplot2 Cheat Sheet](https://www.rstudio.com/wp-content/uploads/2016/11/ggplot2-cheatsheet-2.1.pdf) is a very helpful resource, as is this [ggplot cookbook](http://www.cookbook-r.com/Graphs/).
 
-## Plot landings data
+## Plotting Landings
 
 Let's plot a time series of annual landings data. We start with the annual landings data we made in the previous step, and then feed this into a ggplot. 
 
@@ -25,9 +25,9 @@ annual_landings %>%
   ggtitle("Annual landings of Caesio cuning") 
 ```
 
-It appears landings were going down between 2004 and 2011, but have been increasing since then.
+In this example, we are using `aes(x=Year, y=Annual_Landings_kg)` to specify that the we want to plot years on the x-axis and annual landings on the y-axis. We then want to visualize these variables with both a scatter plot (`geom_point()`) *and* a line plot (`geom_line()`) geometry. 
 
-Again, you may be interested in looking across different gear types. To plot, we use ggplot's faceting functionality. You can use the `facet_wrap` function and facet by gear type.
+It appears landings were going down between 2004 and 2011, but have been increasing since then. Again, you may be interested in looking across different gear types. To plot, we use ggplot's faceting functionality, which tells `ggplot` to divide up the data by a certain variable, `Gear` in this case, and make multiple similar plots. You can use the `facet_wrap()` function to accomplish this.
 
 ```{r}
 ## Start with the landings data frame
@@ -50,7 +50,7 @@ annual_gear_landings %>%
 
 It now becomes clear that the recent increase in catch seems to be concentrated in speargun and trap fishing. Meanwhile, catch from muroami, a very destructive type of gear where nets are driven into the reef, has dropped to 0 since a ban of that gear in 2012 -  a good sign that mangement regulation is working.
 
-## Plot CPUE data
+## Plotting CPUE
 
 You may also be interested in plotting median catch-per-unit-effort (CPUE). You take your CPUE data frame made in the last step and feed it into ggplot.
 
@@ -71,8 +71,8 @@ cpue_data %>%
 
 CPUE appears to have increased significantly during the last years. This may be due to increasing abundance in the water, which would be a good thing, but may also be indicative of increased gear efficiency coinciding with the transition to traps and spearguns, which may be concerning.
 
-## Plot length data
-Finally, let's first look at the length data from the catch, which gives an indication of the size structure and health of the population. Let's look at the length data for 2014, which is the most recent year of data available. We first filter the data to be only from 2014 using the `filter` function. We then create a histogram of the length data, which shows how many individuals of each size class were measured in the catch. On the histogram, we'll also add a vertical line to show the length at which fish mature to get a sense of how sustainable the catch is - the catch should be composed mostly of mature fish. This information comes from the life history parameter data input file.
+## Plotting Length Frequency
+Finally, let's first look at the length data from the catch, which gives an indication of the size structure and health of the population. Let's look at the length data for 2014, which is the most recent year of data available. We first filter the data to be only from 2014 using the `filter()` function. We then create a histogram of the length data, which shows how many individuals of each size class were measured in the catch. On the histogram, we'll also add a vertical line to show the length at which fish mature to get a sense of how sustainable the catch is - the catch should be composed mostly of mature fish. This information comes from the life history parameter data input file.
 
 ```{r}
 ## Start with the landings data frame
@@ -115,3 +115,7 @@ landings_data %>%
 It appears as if the size structure is about the same from each gear, although by far the most amount of fish are caught using speargun. Very few fish are caught using trolling.
 
 These plots indicate a generally increasing catch, CPUE, and a healthy size structure. Our results demonstrate that the population is likely doing fairly well, and  may be recovering since the 2012 ban of muroami fishing gear.
+
+### Helpful Resources
++ [Data Visualization with ggplot2 Cheat Sheet](https://www.rstudio.com/wp-content/uploads/2016/11/ggplot2-cheatsheet-2.1.pdf)
++ [ggplot cookbook](http://www.cookbook-r.com/Graphs/)

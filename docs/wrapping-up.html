@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   <link rel="shortcut icon" href="images/SFG_BW.png" type="image/x-icon">
+<link rel="prev" href="plotting-fisheries-data.html">
 
-<link rel="next" href="installation.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -161,25 +161,43 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">A Guide to R for Fisheries Managers</h1>
+<div id="wrapping-up" class="section level1">
+<h1><span class="header-section-number">9</span> Wrapping Up</h1>
+<p>Congratulations! You’ve completed our introduction to R and are ready to start using it to conduct fishery analyses. We think you’ll find, like us, that R will dramatically expand your ability to ask interesting and important questions about your data. Furthermore, by doing all your data processing, analysis, and plotting in R you can develop a streamlined work flow that is entirely reproducible and does not jeopardize the integrity of your raw data.</p>
+<p>R is a very powerful and flexible tool. Once you become comfortable with the types of analyses outlined in this tutorial you can start using R to run fishery models or build your own.</p>
+<div id="r-packages-for-fishery-analysis" class="section level2">
+<h2><span class="header-section-number">9.1</span> R Packages for Fishery Analysis</h2>
+<p>Fortunately, there are already numerous R <a href="packages-1.html#packages-1">packages</a> available that are specifically designed for different types of fisheries analyses. The following four packages all contain very useful functions, and numerous other packages are available. Before jumping into these packages, however, we recommend you become familiar with R and more basic analyses first. Also, keep in mind that <strong>R is an open-source language</strong>, which means that <em>anyone</em> can submit packages. You should therefore always be sure to read the package documentation and double check your work to be sure things are performing as expected.</p>
+<ul>
+<li><a href="https://cran.r-project.org/web/packages/TropFishR/vignettes/tutorial.html">TropFishR</a> - Fish stock assessment methods and fisheries models based on the FAO Manual “Introduction to tropical fish stock assessment” by P. Sparre and S.C. Venema. Focus is the analysis of length-frequency data and data-poor fisheries.</li>
+<li><a href="http://www.datalimitedtoolkit.org">DLMTool</a> - Implementation of management procedures for data-limited fisheries</li>
+<li><a href="https://cran.r-project.org/web/packages/LBSPR/vignettes/LBSPR.html">LBSPR</a> - Functions to run the Length-Based Spawning Potential Ratio (LBSPR) method. The LBSPR package can be used in two ways: 1) simulating the expected length composition, growth curve, and SPR and yield curves using the LBSPR model and 2) fitting to empirical length data to provide an estimate of the spawning potential ratio (SPR).</li>
+<li><a href="https://www.rdocumentation.org/packages/fishmethods/versions/1.10-2">fishmethods</a> - Fishery science methods and models from published literature</li>
+</ul>
+<p>All four of these packages are available on CRAN and can be downloaded directly in RStudio by running the following command:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="kw">c</span>(<span class="st">&#39;TropFishR&#39;</span>,<span class="st">&#39;DLMTool&#39;</span>, <span class="st">&#39;LBSPR&#39;</span>, <span class="st">&#39;fishmethods&#39;</span>))</code></pre></div>
 </div>
-<div id="objective" class="section level1">
-<h1><span class="header-section-number">1</span> Objective</h1>
-<blockquote>
-<p>The purpose of this guidebook is to provide an introduction to using the powerful programming language R to conduct analyses commonly used for fisheries management</p>
-</blockquote>
-<p><a href="https://cran.r-project.org">R</a> is a free programming language/software environment that allows users to analyze, model, and vizualize large data sets in much more powerful and complex ways than traditional spreadsheet programs like Excel or Google Sheets. Best of all, R is open source, meaning that it is freely available from the Comprehensive R Archive Network (CRAN) and anyone can contribute to making R better. In fact, numerous R packages (more on these later) are specifically designed for conducting analyses related to fisheries management. <a href="https://www.rstudio.com">RStudio</a> is the powerful graphical interface that allows users to manage their code, data, and files all in one convenient program. If you are interested in learning more about data analysis with R, the free online book called <a href="http://r4ds.had.co.nz/">R for Data Science</a> is an excellent resource.</p>
-<p><img src="images/SFG-logotype-side-ucsb-062513.uc.png" width="294" style="display: block; margin: auto;" /></p>
+<div id="additional-resources" class="section level2">
+<h2><span class="header-section-number">9.2</span> Additional Resources</h2>
+<p>Throughout this guidebook we provided links to additional useful R resources. We now include all of these resources below for your convenience.</p>
+<ul>
+<li><a href="http://r4ds.had.co.nz/">R for Data Science</a></li>
+<li><a href="http://www.cookbook-r.com">Cookbook for R</a></li>
+<li><a href="https://www.rstudio.com/resources/cheatsheets/">RStudio Cheat Sheets</a></li>
+<li><a href="http://stat545.com/topics.html">Jenny Bryan’s Stat 545 Course Syllabus</a></li>
+<li><a href="https://www.nceas.ucsb.edu/files/news/ESAdatamng09.pdf">Simple Guidelines for Effective Data Management</a></li>
+<li><a href="http://ucsd.libguides.com/c.php?g=90957&amp;p=585435">Research Data Management</a></li>
+</ul>
 
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
+<a href="plotting-fisheries-data.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 
-<a href="installation.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -208,7 +226,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/rstudio/bookdown-demo/edit/master/index.Rmd",
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/08-wrap_up.Rmd",
 "text": "Edit"
 },
 "download": null,

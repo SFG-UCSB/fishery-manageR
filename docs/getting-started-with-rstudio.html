@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   <link rel="shortcut icon" href="images/SFG_BW.png" type="image/x-icon">
-
-<link rel="next" href="installation.html">
+<link rel="prev" href="installation.html">
+<link rel="next" href="data-entry-management.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -161,25 +161,67 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">A Guide to R for Fisheries Managers</h1>
+<div id="getting-started-with-rstudio" class="section level1">
+<h1><span class="header-section-number">3</span> Getting Started with RStudio</h1>
+<p>Rstudio is what’s referred to as an Integrated Development Environment (IDE) for the R programming language. It provides a single interface for an R user to manage all aspects of an analysis (write code, manage and plot data. see outputs, get help, etc.).</p>
+<div id="rstudio-interface" class="section level2">
+<h2><span class="header-section-number">3.1</span> RStudio Interface</h2>
+<p>There are four main panels in RStudio (Figure 1).</p>
+<p><img src="images/rstudio_ide.png" width="1833" /></p>
+<ul>
+<li><strong>Code Editor</strong> - This is where you write the code for your analysis. Each tab represents a different R <em>script</em> file (e.g. <code>snapper_analysis.R</code>)</li>
+<li><strong>Console</strong> - This is where R prints the output of your code when it’s run. You can also write code directly in the console after the <code>&gt;</code> symbol</li>
+<li><strong>Environment/History</strong> - This panel generally has the following two tabs:
+<ul>
+<li><strong>Environment</strong> - Displays all your data, variables, and user-defined functions. These are created by the user either in the code editor or directly in the console.</li>
+<li><strong>History</strong> - A list of your command history</li>
+</ul></li>
+<li><strong>Files/Packages/Help/Viewer</strong> - This panel contains numerous helpful panels:
+<ul>
+<li><strong>Files</strong> - The list of all files contained in your current <em>working directory</em>. You can also navigate to different folders on your computer. This is where you can click on different R scripts to open them in the code editor.</li>
+<li><strong>Plots</strong> - When you produce plots with your code they will be displayed here</li>
+<li><strong>Packages</strong> - The list of packages (groups of functions) currently installed on your computer. You can install new packages or update existing packages from this tab by clicking <code>Install</code> or <code>Update</code>.</li>
+<li><strong>Help</strong> - Where you can search the R documentation to get help using the different R functions. This is a very useful feature of RStudio! You can also get help for a function by typing <code>?</code> followed by the function name in the console (e.g. <code>?data.frame()</code>).</li>
+</ul></li>
+</ul>
 </div>
-<div id="objective" class="section level1">
-<h1><span class="header-section-number">1</span> Objective</h1>
-<blockquote>
-<p>The purpose of this guidebook is to provide an introduction to using the powerful programming language R to conduct analyses commonly used for fisheries management</p>
-</blockquote>
-<p><a href="https://cran.r-project.org">R</a> is a free programming language/software environment that allows users to analyze, model, and vizualize large data sets in much more powerful and complex ways than traditional spreadsheet programs like Excel or Google Sheets. Best of all, R is open source, meaning that it is freely available from the Comprehensive R Archive Network (CRAN) and anyone can contribute to making R better. In fact, numerous R packages (more on these later) are specifically designed for conducting analyses related to fisheries management. <a href="https://www.rstudio.com">RStudio</a> is the powerful graphical interface that allows users to manage their code, data, and files all in one convenient program. If you are interested in learning more about data analysis with R, the free online book called <a href="http://r4ds.had.co.nz/">R for Data Science</a> is an excellent resource.</p>
-<p><img src="images/SFG-logotype-side-ucsb-062513.uc.png" width="294" style="display: block; margin: auto;" /></p>
+<div id="work-dir" class="section level2">
+<h2><span class="header-section-number">3.2</span> Working Directory</h2>
+<p>The <strong>working directory</strong> is an important concept in R (and programming in general) and refers to the current directory (folder) that you are working in. Basically, R requires that you tell it where in your computer’s file system it should start looking for files from. This is important because the code used to load data and save results and plots will differ depending on your current working directory.</p>
+<p>As an example, let’s imagine you are working on an analysis of coral reef fisheries and you have a folder on your Desktop called <code>reef_fish</code>. Inside this <code>reef_fish</code> directory is the file <code>reef_fish_data.csv</code> that you want to analyze. Open RStudio and click <code>Set Working Directory...</code> under the <code>Session</code> menu in the toolbar. This asks you to specify the folder on your computer that R should consider to be the working directory.</p>
+<div id="pathnames-path" class="section level3">
+<h3><span class="header-section-number">3.2.1</span> Pathnames (Path)</h3>
+<p>Now that the working directory is set, you can load your reef fish data into RStudio by specifying the appropriate <strong>pathname</strong> to the file. In this case, the pathname is simply <code>reef_fish_data.csv</code> since the file is in the working directory and the data could be loaded with <code>read.csv(file = &quot;reef_fish_data.csv&quot;)</code>. If, however, <code>reef_fish_data.csv</code> was actually stored in a subfolder called <code>data</code> the previous <code>read.csv()</code> command will not work because <code>reef_fish_data.csv</code> is not in the working directory. In this case, you can either tell R where the file is using the <strong>absolute</strong>, complete path (e.g. <code>/Users/You/Desktop/reef_fish/data/reef_fish_data.csv</code>), or with the path <strong>relative</strong> to the working directory (e.g. <code>data/reef_fish_data.csv</code>).</p>
+</div>
+</div>
+<div id="packages" class="section level2">
+<h2><span class="header-section-number">3.3</span> Packages</h2>
+<p>Packages are groups of functions that are designed to excel at certain tasks (making plots, standardizing dates, reading/writing large data files, etc.). Many useful packages come standard with R when you download it, however, many more are available online.</p>
+<p>To install a new package, click on the “Install” button located under the “Packages” tab in RStudio. This will open a pop-up where you can search for and install R packages hosted on CRAN. Alternatively, if you know the name of the package you want to install, you can run <code>install.packages('package_name')</code>.</p>
+<p><img src="images/package_install.png" width="1061" /></p>
+<p>Once installed, the packages you need for an analysis are loaded by the <code>library('package_name')</code> function.</p>
+<p>The following packages are commonly used by UCSB for fisheries analyses:</p>
+<ul>
+<li><strong>tidyverse</strong> - Contains numerous seperate packages for loading and writing data files (<strong>readr</strong>), data processing (<strong>dplyr</strong> &amp; <strong>tidyr</strong>), plotting (<strong>ggplot2</strong>), and functional programming (<strong>purrr</strong>)</li>
+<li><strong>readxl</strong> - Reads and writes data from/to Excel workbooks, including workbooks with multiple worksheets</li>
+<li><strong>sf</strong>, <strong>rgeos</strong>, <strong>rgdal</strong> - Key packages for spatial analyses similar to those done with ArcGIS</li>
+<li><strong>rmarkdown</strong> - Uses R code to author reproducible reports, presentations, and websites</li>
+<li><strong>shiny</strong> - Creates web applications using R</li>
+</ul>
+<div id="helpful-resources-1" class="section level3">
+<h3><span class="header-section-number">3.3.1</span> Helpful Resources</h3>
+<p><a href="http://stat545.com/block000_r-rstudio-install.html">Jenny Bryan’s Guide to Installing R and RStudio</a></p>
 
+</div>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-<a href="installation.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="installation.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="data-entry-management.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -208,7 +250,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/rstudio/bookdown-demo/edit/master/index.Rmd",
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/02-getting_started.Rmd",
 "text": "Edit"
 },
 "download": null,

@@ -4,7 +4,7 @@
 knitr::opts_chunk$set(warning = F, message = F, error = F)
 ```
 
-Next, you'll load the data you'll be using for the analysis using the `read_csv` function. First, create a new folder in your working directory called "_data". Next, download the following two files onto your computer. Right click on each link, and save it into your "_data" folder.
+Next, you'll load the data you'll be using for the analysis using the `read_csv` function. First, create a new folder in your [working directory](#work-dir) called "_data". Next, download the following two files onto your computer. Right click on each link, and save it in your  "_data" folder.
 
 [Right click and save-link-as to download landings data](https://raw.githubusercontent.com/SFG-UCSB/fishery-manageR/master/_data/sample_landings_data.csv)
 

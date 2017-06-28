@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   <link rel="shortcut icon" href="images/SFG_BW.png" type="image/x-icon">
-
-<link rel="next" href="installation.html">
+<link rel="prev" href="data-entry-management.html">
+<link rel="next" href="loading-fisheries-data.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -161,16 +161,14 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">A Guide to R for Fisheries Managers</h1>
-</div>
-<div id="objective" class="section level1">
-<h1><span class="header-section-number">1</span> Objective</h1>
-<blockquote>
-<p>The purpose of this guidebook is to provide an introduction to using the powerful programming language R to conduct analyses commonly used for fisheries management</p>
-</blockquote>
-<p><a href="https://cran.r-project.org">R</a> is a free programming language/software environment that allows users to analyze, model, and vizualize large data sets in much more powerful and complex ways than traditional spreadsheet programs like Excel or Google Sheets. Best of all, R is open source, meaning that it is freely available from the Comprehensive R Archive Network (CRAN) and anyone can contribute to making R better. In fact, numerous R packages (more on these later) are specifically designed for conducting analyses related to fisheries management. <a href="https://www.rstudio.com">RStudio</a> is the powerful graphical interface that allows users to manage their code, data, and files all in one convenient program. If you are interested in learning more about data analysis with R, the free online book called <a href="http://r4ds.had.co.nz/">R for Data Science</a> is an excellent resource.</p>
-<p><img src="images/SFG-logotype-side-ucsb-062513.uc.png" width="294" style="display: block; margin: auto;" /></p>
+<div id="packages-1" class="section level1">
+<h1><span class="header-section-number">5</span> Packages</h1>
+<p>The first step in any analysis is to load the packages you will need for your analysis. Loading packages allows you to use powerful functions not included in “base” R.</p>
+<p>For this analysis, you will use the tidyverse package, which actually loads a group of useful packages including <code>tidyr</code>, <code>dplyr</code>, <code>readr</code>, and <code>ggplot2</code>. <code>tidyr</code> and <code>dplyr</code> are very handy packages for manipulating data, <code>readr</code> is great for loading in data such as csv files, while <code>ggplot2</code> is one of the best packages from plotting data. <code>lubridate</code> is another very handy package for dealing with dates and times.</p>
+<p>If you haven’t done so yet, follow the instructions in the <a href="installation.html#installation">Installation</a> section to load the <code>tidyverse</code> and <code>lubridate</code> packages which will be used in the example. You can then type the following lines into the console to load them into your current R session.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyverse) 
+<span class="kw">library</span>(lubridate) </code></pre></div>
+<p>The next few sections of this quick introduction to R will walk you through how to calculate some basic fisheries statistics and plot the results.</p>
 
 </div>
             </section>
@@ -178,8 +176,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           </div>
         </div>
       </div>
-
-<a href="installation.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="data-entry-management.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="loading-fisheries-data.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -208,7 +206,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/rstudio/bookdown-demo/edit/master/index.Rmd",
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/04-loading_packages.Rmd",
 "text": "Edit"
 },
 "download": null,

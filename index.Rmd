@@ -2,6 +2,7 @@
 title: "A Guide to R for Fisheries Managers"
 site: bookdown::bookdown_site
 output: bookdown::gitbook
+theme: readable
 documentclass: book
 bibliography: [book.bib, packages.bib]
 biblio-style: apalike
@@ -23,7 +24,7 @@ library(knitr)
 # Objective
 > The purpose of this guidebook is to provide an introduction to using the powerful programming language R to conduct analyses commonly used for fisheries management
 
-[R](https://cran.r-project.org) is a free programming language/software environment that allows users to analyze, model, and vizualize large data sets in much more powerful and complex ways than traditional spreadsheet programs like Excel or Google Sheets. Best of all, R is open source, meaning that it is freely available from the Comprehensive R Archive Network (CRAN) and anyone can contribute to making R better. In fact, numerous R packages (more on these later) are specifically designed for conducting analyses related to fisheries management. [RStudio](https://www.rstudio.com) is the powerful graphical interface that allows users to manage their code, data, and files all in one convenient program.
+[R](https://cran.r-project.org) is a free programming language/software environment that allows users to analyze, model, and vizualize large data sets in much more powerful and complex ways than traditional spreadsheet programs like Excel or Google Sheets. Best of all, R is open source, meaning that it is freely available from the Comprehensive R Archive Network (CRAN) and anyone can contribute to making R better. In fact, numerous R packages (more on these later) are specifically designed for conducting analyses related to fisheries management. [RStudio](https://www.rstudio.com) is the powerful graphical interface that allows users to manage their code, data, and files all in one convenient program. If you are interested in learning more about data analysis with R, the free online book called [R for Data Science](http://r4ds.had.co.nz/) is an excellent resource.
 
 ```{r, echo = F, warning=F, fig.align='center'}
 include_graphics('images/SFG-logotype-side-ucsb-062513.uc.png')
