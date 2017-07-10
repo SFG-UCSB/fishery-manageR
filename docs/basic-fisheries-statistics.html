@@ -99,7 +99,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">A Guide to R for Fisheries Analysis</a></li>
+<li><a href="./">An introduction to basic fisheries analysis with R</a></li>
 
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Objective</a></li>
@@ -169,8 +169,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h1><span class="header-section-number">8</span> Basic Fisheries Statistics</h1>
 <div id="calculating-landings" class="section level2">
 <h2><span class="header-section-number">8.1</span> Calculating Landings</h2>
-<p>One of the first analyses you may be interested in is calculating annual landings in the fishery. To do this in R, you start by taking the landings data frame we loaded into R, and working through a series of “pipes”, designated by the <code>%&gt;%</code> operation, which progressively analyzes the data from one step to the next. Essentially, the output of one line is fed into the input of the next line.</p>
-<p>To calculate annual landings, take your <code>landings_data</code> data frame, add a column for weight of individual fish in kilograms by using the <code>mutate</code> function, group the data by year by using the <code>group_by</code> function, and then summarize the data for each year by summing the total weight of all fish caught in each year using the <code>summarize</code> and <code>sum</code> functions.</p>
+<p>One of the first analyses you may be interested in is calculating annual landings in the fishery. To calculate annual landings, take your <code>landings_data</code> data frame, add a column for weight of individual fish in kilograms by using the <code>mutate</code> function, group the data by year by using the <code>group_by</code> function, and then summarize the data for each year by summing the total weight of all fish caught in each year using the <code>summarize</code> and <code>sum</code> functions.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Start with the landings data frame</span>
 annual_landings &lt;-<span class="st"> </span>landings_data <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="co"># Add colomn for kilograms by dividing gram column by 1000</span>
@@ -325,7 +324,7 @@ gitbook.start({
 "link": "https://github.com/rstudio/bookdown-demo/edit/master/07-analyzing_fisheries_data.Rmd",
 "text": "Edit"
 },
-"download": ["bookdown-demo.pdf"],
+"download": ["r-fisheries-introduction.pdf"],
 "toc": {
 "collapse": "subsection"
 }

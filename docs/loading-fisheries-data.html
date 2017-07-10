@@ -99,7 +99,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">A Guide to R for Fisheries Analysis</a></li>
+<li><a href="./">An introduction to basic fisheries analysis with R</a></li>
 
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Objective</a></li>
@@ -187,13 +187,30 @@ life_history_parameters &lt;-<span class="st"> </span><span class="kw">read_csv<
 ## 6  2003 4/30/03       1           10  Trap Caesio cuning        28
 ## # ... with 1 more variables: Weight_g &lt;dbl&gt;</code></pre>
 <p>The <code>landings_data</code> data frame is from a fishery-dependent landing site survey. The species included in this data set is <em>Caesio cuning</em>, a yellowtail fusilier. You can see the data frame has eight columns, with each row being an individual fish catch measurement. The columns include the year and date when the measurement was collected, the fishing trip ID, how many hours were fished for each trip, what gear was used, the species, the length of the fish, and the weight of the fish. We’ll be able to use these data to create length-frequency histograms that describe the size structure of the population, as well as trends in catch and CPUE.</p>
-<p>One thing we should do is format the year and date columns to ensure that R knows these represent years and dates as we humans think of them. We can use the <code>mdy</code> and <code>year</code> functions from the lubridate package to do this.</p>
+<p>One thing we should do is format the year and date columns to ensure that R knows these represent years and dates as we humans think of them. We can use the <code>mdy</code> and <code>year</code> functions from the lubridate package to do this, combined with the <code>mutate</code> function from the dplyr package. We start by taking the landings data frame we loaded into R, and working through a series of “pipes”, designated by the <code>%&gt;%</code> operation, which progressively analyzes the data from one step to the next. Essentially, the output of one line is fed into the input of the next line.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Start with the landings data frame</span>
 landings_data &lt;-<span class="st"> </span>landings_data <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="co"># Turn the date column into a date format that R recognizes</span>
 <span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Date =</span> <span class="kw">mdy</span>(Date)) <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="co"># Create a year column using a year format R recognizes</span>
 <span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Year =</span> <span class="kw">year</span>(Date))</code></pre></div>
+<p>One of the first things you should always do is quickly plot your raw data using <code>ggplot</code>. This can help you familiarize yourself with what’s contained in the data set, as well as look for any potential outliers or errors. We will come back to a more detailed description of plots and visualizations later, but below is some quick code to look at things. When using <code>ggplot</code>, first start with your data frame and initialize the ggplot by specifying the plot’s <em>aesthetics</em> (variables) using <code>aes()</code>. Then use the <code>+</code> operation to add at least one <em>geometry</em> (type of plot, such as a scatter plot) and any additional features to the plot. To learn more about <code>ggplot</code>, the <a href="https://www.rstudio.com/wp-content/uploads/2016/11/ggplot2-cheatsheet-2.1.pdf">Data Visualization with ggplot2 Cheat Sheet</a> is a very helpful resource, as is this <a href="http://www.cookbook-r.com/Graphs/">ggplot cookbook</a>.</p>
+<p>The first figure just shows a point for every weight measurement over time.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Start with the landings data frame</span>
+landings_data <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="co"># Initialize a ggplot of weight measurements versus year</span>
+<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x=</span>Date,<span class="dt">y=</span>Weight_g)) <span class="op">+</span>
+<span class="st">  </span><span class="co"># Tell ggplot that the plot type should be a scatter plot</span>
+<span class="st">  </span><span class="kw">geom_point</span>()</code></pre></div>
+<p><img src="r-fisheries-introduction_files/figure-html/unnamed-chunk-22-1.png" width="672" /></p>
+<p>The second figure shows a histogram of the length data.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Start with the landings data frame</span>
+landings_data <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="co"># Initialize ggplot of data using the length column</span>
+<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(Length_cm)) <span class="op">+</span>
+<span class="st">  </span><span class="co"># Tell ggplot that the plot type should be a histogram</span>
+<span class="st">  </span><span class="kw">geom_histogram</span>()</code></pre></div>
+<p><img src="r-fisheries-introduction_files/figure-html/unnamed-chunk-23-1.png" width="672" /></p>
 <p>Let’s next look at the <code>life_history_parameters</code> data frame.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(life_history_parameters)</code></pre></div>
 <pre><code>## # A tibble: 1 × 11
@@ -241,7 +258,7 @@ gitbook.start({
 "link": "https://github.com/rstudio/bookdown-demo/edit/master/06-loading_fisheries_data.Rmd",
 "text": "Edit"
 },
-"download": ["bookdown-demo.pdf"],
+"download": ["r-fisheries-introduction.pdf"],
 "toc": {
 "collapse": "subsection"
 }
