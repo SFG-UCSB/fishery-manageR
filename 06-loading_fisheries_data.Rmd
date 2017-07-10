@@ -26,7 +26,7 @@ head(landings_data)
 
 The `landings_data` data frame is from a fishery-dependent landing site survey. The species included in this data set is *Caesio cuning*, a yellowtail fusilier. You can see the data frame has eight columns, with each row being an individual fish catch measurement. The columns include the year and date when the measurement was collected, the fishing trip ID, how many hours were fished for each trip, what gear was used, the species, the length of the fish, and the weight of the fish. We'll be able to use these data to create length-frequency histograms that describe the size structure of the population, as well as trends in catch and CPUE. 
 
-One thing we should do is format the year and date columns to ensure that R knows these represent years and dates as we humans think of them. We can use the `mdy` and `year` functions from the lubridate package to do this.
+One thing we should do is format the year and date columns to ensure that R knows these represent years and dates as we humans think of them. We can use the `mdy` and `year` functions from the lubridate package to do this, combined with the `mutate` function from the dplyr package. We start by taking the landings data frame we loaded into R, and working through a series of "pipes", designated by the `%>%` operation, which progressively analyzes the data from one step to the next. Essentially, the output of one line is fed into the input of the next line. 
 
 ```{r}
 # Start with the landings data frame
@@ -36,6 +36,32 @@ landings_data <- landings_data %>%
   # Create a year column using a year format R recognizes
   mutate(Year = year(Date))
 ```
+
+One of the first things you should always do is quickly plot your raw data using `ggplot`. This can help you familiarize yourself with what's contained in the data set, as well as look for any potential outliers or errors. We will come back to a more detailed description of plots and visualizations later, but below is some quick code to look at things. When using `ggplot`, first start with your data frame and initialize the ggplot by specifying the plot's *aesthetics* (variables) using `aes()`. Then use the `+` operation to add at least one *geometry* (type of plot, such as a scatter plot) and any additional features to the plot. To learn more about `ggplot`, the [Data Visualization with ggplot2 Cheat Sheet](https://www.rstudio.com/wp-content/uploads/2016/11/ggplot2-cheatsheet-2.1.pdf) is a very helpful resource, as is this [ggplot cookbook](http://www.cookbook-r.com/Graphs/).
+
+
+The first figure just shows a point for every weight measurement over time.
+
+```{r}
+# Start with the landings data frame
+landings_data %>% 
+  # Initialize a ggplot of weight measurements versus year
+  ggplot(aes(x=Date,y=Weight_g)) +
+  # Tell ggplot that the plot type should be a scatter plot
+  geom_point()
+```
+
+The second figure shows a histogram of the length data.
+
+```{r}
+# Start with the landings data frame
+landings_data %>% 
+  # Initialize ggplot of data using the length column
+  ggplot(aes(Length_cm)) +
+  # Tell ggplot that the plot type should be a histogram
+  geom_histogram()
+```
+
 
 Let's next look at the `life_history_parameters` data frame.
 
