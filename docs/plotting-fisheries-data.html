@@ -5,21 +5,22 @@
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>A Guide to R for Fisheries Managers</title>
-  <meta name="description" content="This is a guidebook for using R for fishery management">
-  <meta name="generator" content="bookdown 0.4 and GitBook 2.6.7">
+  <title>An introduction to basic fisheries analysis with R</title>
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+  <meta name="description" content="This is an introduction to using R for basic fisheries analysis">
+  <meta name="generator" content="bookdown 0.3 and GitBook 2.6.7">
 
-  <meta property="og:title" content="A Guide to R for Fisheries Managers" />
+  <meta property="og:title" content="An introduction to basic fisheries analysis with R" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://sfg-ucsb.github.io/fishery-manageR/" />
   
-  <meta property="og:description" content="This is a guidebook for using R for fishery management" />
+  <meta property="og:description" content="This is an introduction to using R for basic fisheries analysis" />
   <meta name="github-repo" content="sfg-ucsb/fishery-manageR" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="A Guide to R for Fisheries Managers" />
+  <meta name="twitter:title" content="An introduction to basic fisheries analysis with R" />
   
-  <meta name="twitter:description" content="This is a guidebook for using R for fishery management" />
+  <meta name="twitter:description" content="This is an introduction to using R for basic fisheries analysis" />
   
 
 
@@ -32,6 +33,7 @@
   <link rel="shortcut icon" href="images/SFG_BW.png" type="image/x-icon">
 <link rel="prev" href="basic-fisheries-statistics.html">
 <link rel="next" href="wrapping-up.html">
+
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -91,7 +93,6 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <body>
 
 
-
   <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
 
     <div class="book-summary">
@@ -104,43 +105,45 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Objective</a></li>
 <li class="chapter" data-level="2" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>2</b> Installation</a><ul>
 <li class="chapter" data-level="2.1" data-path="installation.html"><a href="installation.html#r"><i class="fa fa-check"></i><b>2.1</b> R</a></li>
-<li class="chapter" data-level="2.2" data-path="installation.html"><a href="installation.html#rstudio"><i class="fa fa-check"></i><b>2.2</b> RStudio</a><ul>
-<li class="chapter" data-level="2.2.1" data-path="installation.html"><a href="installation.html#helpful-resources"><i class="fa fa-check"></i><b>2.2.1</b> Helpful Resources</a></li>
-</ul></li>
+<li class="chapter" data-level="2.2" data-path="installation.html"><a href="installation.html#rstudio"><i class="fa fa-check"></i><b>2.2</b> RStudio</a></li>
+<li class="chapter" data-level="2.3" data-path="installation.html"><a href="installation.html#helpful-resources"><i class="fa fa-check"></i><b>2.3</b> Helpful Resources</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="getting-started-with-rstudio.html"><a href="getting-started-with-rstudio.html"><i class="fa fa-check"></i><b>3</b> Getting Started with RStudio</a><ul>
 <li class="chapter" data-level="3.1" data-path="getting-started-with-rstudio.html"><a href="getting-started-with-rstudio.html#rstudio-interface"><i class="fa fa-check"></i><b>3.1</b> RStudio Interface</a></li>
 <li class="chapter" data-level="3.2" data-path="getting-started-with-rstudio.html"><a href="getting-started-with-rstudio.html#work-dir"><i class="fa fa-check"></i><b>3.2</b> Working Directory</a><ul>
 <li class="chapter" data-level="3.2.1" data-path="getting-started-with-rstudio.html"><a href="getting-started-with-rstudio.html#pathnames-path"><i class="fa fa-check"></i><b>3.2.1</b> Pathnames (Path)</a></li>
 </ul></li>
-<li class="chapter" data-level="3.3" data-path="getting-started-with-rstudio.html"><a href="getting-started-with-rstudio.html#packages"><i class="fa fa-check"></i><b>3.3</b> Packages</a><ul>
-<li class="chapter" data-level="3.3.1" data-path="getting-started-with-rstudio.html"><a href="getting-started-with-rstudio.html#helpful-resources-1"><i class="fa fa-check"></i><b>3.3.1</b> Helpful Resources</a></li>
-</ul></li>
+<li class="chapter" data-level="3.3" data-path="getting-started-with-rstudio.html"><a href="getting-started-with-rstudio.html#packages"><i class="fa fa-check"></i><b>3.3</b> Packages</a></li>
+<li class="chapter" data-level="3.4" data-path="getting-started-with-rstudio.html"><a href="getting-started-with-rstudio.html#helpful-resources-1"><i class="fa fa-check"></i><b>3.4</b> Helpful Resources</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="data-entry-management.html"><a href="data-entry-management.html"><i class="fa fa-check"></i><b>4</b> Data Entry &amp; Management</a><ul>
-<li class="chapter" data-level="4.1" data-path="data-entry-management.html"><a href="data-entry-management.html#best-practices"><i class="fa fa-check"></i><b>4.1</b> Best Practices</a><ul>
-<li class="chapter" data-level="4.1.1" data-path="data-entry-management.html"><a href="data-entry-management.html#helpful-resources-2"><i class="fa fa-check"></i><b>4.1.1</b> Helpful Resources</a></li>
+<li class="chapter" data-level="4.1" data-path="data-entry-management.html"><a href="data-entry-management.html#best-practices"><i class="fa fa-check"></i><b>4.1</b> Best Practices</a></li>
+<li class="chapter" data-level="4.2" data-path="data-entry-management.html"><a href="data-entry-management.html#helpful-resources-2"><i class="fa fa-check"></i><b>4.2</b> Helpful Resources</a></li>
 </ul></li>
+<li class="chapter" data-level="5" data-path="r-as-a-programming-language.html"><a href="r-as-a-programming-language.html"><i class="fa fa-check"></i><b>5</b> R as a Programming Language</a><ul>
+<li class="chapter" data-level="5.1" data-path="r-as-a-programming-language.html"><a href="r-as-a-programming-language.html#data-frames"><i class="fa fa-check"></i><b>5.1</b> Data frames</a></li>
+<li class="chapter" data-level="5.2" data-path="r-as-a-programming-language.html"><a href="r-as-a-programming-language.html#vectors"><i class="fa fa-check"></i><b>5.2</b> Vectors</a></li>
+<li class="chapter" data-level="5.3" data-path="r-as-a-programming-language.html"><a href="r-as-a-programming-language.html#functions"><i class="fa fa-check"></i><b>5.3</b> Functions</a></li>
+<li class="chapter" data-level="5.4" data-path="r-as-a-programming-language.html"><a href="r-as-a-programming-language.html#tips-on-coding-and-style"><i class="fa fa-check"></i><b>5.4</b> Tips on coding and style</a></li>
+<li class="chapter" data-level="5.5" data-path="r-as-a-programming-language.html"><a href="r-as-a-programming-language.html#helpful-resources-3"><i class="fa fa-check"></i><b>5.5</b> Helpful resources</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="packages-1.html"><a href="packages-1.html"><i class="fa fa-check"></i><b>5</b> Packages</a></li>
-<li class="chapter" data-level="6" data-path="loading-fisheries-data.html"><a href="loading-fisheries-data.html"><i class="fa fa-check"></i><b>6</b> Loading Fisheries Data</a></li>
-<li class="chapter" data-level="7" data-path="basic-fisheries-statistics.html"><a href="basic-fisheries-statistics.html"><i class="fa fa-check"></i><b>7</b> Basic Fisheries Statistics</a><ul>
-<li class="chapter" data-level="7.1" data-path="basic-fisheries-statistics.html"><a href="basic-fisheries-statistics.html#calculating-landings"><i class="fa fa-check"></i><b>7.1</b> Calculating Landings</a></li>
-<li class="chapter" data-level="7.2" data-path="basic-fisheries-statistics.html"><a href="basic-fisheries-statistics.html#calculating-catch-per-unit-effort-cpue"><i class="fa fa-check"></i><b>7.2</b> Calculating Catch-per-Unit-Effort (CPUE)</a></li>
-<li class="chapter" data-level="7.3" data-path="basic-fisheries-statistics.html"><a href="basic-fisheries-statistics.html#calculating-percent-mature"><i class="fa fa-check"></i><b>7.3</b> Calculating Percent Mature</a><ul>
-<li class="chapter" data-level="7.3.1" data-path="basic-fisheries-statistics.html"><a href="basic-fisheries-statistics.html#helpful-resources-3"><i class="fa fa-check"></i><b>7.3.1</b> Helpful Resources</a></li>
+<li class="chapter" data-level="6" data-path="packages-1.html"><a href="packages-1.html"><i class="fa fa-check"></i><b>6</b> Packages</a></li>
+<li class="chapter" data-level="7" data-path="loading-fisheries-data.html"><a href="loading-fisheries-data.html"><i class="fa fa-check"></i><b>7</b> Loading Fisheries Data</a></li>
+<li class="chapter" data-level="8" data-path="basic-fisheries-statistics.html"><a href="basic-fisheries-statistics.html"><i class="fa fa-check"></i><b>8</b> Basic Fisheries Statistics</a><ul>
+<li class="chapter" data-level="8.1" data-path="basic-fisheries-statistics.html"><a href="basic-fisheries-statistics.html#calculating-landings"><i class="fa fa-check"></i><b>8.1</b> Calculating Landings</a></li>
+<li class="chapter" data-level="8.2" data-path="basic-fisheries-statistics.html"><a href="basic-fisheries-statistics.html#calculating-catch-per-unit-effort-cpue"><i class="fa fa-check"></i><b>8.2</b> Calculating Catch-per-Unit-Effort (CPUE)</a></li>
+<li class="chapter" data-level="8.3" data-path="basic-fisheries-statistics.html"><a href="basic-fisheries-statistics.html#calculating-percent-mature"><i class="fa fa-check"></i><b>8.3</b> Calculating Percent Mature</a></li>
+<li class="chapter" data-level="8.4" data-path="basic-fisheries-statistics.html"><a href="basic-fisheries-statistics.html#helpful-resources-4"><i class="fa fa-check"></i><b>8.4</b> Helpful Resources</a></li>
 </ul></li>
+<li class="chapter" data-level="9" data-path="plotting-fisheries-data.html"><a href="plotting-fisheries-data.html"><i class="fa fa-check"></i><b>9</b> Plotting Fisheries Data</a><ul>
+<li class="chapter" data-level="9.1" data-path="plotting-fisheries-data.html"><a href="plotting-fisheries-data.html#plotting-landings"><i class="fa fa-check"></i><b>9.1</b> Plotting Landings</a></li>
+<li class="chapter" data-level="9.2" data-path="plotting-fisheries-data.html"><a href="plotting-fisheries-data.html#plotting-cpue"><i class="fa fa-check"></i><b>9.2</b> Plotting CPUE</a></li>
+<li class="chapter" data-level="9.3" data-path="plotting-fisheries-data.html"><a href="plotting-fisheries-data.html#plotting-length-frequency"><i class="fa fa-check"></i><b>9.3</b> Plotting Length Frequency</a></li>
+<li class="chapter" data-level="9.4" data-path="plotting-fisheries-data.html"><a href="plotting-fisheries-data.html#helpful-resources-5"><i class="fa fa-check"></i><b>9.4</b> Helpful Resources</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="plotting-fisheries-data.html"><a href="plotting-fisheries-data.html"><i class="fa fa-check"></i><b>8</b> Plotting Fisheries Data</a><ul>
-<li class="chapter" data-level="8.1" data-path="plotting-fisheries-data.html"><a href="plotting-fisheries-data.html#plotting-landings"><i class="fa fa-check"></i><b>8.1</b> Plotting Landings</a></li>
-<li class="chapter" data-level="8.2" data-path="plotting-fisheries-data.html"><a href="plotting-fisheries-data.html#plotting-cpue"><i class="fa fa-check"></i><b>8.2</b> Plotting CPUE</a></li>
-<li class="chapter" data-level="8.3" data-path="plotting-fisheries-data.html"><a href="plotting-fisheries-data.html#plotting-length-frequency"><i class="fa fa-check"></i><b>8.3</b> Plotting Length Frequency</a><ul>
-<li class="chapter" data-level="8.3.1" data-path="plotting-fisheries-data.html"><a href="plotting-fisheries-data.html#helpful-resources-4"><i class="fa fa-check"></i><b>8.3.1</b> Helpful Resources</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="9" data-path="wrapping-up.html"><a href="wrapping-up.html"><i class="fa fa-check"></i><b>9</b> Wrapping Up</a><ul>
-<li class="chapter" data-level="9.1" data-path="wrapping-up.html"><a href="wrapping-up.html#r-packages-for-fishery-analysis"><i class="fa fa-check"></i><b>9.1</b> R Packages for Fishery Analysis</a></li>
-<li class="chapter" data-level="9.2" data-path="wrapping-up.html"><a href="wrapping-up.html#additional-resources"><i class="fa fa-check"></i><b>9.2</b> Additional Resources</a></li>
+<li class="chapter" data-level="10" data-path="wrapping-up.html"><a href="wrapping-up.html"><i class="fa fa-check"></i><b>10</b> Wrapping Up</a><ul>
+<li class="chapter" data-level="10.1" data-path="wrapping-up.html"><a href="wrapping-up.html#r-packages-for-fishery-analysis"><i class="fa fa-check"></i><b>10.1</b> R Packages for Fishery Analysis</a></li>
+<li class="chapter" data-level="10.2" data-path="wrapping-up.html"><a href="wrapping-up.html#additional-resources"><i class="fa fa-check"></i><b>10.2</b> Additional Resources</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -154,7 +157,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">A Guide to R for Fisheries Managers</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">An introduction to basic fisheries analysis with R</a>
           </h1>
         </div>
 
@@ -163,109 +166,109 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
             <section class="normal" id="section-">
 <div id="plotting-fisheries-data" class="section level1">
-<h1><span class="header-section-number">8</span> Plotting Fisheries Data</h1>
+<h1><span class="header-section-number">9</span> Plotting Fisheries Data</h1>
 <p>This document will now walk you through how to make make some basic fisheries plots using the data frames you created in the previous analysis section and the <code>ggplot</code> plotting function. When using <code>ggplot</code>, first start with your data frame and initialize the ggplot by specifying the plot’s <em>aesthetics</em> (variables) using <code>aes()</code>. Then use the <code>+</code> operation to add at least one <em>geometry</em> (type of plot, such as a scatter plot) and any additional features to the plot. To learn more about <code>ggplot</code>, the <a href="https://www.rstudio.com/wp-content/uploads/2016/11/ggplot2-cheatsheet-2.1.pdf">Data Visualization with ggplot2 Cheat Sheet</a> is a very helpful resource, as is this <a href="http://www.cookbook-r.com/Graphs/">ggplot cookbook</a>.</p>
 <div id="plotting-landings" class="section level2">
-<h2><span class="header-section-number">8.1</span> Plotting Landings</h2>
+<h2><span class="header-section-number">9.1</span> Plotting Landings</h2>
 <p>Let’s plot a time series of annual landings data. We start with the annual landings data we made in the previous step, and then feed this into a ggplot.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Start with the annual_landings data frame you created in the last step
-annual_landings %&gt;%
-<span class="st">  </span>## Initialize a ggplot of annual landings versus year
-<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x=</span>Year,<span class="dt">y=</span>Annual_Landings_kg)) +
-<span class="st">  </span>## Tell ggplot that the plot type should be a scatter plot
-<span class="st">  </span><span class="kw">geom_point</span>() +
-<span class="st">  </span>## Also add a line connecting the points
-<span class="st">  </span><span class="kw">geom_line</span>() +<span class="st"> </span>
-<span class="st">  </span>## Change the y-axis title
-<span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Annual Landings [kg/year]&quot;</span>) +<span class="st"> </span>
-<span class="st">  </span>## Add figure title
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Start with the annual_landings data frame you created in the last step</span>
+annual_landings <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="co"># Initialize a ggplot of annual landings versus year</span>
+<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x=</span>Year,<span class="dt">y=</span>Annual_Landings_kg)) <span class="op">+</span>
+<span class="st">  </span><span class="co"># Tell ggplot that the plot type should be a scatter plot</span>
+<span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span>
+<span class="st">  </span><span class="co"># Also add a line connecting the points</span>
+<span class="st">  </span><span class="kw">geom_line</span>() <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="co"># Change the y-axis title</span>
+<span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Annual Landings [kg/year]&quot;</span>) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="co"># Add figure title</span>
 <span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Annual landings of Caesio cuning&quot;</span>) </code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-25-1.png" width="672" /></p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-29-1.png" width="672" /></p>
 <p>In this example, we are using <code>aes(x=Year, y=Annual_Landings_kg)</code> to specify that the we want to plot years on the x-axis and annual landings on the y-axis. We then want to visualize these variables with both a scatter plot (<code>geom_point()</code>) <em>and</em> a line plot (<code>geom_line()</code>) geometry.</p>
 <p>It appears landings were going down between 2004 and 2011, but have been increasing since then. Again, you may be interested in looking across different gear types. To plot, we use ggplot’s faceting functionality, which tells <code>ggplot</code> to divide up the data by a certain variable, <code>Gear</code> in this case, and make multiple similar plots. You can use the <code>facet_wrap()</code> function to accomplish this.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Start with the landings data frame
-annual_gear_landings %&gt;%<span class="st"> </span>
-<span class="st">  </span>## First, group the data by year
-<span class="st">  </span><span class="kw">group_by</span>(Year,Gear) %&gt;%<span class="st"> </span>
-<span class="st">  </span>## Initialize a ggplot of annual landings versus year
-<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x=</span>Year,<span class="dt">y=</span>Annual_Landings_kg)) +
-<span class="st">  </span>## Tell ggplot that the plot type should be a scatter plot
-<span class="st">  </span><span class="kw">geom_point</span>() +
-<span class="st">  </span>## Also add a line connecting the points
-<span class="st">  </span><span class="kw">geom_line</span>() +<span class="st"> </span>
-<span class="st">  </span>## Change the y-axis title
-<span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Normalized annual Landings [kg/year]&quot;</span>) +<span class="st"> </span>
-<span class="st">  </span>## Add figure title
-<span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Normalized annual landings of Caesio cuning&quot;</span>) +
-<span class="st">  </span>## This tells the figure to plot by all different gear types
-<span class="st">  </span><span class="kw">facet_wrap</span>(~Gear) </code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-26-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Start with the landings data frame</span>
+annual_gear_landings <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="co"># First, group the data by year</span>
+<span class="st">  </span><span class="kw">group_by</span>(Year,Gear) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="co"># Initialize a ggplot of annual landings versus year</span>
+<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x=</span>Year,<span class="dt">y=</span>Annual_Landings_kg)) <span class="op">+</span>
+<span class="st">  </span><span class="co"># Tell ggplot that the plot type should be a scatter plot</span>
+<span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span>
+<span class="st">  </span><span class="co"># Also add a line connecting the points</span>
+<span class="st">  </span><span class="kw">geom_line</span>() <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="co"># Change the y-axis title</span>
+<span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Normalized annual Landings [kg/year]&quot;</span>) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="co"># Add figure title</span>
+<span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Normalized annual landings of Caesio cuning&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="co"># This tells the figure to plot by all different gear types</span>
+<span class="st">  </span><span class="kw">facet_wrap</span>(<span class="op">~</span>Gear) </code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-30-1.png" width="672" /></p>
 <p>It now becomes clear that the recent increase in catch seems to be concentrated in speargun and trap fishing. Meanwhile, catch from muroami, a very destructive type of gear where nets are driven into the reef, has dropped to 0 since a ban of that gear in 2012 - a good sign that management regulation is working.</p>
 </div>
 <div id="plotting-cpue" class="section level2">
-<h2><span class="header-section-number">8.2</span> Plotting CPUE</h2>
+<h2><span class="header-section-number">9.2</span> Plotting CPUE</h2>
 <p>You may also be interested in plotting median catch-per-unit-effort (CPUE). You take your CPUE data frame made in the last step and feed it into ggplot.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Start with the CPUE data frame
-cpue_data %&gt;%<span class="st"> </span>
-<span class="st">  </span>## Initialize a ggplot of median CPUE versus year
-<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x=</span>Year,<span class="dt">y=</span>Median_CPUE_kg_hour)) +
-<span class="st">  </span>## Tell ggplot that the plot type should be a scatter plot
-<span class="st">  </span><span class="kw">geom_point</span>() +
-<span class="st">  </span>## Also add a line connecting the points
-<span class="st">  </span><span class="kw">geom_line</span>() +<span class="st"> </span>
-<span class="st">  </span>## Change the y-axis title
-<span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Median CPUE [kg/hour]&quot;</span>) +<span class="st"> </span>
-<span class="st">  </span>## Add figure title
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Start with the CPUE data frame</span>
+cpue_data <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="co"># Initialize a ggplot of median CPUE versus year</span>
+<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x=</span>Year,<span class="dt">y=</span>Median_CPUE_kg_hour)) <span class="op">+</span>
+<span class="st">  </span><span class="co"># Tell ggplot that the plot type should be a scatter plot</span>
+<span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span>
+<span class="st">  </span><span class="co"># Also add a line connecting the points</span>
+<span class="st">  </span><span class="kw">geom_line</span>() <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="co"># Change the y-axis title</span>
+<span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Median CPUE [kg/hour]&quot;</span>) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="co"># Add figure title</span>
 <span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Median CPUE for Caesio cuning&quot;</span>) </code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-27-1.png" width="672" /></p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-31-1.png" width="672" /></p>
 <p>CPUE appears to have increased significantly during the last years. This may be due to increasing abundance in the water, which would be a good thing, but may also be indicative of increased gear efficiency coinciding with the transition to traps and spearguns, which may be concerning.</p>
 </div>
 <div id="plotting-length-frequency" class="section level2">
-<h2><span class="header-section-number">8.3</span> Plotting Length Frequency</h2>
+<h2><span class="header-section-number">9.3</span> Plotting Length Frequency</h2>
 <p>Finally, let’s first look at the length data from the catch, which gives an indication of the size structure and health of the population. Let’s look at the length data for 2014, which is the most recent year of data available. We first filter the data to be only from 2014 using the <code>filter()</code> function. We then create a histogram of the length data, which shows how many individuals of each size class were measured in the catch. On the histogram, we’ll also add a vertical line to show the length at which fish mature to get a sense of how sustainable the catch is - the catch should be composed mostly of mature fish. This information comes from the life history parameter data input file.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Start with the landings data frame
-landings_data %&gt;%<span class="st"> </span>
-<span class="st">  </span>## Filter data to only look at length measurements from 2014
-<span class="st">  </span><span class="kw">filter</span>(Year ==<span class="st"> </span><span class="dv">2014</span>) %&gt;%<span class="st"> </span>
-<span class="st">  </span>## Initialize ggplot of data using the length column
-<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(Length_cm)) +<span class="st"> </span>
-<span class="st">  </span>## Tell ggplot that the plot type should be a histogram
-<span class="st">  </span><span class="kw">geom_histogram</span>() +<span class="st"> </span>
-<span class="st">  </span>## Change x-axis label
-<span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Length [cm]&quot;</span>) +<span class="st"> </span>
-<span class="st">  </span>## Add figure title
-<span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Length histogram of Caesio cuning in the catch</span><span class="ch">\n</span><span class="st">Length at 95% maturity shown as a red line.&quot;</span>) +<span class="st"> </span>
-<span class="st">  </span>## Add a red vertical line for m95, the length at which 95% of fish are mature. Any fish below this length may be immature. Use the life_history_parameter data frame to get this value.
-<span class="st">  </span><span class="kw">geom_vline</span>(<span class="kw">aes</span>(<span class="dt">xintercept=</span>life_history_parameters$m95),<span class="dt">color=</span><span class="st">&quot;red&quot;</span>) </code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-28-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Start with the landings data frame</span>
+landings_data <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="co"># Filter data to only look at length measurements from 2014</span>
+<span class="st">  </span><span class="kw">filter</span>(Year <span class="op">==</span><span class="st"> </span><span class="dv">2014</span>) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="co"># Initialize ggplot of data using the length column</span>
+<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(Length_cm)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="co"># Tell ggplot that the plot type should be a histogram</span>
+<span class="st">  </span><span class="kw">geom_histogram</span>() <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="co"># Change x-axis label</span>
+<span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Length [cm]&quot;</span>) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="co"># Add figure title</span>
+<span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Length histogram of Caesio cuning in the catch</span><span class="ch">\n</span><span class="st">Length at 95% maturity shown as a red line.&quot;</span>) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="co"># Add a red vertical line for m95, the length at which 95% of fish are mature. Any fish below this length may be immature. Use the life_history_parameter data frame to get this value.</span>
+<span class="st">  </span><span class="kw">geom_vline</span>(<span class="kw">aes</span>(<span class="dt">xintercept=</span>life_history_parameters<span class="op">$</span>m95),<span class="dt">color=</span><span class="st">&quot;red&quot;</span>) </code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-32-1.png" width="672" /></p>
 <p>You might also be interested in seeing how the size composition varies by gear type. You can recreate the figure above, but separate the histograms out by gear type using ggplot’s “facet” function.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Start with the landings data frame
-landings_data %&gt;%<span class="st"> </span>
-<span class="st">  </span>## Filter data to only look at length measurements from 2014
-<span class="st">  </span><span class="kw">filter</span>(Year ==<span class="st"> </span><span class="dv">2014</span>) %&gt;%<span class="st"> </span>
-<span class="st">  </span>## Initialize ggplot of data using the length column
-<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(Length_cm)) +<span class="st"> </span>
-<span class="st">  </span>## Tell ggplot that the plot type should be a histogram
-<span class="st">  </span><span class="kw">geom_histogram</span>() +<span class="st"> </span>
-<span class="st">  </span>## Change x-axis label
-<span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Length [cm]&quot;</span>) +<span class="st"> </span>
-<span class="st">  </span>## Add figure title
-<span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Length histogram of Caesio cuning in the catch by gear type</span><span class="ch">\n</span><span class="st">Length at 95% maturity shown as a red line.&quot;</span>) +<span class="st"> </span>
-<span class="st">  </span>## Add a red line form95, the length at which 95% of fish are mature. Any fish below this length may be immature. Use the life_history_parameter data frame to get this value.
-<span class="st">  </span><span class="kw">geom_vline</span>(<span class="kw">aes</span>(<span class="dt">xintercept=</span>life_history_parameters$m95),<span class="dt">color=</span><span class="st">&quot;red&quot;</span>) +<span class="st"> </span>
-<span class="st">  </span>## This tells the figure to plot by all different gear types, known as facetting
-<span class="st">  </span><span class="kw">facet_wrap</span>(~Gear) </code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-29-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Start with the landings data frame</span>
+landings_data <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="co"># Filter data to only look at length measurements from 2014</span>
+<span class="st">  </span><span class="kw">filter</span>(Year <span class="op">==</span><span class="st"> </span><span class="dv">2014</span>) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="co"># Initialize ggplot of data using the length column</span>
+<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(Length_cm)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="co"># Tell ggplot that the plot type should be a histogram</span>
+<span class="st">  </span><span class="kw">geom_histogram</span>() <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="co"># Change x-axis label</span>
+<span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Length [cm]&quot;</span>) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="co"># Add figure title</span>
+<span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Length histogram of Caesio cuning in the catch by gear type</span><span class="ch">\n</span><span class="st">Length at 95% maturity shown as a red line.&quot;</span>) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="co"># Add a red line form95, the length at which 95% of fish are mature. Any fish below this length may be immature. Use the life_history_parameter data frame to get this value.</span>
+<span class="st">  </span><span class="kw">geom_vline</span>(<span class="kw">aes</span>(<span class="dt">xintercept=</span>life_history_parameters<span class="op">$</span>m95),<span class="dt">color=</span><span class="st">&quot;red&quot;</span>) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="co"># This tells the figure to plot by all different gear types, known as facetting</span>
+<span class="st">  </span><span class="kw">facet_wrap</span>(<span class="op">~</span>Gear) </code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-33-1.png" width="672" /></p>
 <p>It appears as if the size structure is about the same from each gear, although by far the most amount of fish are caught using speargun. Very few fish are caught using trolling.</p>
 <p>These plots indicate a generally increasing catch, CPUE, and a healthy size structure. Our results demonstrate that the population is likely doing fairly well, and may be recovering since the 2012 ban of muroami fishing gear.</p>
-<div id="helpful-resources-4" class="section level3">
-<h3><span class="header-section-number">8.3.1</span> Helpful Resources</h3>
+</div>
+<div id="helpful-resources-5" class="section level2">
+<h2><span class="header-section-number">9.4</span> Helpful Resources</h2>
 <ul>
 <li><a href="https://www.rstudio.com/wp-content/uploads/2016/11/ggplot2-cheatsheet-2.1.pdf">Data Visualization with ggplot2 Cheat Sheet</a></li>
 <li><a href="http://www.cookbook-r.com/Graphs/">ggplot cookbook</a></li>
 </ul>
 
-</div>
 </div>
 </div>
             </section>
@@ -274,9 +277,8 @@ landings_data %&gt;%<span class="st"> </span>
         </div>
       </div>
 <a href="basic-fisheries-statistics.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="wrapping-up.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
-    </div>
-  </div>
+<a href="wrapping-up.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
+
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
@@ -303,10 +305,10 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/rstudio/bookdown-demo/edit/master/07-plotting_fisheries_data.Rmd",
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/08-plotting_fisheries_data.Rmd",
 "text": "Edit"
 },
-"download": null,
+"download": ["bookdown-demo.pdf"],
 "toc": {
 "collapse": "subsection"
 }

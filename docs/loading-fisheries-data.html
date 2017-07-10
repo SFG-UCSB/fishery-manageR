@@ -5,21 +5,22 @@
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>A Guide to R for Fisheries Managers</title>
-  <meta name="description" content="This is a guidebook for using R for fishery management">
-  <meta name="generator" content="bookdown 0.4 and GitBook 2.6.7">
+  <title>An introduction to basic fisheries analysis with R</title>
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+  <meta name="description" content="This is an introduction to using R for basic fisheries analysis">
+  <meta name="generator" content="bookdown 0.3 and GitBook 2.6.7">
 
-  <meta property="og:title" content="A Guide to R for Fisheries Managers" />
+  <meta property="og:title" content="An introduction to basic fisheries analysis with R" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://sfg-ucsb.github.io/fishery-manageR/" />
   
-  <meta property="og:description" content="This is a guidebook for using R for fishery management" />
+  <meta property="og:description" content="This is an introduction to using R for basic fisheries analysis" />
   <meta name="github-repo" content="sfg-ucsb/fishery-manageR" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="A Guide to R for Fisheries Managers" />
+  <meta name="twitter:title" content="An introduction to basic fisheries analysis with R" />
   
-  <meta name="twitter:description" content="This is a guidebook for using R for fishery management" />
+  <meta name="twitter:description" content="This is an introduction to using R for basic fisheries analysis" />
   
 
 
@@ -32,6 +33,7 @@
   <link rel="shortcut icon" href="images/SFG_BW.png" type="image/x-icon">
 <link rel="prev" href="packages-1.html">
 <link rel="next" href="basic-fisheries-statistics.html">
+
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -91,7 +93,6 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <body>
 
 
-
   <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
 
     <div class="book-summary">
@@ -104,43 +105,45 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Objective</a></li>
 <li class="chapter" data-level="2" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>2</b> Installation</a><ul>
 <li class="chapter" data-level="2.1" data-path="installation.html"><a href="installation.html#r"><i class="fa fa-check"></i><b>2.1</b> R</a></li>
-<li class="chapter" data-level="2.2" data-path="installation.html"><a href="installation.html#rstudio"><i class="fa fa-check"></i><b>2.2</b> RStudio</a><ul>
-<li class="chapter" data-level="2.2.1" data-path="installation.html"><a href="installation.html#helpful-resources"><i class="fa fa-check"></i><b>2.2.1</b> Helpful Resources</a></li>
-</ul></li>
+<li class="chapter" data-level="2.2" data-path="installation.html"><a href="installation.html#rstudio"><i class="fa fa-check"></i><b>2.2</b> RStudio</a></li>
+<li class="chapter" data-level="2.3" data-path="installation.html"><a href="installation.html#helpful-resources"><i class="fa fa-check"></i><b>2.3</b> Helpful Resources</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="getting-started-with-rstudio.html"><a href="getting-started-with-rstudio.html"><i class="fa fa-check"></i><b>3</b> Getting Started with RStudio</a><ul>
 <li class="chapter" data-level="3.1" data-path="getting-started-with-rstudio.html"><a href="getting-started-with-rstudio.html#rstudio-interface"><i class="fa fa-check"></i><b>3.1</b> RStudio Interface</a></li>
 <li class="chapter" data-level="3.2" data-path="getting-started-with-rstudio.html"><a href="getting-started-with-rstudio.html#work-dir"><i class="fa fa-check"></i><b>3.2</b> Working Directory</a><ul>
 <li class="chapter" data-level="3.2.1" data-path="getting-started-with-rstudio.html"><a href="getting-started-with-rstudio.html#pathnames-path"><i class="fa fa-check"></i><b>3.2.1</b> Pathnames (Path)</a></li>
 </ul></li>
-<li class="chapter" data-level="3.3" data-path="getting-started-with-rstudio.html"><a href="getting-started-with-rstudio.html#packages"><i class="fa fa-check"></i><b>3.3</b> Packages</a><ul>
-<li class="chapter" data-level="3.3.1" data-path="getting-started-with-rstudio.html"><a href="getting-started-with-rstudio.html#helpful-resources-1"><i class="fa fa-check"></i><b>3.3.1</b> Helpful Resources</a></li>
-</ul></li>
+<li class="chapter" data-level="3.3" data-path="getting-started-with-rstudio.html"><a href="getting-started-with-rstudio.html#packages"><i class="fa fa-check"></i><b>3.3</b> Packages</a></li>
+<li class="chapter" data-level="3.4" data-path="getting-started-with-rstudio.html"><a href="getting-started-with-rstudio.html#helpful-resources-1"><i class="fa fa-check"></i><b>3.4</b> Helpful Resources</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="data-entry-management.html"><a href="data-entry-management.html"><i class="fa fa-check"></i><b>4</b> Data Entry &amp; Management</a><ul>
-<li class="chapter" data-level="4.1" data-path="data-entry-management.html"><a href="data-entry-management.html#best-practices"><i class="fa fa-check"></i><b>4.1</b> Best Practices</a><ul>
-<li class="chapter" data-level="4.1.1" data-path="data-entry-management.html"><a href="data-entry-management.html#helpful-resources-2"><i class="fa fa-check"></i><b>4.1.1</b> Helpful Resources</a></li>
+<li class="chapter" data-level="4.1" data-path="data-entry-management.html"><a href="data-entry-management.html#best-practices"><i class="fa fa-check"></i><b>4.1</b> Best Practices</a></li>
+<li class="chapter" data-level="4.2" data-path="data-entry-management.html"><a href="data-entry-management.html#helpful-resources-2"><i class="fa fa-check"></i><b>4.2</b> Helpful Resources</a></li>
 </ul></li>
+<li class="chapter" data-level="5" data-path="r-as-a-programming-language.html"><a href="r-as-a-programming-language.html"><i class="fa fa-check"></i><b>5</b> R as a Programming Language</a><ul>
+<li class="chapter" data-level="5.1" data-path="r-as-a-programming-language.html"><a href="r-as-a-programming-language.html#data-frames"><i class="fa fa-check"></i><b>5.1</b> Data frames</a></li>
+<li class="chapter" data-level="5.2" data-path="r-as-a-programming-language.html"><a href="r-as-a-programming-language.html#vectors"><i class="fa fa-check"></i><b>5.2</b> Vectors</a></li>
+<li class="chapter" data-level="5.3" data-path="r-as-a-programming-language.html"><a href="r-as-a-programming-language.html#functions"><i class="fa fa-check"></i><b>5.3</b> Functions</a></li>
+<li class="chapter" data-level="5.4" data-path="r-as-a-programming-language.html"><a href="r-as-a-programming-language.html#tips-on-coding-and-style"><i class="fa fa-check"></i><b>5.4</b> Tips on coding and style</a></li>
+<li class="chapter" data-level="5.5" data-path="r-as-a-programming-language.html"><a href="r-as-a-programming-language.html#helpful-resources-3"><i class="fa fa-check"></i><b>5.5</b> Helpful resources</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="packages-1.html"><a href="packages-1.html"><i class="fa fa-check"></i><b>5</b> Packages</a></li>
-<li class="chapter" data-level="6" data-path="loading-fisheries-data.html"><a href="loading-fisheries-data.html"><i class="fa fa-check"></i><b>6</b> Loading Fisheries Data</a></li>
-<li class="chapter" data-level="7" data-path="basic-fisheries-statistics.html"><a href="basic-fisheries-statistics.html"><i class="fa fa-check"></i><b>7</b> Basic Fisheries Statistics</a><ul>
-<li class="chapter" data-level="7.1" data-path="basic-fisheries-statistics.html"><a href="basic-fisheries-statistics.html#calculating-landings"><i class="fa fa-check"></i><b>7.1</b> Calculating Landings</a></li>
-<li class="chapter" data-level="7.2" data-path="basic-fisheries-statistics.html"><a href="basic-fisheries-statistics.html#calculating-catch-per-unit-effort-cpue"><i class="fa fa-check"></i><b>7.2</b> Calculating Catch-per-Unit-Effort (CPUE)</a></li>
-<li class="chapter" data-level="7.3" data-path="basic-fisheries-statistics.html"><a href="basic-fisheries-statistics.html#calculating-percent-mature"><i class="fa fa-check"></i><b>7.3</b> Calculating Percent Mature</a><ul>
-<li class="chapter" data-level="7.3.1" data-path="basic-fisheries-statistics.html"><a href="basic-fisheries-statistics.html#helpful-resources-3"><i class="fa fa-check"></i><b>7.3.1</b> Helpful Resources</a></li>
+<li class="chapter" data-level="6" data-path="packages-1.html"><a href="packages-1.html"><i class="fa fa-check"></i><b>6</b> Packages</a></li>
+<li class="chapter" data-level="7" data-path="loading-fisheries-data.html"><a href="loading-fisheries-data.html"><i class="fa fa-check"></i><b>7</b> Loading Fisheries Data</a></li>
+<li class="chapter" data-level="8" data-path="basic-fisheries-statistics.html"><a href="basic-fisheries-statistics.html"><i class="fa fa-check"></i><b>8</b> Basic Fisheries Statistics</a><ul>
+<li class="chapter" data-level="8.1" data-path="basic-fisheries-statistics.html"><a href="basic-fisheries-statistics.html#calculating-landings"><i class="fa fa-check"></i><b>8.1</b> Calculating Landings</a></li>
+<li class="chapter" data-level="8.2" data-path="basic-fisheries-statistics.html"><a href="basic-fisheries-statistics.html#calculating-catch-per-unit-effort-cpue"><i class="fa fa-check"></i><b>8.2</b> Calculating Catch-per-Unit-Effort (CPUE)</a></li>
+<li class="chapter" data-level="8.3" data-path="basic-fisheries-statistics.html"><a href="basic-fisheries-statistics.html#calculating-percent-mature"><i class="fa fa-check"></i><b>8.3</b> Calculating Percent Mature</a></li>
+<li class="chapter" data-level="8.4" data-path="basic-fisheries-statistics.html"><a href="basic-fisheries-statistics.html#helpful-resources-4"><i class="fa fa-check"></i><b>8.4</b> Helpful Resources</a></li>
 </ul></li>
+<li class="chapter" data-level="9" data-path="plotting-fisheries-data.html"><a href="plotting-fisheries-data.html"><i class="fa fa-check"></i><b>9</b> Plotting Fisheries Data</a><ul>
+<li class="chapter" data-level="9.1" data-path="plotting-fisheries-data.html"><a href="plotting-fisheries-data.html#plotting-landings"><i class="fa fa-check"></i><b>9.1</b> Plotting Landings</a></li>
+<li class="chapter" data-level="9.2" data-path="plotting-fisheries-data.html"><a href="plotting-fisheries-data.html#plotting-cpue"><i class="fa fa-check"></i><b>9.2</b> Plotting CPUE</a></li>
+<li class="chapter" data-level="9.3" data-path="plotting-fisheries-data.html"><a href="plotting-fisheries-data.html#plotting-length-frequency"><i class="fa fa-check"></i><b>9.3</b> Plotting Length Frequency</a></li>
+<li class="chapter" data-level="9.4" data-path="plotting-fisheries-data.html"><a href="plotting-fisheries-data.html#helpful-resources-5"><i class="fa fa-check"></i><b>9.4</b> Helpful Resources</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="plotting-fisheries-data.html"><a href="plotting-fisheries-data.html"><i class="fa fa-check"></i><b>8</b> Plotting Fisheries Data</a><ul>
-<li class="chapter" data-level="8.1" data-path="plotting-fisheries-data.html"><a href="plotting-fisheries-data.html#plotting-landings"><i class="fa fa-check"></i><b>8.1</b> Plotting Landings</a></li>
-<li class="chapter" data-level="8.2" data-path="plotting-fisheries-data.html"><a href="plotting-fisheries-data.html#plotting-cpue"><i class="fa fa-check"></i><b>8.2</b> Plotting CPUE</a></li>
-<li class="chapter" data-level="8.3" data-path="plotting-fisheries-data.html"><a href="plotting-fisheries-data.html#plotting-length-frequency"><i class="fa fa-check"></i><b>8.3</b> Plotting Length Frequency</a><ul>
-<li class="chapter" data-level="8.3.1" data-path="plotting-fisheries-data.html"><a href="plotting-fisheries-data.html#helpful-resources-4"><i class="fa fa-check"></i><b>8.3.1</b> Helpful Resources</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="9" data-path="wrapping-up.html"><a href="wrapping-up.html"><i class="fa fa-check"></i><b>9</b> Wrapping Up</a><ul>
-<li class="chapter" data-level="9.1" data-path="wrapping-up.html"><a href="wrapping-up.html#r-packages-for-fishery-analysis"><i class="fa fa-check"></i><b>9.1</b> R Packages for Fishery Analysis</a></li>
-<li class="chapter" data-level="9.2" data-path="wrapping-up.html"><a href="wrapping-up.html#additional-resources"><i class="fa fa-check"></i><b>9.2</b> Additional Resources</a></li>
+<li class="chapter" data-level="10" data-path="wrapping-up.html"><a href="wrapping-up.html"><i class="fa fa-check"></i><b>10</b> Wrapping Up</a><ul>
+<li class="chapter" data-level="10.1" data-path="wrapping-up.html"><a href="wrapping-up.html#r-packages-for-fishery-analysis"><i class="fa fa-check"></i><b>10.1</b> R Packages for Fishery Analysis</a></li>
+<li class="chapter" data-level="10.2" data-path="wrapping-up.html"><a href="wrapping-up.html#additional-resources"><i class="fa fa-check"></i><b>10.2</b> Additional Resources</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -154,7 +157,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">A Guide to R for Fisheries Managers</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">An introduction to basic fisheries analysis with R</a>
           </h1>
         </div>
 
@@ -163,7 +166,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
             <section class="normal" id="section-">
 <div id="loading-fisheries-data" class="section level1">
-<h1><span class="header-section-number">6</span> Loading Fisheries Data</h1>
+<h1><span class="header-section-number">7</span> Loading Fisheries Data</h1>
 <p>Next, you’ll load the data you’ll be using for the analysis using the <code>read_csv</code> function. First, create a new folder in your <a href="getting-started-with-rstudio.html#work-dir">working directory</a> called “_data“. Next, download the following two files onto your computer. Right click on each link, and save it in your”_data&quot; folder.</p>
 <p><a href="https://raw.githubusercontent.com/SFG-UCSB/fishery-manageR/master/_data/sample_landings_data.csv">Right click and save-link-as to download landings data</a></p>
 <p><a href="https://raw.githubusercontent.com/SFG-UCSB/fishery-manageR/master/_data/life_history_parameters.csv">Right click and save-link-as to download life history data</a></p>
@@ -173,7 +176,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 life_history_parameters &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;_data/life_history_parameters.csv&quot;</span>)</code></pre></div>
 <p>Let’s take a quick look at what’s in each of these data frames. We can use the <code>head</code> function to get a quick summary.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(landings_data)</code></pre></div>
-<pre><code>## # A tibble: 6 x 8
+<pre><code>## # A tibble: 6 × 8
 ##    Year    Date Trip_ID Effort_Hours  Gear       Species Length_cm
 ##   &lt;int&gt;   &lt;chr&gt;   &lt;int&gt;        &lt;int&gt; &lt;chr&gt;         &lt;chr&gt;     &lt;dbl&gt;
 ## 1  2003 4/30/03       1           10  Trap Caesio cuning        36
@@ -185,15 +188,15 @@ life_history_parameters &lt;-<span class="st"> </span><span class="kw">read_csv<
 ## # ... with 1 more variables: Weight_g &lt;dbl&gt;</code></pre>
 <p>The <code>landings_data</code> data frame is from a fishery-dependent landing site survey. The species included in this data set is <em>Caesio cuning</em>, a yellowtail fusilier. You can see the data frame has eight columns, with each row being an individual fish catch measurement. The columns include the year and date when the measurement was collected, the fishing trip ID, how many hours were fished for each trip, what gear was used, the species, the length of the fish, and the weight of the fish. We’ll be able to use these data to create length-frequency histograms that describe the size structure of the population, as well as trends in catch and CPUE.</p>
 <p>One thing we should do is format the year and date columns to ensure that R knows these represent years and dates as we humans think of them. We can use the <code>mdy</code> and <code>year</code> functions from the lubridate package to do this.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Start with the landings data frame
-landings_data &lt;-<span class="st"> </span>landings_data %&gt;%<span class="st"> </span>
-<span class="st">  </span>## Turn the date column into a date format that R recognizes
-<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Date =</span> <span class="kw">mdy</span>(Date)) %&gt;%<span class="st"> </span>
-<span class="st">  </span>## Create a year column using a year format R recognizes
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Start with the landings data frame</span>
+landings_data &lt;-<span class="st"> </span>landings_data <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="co"># Turn the date column into a date format that R recognizes</span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Date =</span> <span class="kw">mdy</span>(Date)) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="co"># Create a year column using a year format R recognizes</span>
 <span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Year =</span> <span class="kw">year</span>(Date))</code></pre></div>
 <p>Let’s next look at the <code>life_history_parameters</code> data frame.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(life_history_parameters)</code></pre></div>
-<pre><code>## # A tibble: 1 x 11
+<pre><code>## # A tibble: 1 × 11
 ##         Species              Common L_inf     k    t0         M     Wa
 ##           &lt;chr&gt;               &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;  &lt;dbl&gt;
 ## 1 Caesio cuning Yellowtail fusilier  62.2  0.32 -0.42 0.8915981 0.0208
@@ -207,9 +210,8 @@ landings_data &lt;-<span class="st"> </span>landings_data %&gt;%<span class="st"
         </div>
       </div>
 <a href="packages-1.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="basic-fisheries-statistics.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
-    </div>
-  </div>
+<a href="basic-fisheries-statistics.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
+
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
@@ -236,10 +238,10 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/rstudio/bookdown-demo/edit/master/05-loading_fisheries_data.Rmd",
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/06-loading_fisheries_data.Rmd",
 "text": "Edit"
 },
-"download": null,
+"download": ["bookdown-demo.pdf"],
 "toc": {
 "collapse": "subsection"
 }
