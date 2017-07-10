@@ -45,6 +45,6 @@ When reporting full dates, use standardized formats since date representations v
 7. **Always store an uncorrected original version of the data file and BACK UP YOUR DATA!!!**  
 When you make changes or corrections to the original data file you could easily make a mistake. To avoid compromising your original raw data, always store an unadjusted copy of the data file and **do not make any changes or adjustments to this copy** (make it “read-only” if possible). Make a duplicate file if corrections or adjustments are required and be sure to describe what changes were made in the metadata file. Lastly, **ALWAYS BACK UP YOUR DATA** by keeping at least **three** copies of the file in different locations (e.g., desktop, external hard drive, the cloud).
 
-### Helpful Resources
+## Helpful Resources
 + https://www.nceas.ucsb.edu/files/news/ESAdatamng09.pdf
 + http://ucsd.libguides.com/c.php?g=90957&p=585435

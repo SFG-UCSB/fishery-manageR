@@ -116,6 +116,6 @@ It appears as if the size structure is about the same from each gear, although b
 
 These plots indicate a generally increasing catch, CPUE, and a healthy size structure. Our results demonstrate that the population is likely doing fairly well, and  may be recovering since the 2012 ban of muroami fishing gear.
 
-### Helpful Resources
+## Helpful Resources
 + [Data Visualization with ggplot2 Cheat Sheet](https://www.rstudio.com/wp-content/uploads/2016/11/ggplot2-cheatsheet-2.1.pdf)
 + [ggplot cookbook](http://www.cookbook-r.com/Graphs/)

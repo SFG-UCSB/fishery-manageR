@@ -80,5 +80,5 @@ landings_data %>%
 
 Over 90% of the fish are mature throughout the time series, which is a great sign!
 
-### Helpful Resources
+## Helpful Resources
 + [Data Wrangling with dplyr and tidyr Cheat Sheet](https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf) is a very helpful resource for learning how to "wrangle" (manipulate) data in R
