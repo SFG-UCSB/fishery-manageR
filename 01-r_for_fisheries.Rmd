@@ -25,7 +25,7 @@ include_graphics('images/rstudio_installers.png')
 ```
 
 
-Save the `.dmg` file on your desktop. Once it finishes downloading, open the file and follow the instructions to complete the installation process. You may then delete the `.dmg` file.
+Save the file on your desktop. Once it finishes downloading, open the file and follow the instructions to complete the installation process. You may then delete the file.
 
 Congratulations! You successfully completed the installation process and are one step closer to using R and RStudio for analysis!
 
