@@ -42,9 +42,10 @@ The following packages are commonly used by UCSB for fisheries analyses:
 
 + **tidyverse** -  Contains numerous seperate packages for loading and writing data files (**readr**), data processing (**dplyr** & **tidyr**), plotting (**ggplot2**), and functional programming (**purrr**)
 + **readxl** - Reads and writes data from/to Excel workbooks, including workbooks with multiple worksheets
++ **lubridate** - Helps R handle dates in an efficient and easy-to-understand manner
 + **sf**, **rgeos**, **rgdal** - Key packages for spatial analyses similar to those done with ArcGIS
 + **rmarkdown** - Uses R code to author reproducible reports, presentations, and websites
 + **shiny** - Creates web applications using R
 
-### Helpful Resources
+## Helpful Resources
 + [Jenny Bryan's Guide to Installing R and RStudio](http://stat545.com/block000_r-rstudio-install.html)
