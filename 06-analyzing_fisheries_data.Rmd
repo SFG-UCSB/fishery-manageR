@@ -10,13 +10,13 @@ One of the first analyses you may be interested in is calculating annual landing
 To calculate annual landings, take your `landings_data` data frame, add a column for weight of individual fish in kilograms by using the `mutate` function, group the data by year by using the `group_by` function, and then summarize the data for each year by summing the total weight of all fish caught in each year using the `summarize` and `sum` functions.
 
 ```{r}
-## Start with the landings data frame
+# Start with the landings data frame
 annual_landings <- landings_data %>% 
-  ## Add colomn for kilograms by dividing gram column by 1000
+  # Add colomn for kilograms by dividing gram column by 1000
   mutate(Weight_kg = Weight_g / 1000) %>%
-  ## Group the data by year
+  # Group the data by year
   group_by(Year) %>% 
-  ## Next, summarize the total annual landings per year
+  # Next, summarize the total annual landings per year
   summarize(Annual_Landings_kg = sum(Weight_kg,na.rm=TRUE))
 
 ## Display a table of the annual landings data
@@ -28,11 +28,11 @@ Note the use of `na.rm = TRUE` in the code above. This is an important **argumen
 You may be interested in looking at landings across different gear types. Here, we now group the data frame by both the year and the gear type in order to summarize the total landings by year and by gear.
 
 ```{r}
-## Start with the landings data frame
+# Start with the landings data frame
 annual_gear_landings <- landings_data %>% 
-  ## Add colomn for kilograms by dividing gram column by 1000
+  # Add colomn for kilograms by dividing gram column by 1000
   mutate(Weight_kg = Weight_g / 1000) %>%
-  ## Group the data by year and gear type
+  # Group the data by year and gear type
   group_by(Year,Gear) %>% 
   # Next, summarize the total annual landings per year and gear type
   summarize(Annual_Landings_kg = sum(Weight_kg,na.rm=TRUE))
@@ -46,20 +46,20 @@ You may also be interested in calculating catch-per-unit-effort (CPUE). CPUE is 
 
 
 ```{r}
-## Start with the landings data frame
+# Start with the landings data frame
 cpue_data <- landings_data %>% 
-  ## Add colomn for kilograms by dividing gram column by 1000
+  # Add colomn for kilograms by dividing gram column by 1000
   mutate(Weight_kg = Weight_g / 1000) %>%
-  ## Group by year and Trip ID so that you can calculate CPUE for every trip in every year
+  # Group by year and Trip ID so that you can calculate CPUE for every trip in every year
   group_by(Year,Trip_ID) %>% 
-  ## For each year and trip ID, calculate the CPUE for each trip by dividing the sum of the catch, converted from grams to kilograms, by the trip by the number of fishing hours
+  # For each year and trip ID, calculate the CPUE for each trip by dividing the sum of the catch, converted from grams to kilograms, by the trip by the number of fishing hours
   summarize(Trip_CPUE = sum(Weight_kg) / mean(Effort_Hours)) %>% 
-  ## Next, just group by year so we can calculate median CPUE for each year across all trips in the year
+  # Next, just group by year so we can calculate median CPUE for each year across all trips in the year
   group_by(Year) %>% 
-  ## Calculate median CPUE for each year
+  # Calculate median CPUE for each year
   summarize(Median_CPUE_kg_hour = median(Trip_CPUE))
 
-## Display a table of the CPUE data
+# Display a table of the CPUE data
 cpue_data
 ```
 
@@ -68,13 +68,13 @@ cpue_data
 You may also wish to analyze your length data. One analysis would be to determine the percentage of mature fish in the catch in every year of the data frame. To do this, we add a column to the data frame using the `mutate` function that represents whether each fish is mature or not (represented by a `TRUE` or `FALSE`), group the data frame by year, and then summarize for each year the percentage of mature fish out of the total number of sampled fish. To determine if a fish is mature or not, it is compared against *m95*, the length at which 95% of fish are mature. The value for `m95` is taken from the `life_history_parameters` data frame and is referenced using a `$` and the code `life_history_parameters$m95`.
 
 ```{r}
-## Start with the landings data frame
+# Start with the landings data frame
 landings_data %>% 
-  ## Add a column to the data that indicates whether each length measurement is from a mature or immature fish. If it's mature, this value should be TRUE; if immature, FALSE.
+  # Add a column to the data that indicates whether each length measurement is from a mature or immature fish. If it's mature, this value should be TRUE; if immature, FALSE.
   mutate(Mature = Length_cm > life_history_parameters$m95) %>% 
-  ## Group by year so we can see the percent mature for every year
+  # Group by year so we can see the percent mature for every year
   group_by(Year) %>% 
-  ## The percentage mature is equal to the  number of mature fish divided by the total number of fish and multiplied by 100
+  # The percentage mature is equal to the  number of mature fish divided by the total number of fish and multiplied by 100
   summarize(Percent_Mature = sum(Mature) / n() * 100) 
 ```
 

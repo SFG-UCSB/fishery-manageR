@@ -29,11 +29,11 @@ The `landings_data` data frame is from a fishery-dependent landing site survey. 
 One thing we should do is format the year and date columns to ensure that R knows these represent years and dates as we humans think of them. We can use the `mdy` and `year` functions from the lubridate package to do this.
 
 ```{r}
-## Start with the landings data frame
+# Start with the landings data frame
 landings_data <- landings_data %>% 
-  ## Turn the date column into a date format that R recognizes
+  # Turn the date column into a date format that R recognizes
   mutate(Date = mdy(Date)) %>% 
-  ## Create a year column using a year format R recognizes
+  # Create a year column using a year format R recognizes
   mutate(Year = year(Date))
 ```
 
