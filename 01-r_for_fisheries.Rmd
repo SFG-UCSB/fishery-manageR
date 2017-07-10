@@ -4,7 +4,7 @@ Though R/RStudio may seem intimidating, it is actually quite straight forward to
 R and RStudio are **separate** programs and that need to be installed and updated individually. If you do not keep both relatively up-to-date you will likely run into problems. 
 
 ## R
-To install R, go to the [R webpage](https://cran.r-project.org/) and follow the link to your operating system of choice (Linux, Max OS X, Windows). Then, click on the most recent `.pkg` file and follow the instructions to complete the installation process. 
+To install R, go to the [R webpage](https://cran.r-project.org/) and follow the link to your operating system of choice (Linux, Max OS X, Windows). Then, click on the most recent `.pkg` file to download it. Follow the instructions to complete the installation process. 
 
 ```{r, echo = F, warning=F}
 library(knitr)
