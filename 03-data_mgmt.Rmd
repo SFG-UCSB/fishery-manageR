@@ -48,6 +48,9 @@ When you make changes or corrections to the original data file you could easily 
 8. **Be consistent with blank cells by using NA**
 It is common for cells to be blank in a spreadsheet. However, there are many different ways to signify a blank cell, some of which are more difficult to work with. We recommend always using `NA` in any blank cell, rather than simply leaving the cell blank, putting in spaces, or other options like `NaN` or `-999`. This will allow R to quickly identify and deal with empty cells.
 
+9. **For storing data, always use CSV files instead of XLS or XLSX files**
+There are also several different file formats for storing spreadsheet data. XLS and XLSX are two very commonly used formats, and are the standard Microsoft Excel spreadsheet format (XLSX is the newest version). However, many programming languages have difficulty ingesting Microsoft Excel files. These files also require people using them to have a copy of Microsoft Excel, which not everyone has and can be expensive. We therefore recommend using the CSV file format for storing data. CSV stands for "Comma-Separated Values" and describes how data are stored in the file. If you have a Microsoft Excel file, you can save it as a CSV by clicking `File -> Save As` and selecting the CSV option. CSVs can be read directly into R, and used and manipulated by anyone with a computer.
+
 ## Helpful Resources
 + https://www.nceas.ucsb.edu/files/news/ESAdatamng09.pdf
 + http://ucsd.libguides.com/c.php?g=90957&p=585435
