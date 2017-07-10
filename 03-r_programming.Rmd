@@ -1,0 +1,60 @@
+# R as a Programming Language
+
+You may or may not have used other programming languages before coming to R. Either way, R has several distinctive features which are worth noting.
+
+## Data frames
+
+One of R's greatest strengths is in manipulating data. One of the primary structures for storing data in R is called a Data Frame. Much of your work in R will be working with and manipulating data frames. Data frames are made up of rows and columns. The top row is a header and describes the contents of each column. Each row represents an individual data row or observation. Rows can also have names. Each row contains multiple cells which contain the content of the data.
+
+Let's look at a data frame that is included in R as an example. This data frame is called `mtcars` and contains some data about common car models. We can look at this data frame using the `head` function, which previews the first few rows. You can also use the functions `colnames` or `rownames` to get the column or row names of a data frame, respecitvely.
+
+```{r}
+head(mtcars)
+```
+The columns in data frames can contain different types of information. In this particular data frame, all columns contain numbers, as denoted by the indication `<dbl>`, a type of number that allows numbers after the decimal point. Columns could also be integers (which don't allow numbers after the decimal point), booleans or logicals (`TRUE` or `FALSE`), characters (these contain text), or other types of data.
+
+These days, you may also see the word `tibble`, which is a modern version of the R data frame and is being used more and more widely. Tibbles generally function much like data frames, but do away with some frustrating features.
+
+## Vectors
+Another very common data type is the vector, which stores 1-dimensional information, such as a list of numbers or characters. Vectors are built using the `c` function. Below are two examples:
+```{r}
+myNumericVector <- c(1, 2, 3, 4)
+
+myCharacterVector <- c("A", "B", "C", "D")
+```
+
+## Functions
+R is a "functional" programming language, which means it gets much of its power by relying on the concept of functions. Functions are small chunks of code that can do a certain task. They require a certain number of inputs, and provide a certain number of outputs. They allow for common tasks to be performed easily and reproducibly.
+
+R contains many built-in functions, including several for helpful statistics, as shown below. In these examples, there are also some helpful comments to tell you what each line is doing in the code blocks below. Comments start with the `#` operation, and are not evaluated by R - they are simply there to document the code. 
+```{r}
+# The sum function takes a vector of numbers as an input, calculates the sum of those numbers, and produces a single number as an output
+sum(c(1, 2, 3))
+
+# The mean function takes a vector of numbers as an input, calculates the mean of those numbers, and produces a single number as an
+mean(c(1 ,2, 3))
+
+# The median function takes a vector of numbers as an input, calculates the median of those numbers, and produces a single number as an
+median(c(1 ,2, 3))
+```
+
+You can even define your own functions, which can be an incredibly powerful way to save time when doing a task you anticipate needing to do many times. The example below shows how you would write a function that takes in two numbers as an input, manipulates the numbers, and then provides a single number as an output. Once you have defined a function, you can use it again later on.
+
+```{r}
+# Define the function
+myFunction <- function(x,y){
+  z <- (x + 2 * y) / x
+  return(z)
+}
+# Test the function
+myFunction(3,4)
+```
+
+## Tips on coding and style
+It is helpful to code in a consistent manner. This will not only make your code readble by others, but will even be helpful for you as you revisit code you have previously written. Using consistent code stying also makes it much easier to collaborate with others. We highly recommend following [Google's style guidelines for R](https://google.github.io/styleguide/Rguide.xml).
+
+## Helpful resources
++[More information on data frames](http://www.r-tutor.com/r-introduction/data-frame)
++[More information on tibbles, the modern version of data frames](https://cran.r-project.org/web/packages/tibble/vignettes/tibble.html)
++[Functions](http://adv-r.had.co.nz/Functional-programming.html)
++[Google's style guidelines](https://google.github.io/styleguide/Rguide.xml)
