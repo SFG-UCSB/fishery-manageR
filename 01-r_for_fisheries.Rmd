@@ -4,15 +4,7 @@ Though R/RStudio may seem intimidating, it is actually quite straight forward to
 R and RStudio are **separate** programs and that need to be installed and updated individually. If you do not keep both relatively up-to-date you will likely run into problems. 
 
 ## R
-To install R, go to the [list of CRAN mirrors](https://cran.r-project.org/mirrors.html) (universities and other organizations where you can download R from) and click on a link for a location near you. A few options are listed below.
-
-+ [Indonesia](https://repo.bppt.go.id/cran/)
-+ [Philippines](https://cran.stat.upd.edu.ph)
-+ [Brazil](https://cran.fiocruz.br)
-+ [US (West Coast)](https://cran.cnr.berkeley.edu)
-+ [US (East Coast)](http://lib.stat.cmu.edu/R/CRAN/)
-
-After navigating to the CRAN mirror site, click the download button for your operating system of choice (Linux, Max OS X, Windows) and then click on the most recent `.pkg` file and follow the instructions to complete the installation process. 
+To install R, go to the [R webpage](https://cran.r-project.org/) and follow the link to your operating system of choice (Linux, Max OS X, Windows). Then, click on the most recent `.pkg` file and follow the instructions to complete the installation process. 
 
 ```{r, echo = F, warning=F}
 library(knitr)
