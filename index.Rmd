@@ -22,7 +22,7 @@ library(knitr)
 ```
 
 # Objective
-> The purpose of this guidebook is to provide an introduction to using the powerful programming language R to conduct analyses commonly used for fisheries management. The guidebook is designed to help you get quickly started in R with some basic analyses and visualizations, but it is only and introduction and is not exhaustive. We do however point to some helpful resources for learning more.
+> The purpose of this guidebook is to provide an introduction to using the powerful programming language R to conduct analyses commonly used for fisheries management. The guidebook is designed to help you get quickly started in R with some basic analyses and visualizations, but it is only an introduction and is not exhaustive. We do however point to some helpful resources for learning more.
 
 [R](https://cran.r-project.org) is a free programming language/software environment that allows users to analyze, model, and vizualize large data sets in much more powerful and complex ways than traditional spreadsheet programs like Excel or Google Sheets. Best of all, R is open source, meaning that it is freely available from the Comprehensive R Archive Network (CRAN) and anyone can contribute to making R better. In fact, numerous R packages (more on these later) are specifically designed for conducting analyses related to fisheries management. [RStudio](https://www.rstudio.com) is the powerful graphical interface that allows users to manage their code, data, and files all in one convenient program. If you are interested in learning more about data analysis with R, the free online book called [R for Data Science](http://r4ds.had.co.nz/) is an excellent resource.
 
