@@ -54,6 +54,7 @@ myFunction(3,4)
 It is helpful to code in a consistent manner. This will not only make your code readble by others, but will even be helpful for you as you revisit code you have previously written. Using consistent code stying also makes it much easier to collaborate with others. We highly recommend following [Google's style guidelines for R](https://google.github.io/styleguide/Rguide.xml).
 
 ## Helpful resources
++ [An interactive tutorial on learning the basics of R programming](https://tutorials.shinyapps.io/04-Programming-Basics/#section-welcome)
 + [More information on data frames](http://www.r-tutor.com/r-introduction/data-frame)  
 
 + [More information on tibbles, the modern version of data frames](https://cran.r-project.org/web/packages/tibble/vignettes/tibble.html)  
