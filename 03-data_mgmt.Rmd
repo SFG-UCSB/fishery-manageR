@@ -1,6 +1,6 @@
 # Data Entry & Management
 
-The careful entry, documentation, and management of data is essential to any data-related project. Being strategic about this process will keep the project organized, protect against data loss, and facilitate analysis and data sharing.
+The careful entry, documentation, and management of data is essential to any data-related project. Being strategic about this process will keep the project organized, protect against data loss, and facilitate analysis and data sharing. This section will be most helpful if you are the person responsible for first setting up data collection forms and organization. However, it may also be helpful even if you are working with data that someone else has collected and organized.
 
 ## Best Practices
 
