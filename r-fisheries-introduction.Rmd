@@ -1,6 +1,35 @@
+--- 
+title: "An introduction to basic fisheries analysis with R"
+site: bookdown::bookdown_site
+output: bookdown::gitbook
+theme: readable
+documentclass: book
+bibliography: [book.bib, packages.bib]
+biblio-style: apalike
+link-citations: yes
+github-repo: sfg-ucsb/fishery-manageR
+url: https\://sfg-ucsb.github.io/fishery-manageR/
+description: "This is an introduction to using R for basic fisheries analysis"
+favicon: "images/SFG_BW.png"
+---
+
+# Objective
+
+<!--chapter:end:index.Rmd-->
+
+
+# Installation
+
+<!--chapter:end:01-r_for_fisheries.Rmd-->
+
+
+# Getting Started with RStudio
+
+<!--chapter:end:02-getting_started.Rmd-->
+
 # Data Entry & Management
 
-The careful entry, documentation, and management of data is essential to any data-related project. Being strategic about this process will keep the project organized, protect against data loss, and facilitate analysis and data sharing. This section will be most helpful if you are the person responsible for first setting up data collection forms and organization. However, it may also be helpful even if you are working with data that someone else has collected and organized. If you are working with data that someone else has collected and organized, you will find the next section on data cleaning (QA/QC, or quality assurance / quality control) especially helpful.
+The careful entry, documentation, and management of data is essential to any data-related project. Being strategic about this process will keep the project organized, protect against data loss, and facilitate analysis and data sharing. This section will be most helpful if you are the person responsible for first setting up data collection forms and organization. However, it may also be helpful even if you are working with data that someone else has collected and organized.
 
 ## Best Practices
 
@@ -54,3 +83,36 @@ There are also several different file formats for storing spreadsheet data. XLS 
 ## Helpful Resources
 + https://www.nceas.ucsb.edu/files/news/ESAdatamng09.pdf
 + http://ucsd.libguides.com/c.php?g=90957&p=585435
+
+<!--chapter:end:03-data_mgmt.Rmd-->
+
+
+# R as a Programming Language
+
+<!--chapter:end:04-r_programming.Rmd-->
+
+
+# Packages
+
+<!--chapter:end:05-loading_packages.Rmd-->
+
+
+# Loading Fisheries Data
+
+<!--chapter:end:06-loading_fisheries_data.Rmd-->
+
+
+# Basic Fisheries Statistics
+
+<!--chapter:end:07-analyzing_fisheries_data.Rmd-->
+
+
+# Plotting Fisheries Data
+
+<!--chapter:end:08-plotting_fisheries_data.Rmd-->
+
+
+# Wrapping Up
+
+<!--chapter:end:09-wrap_up.Rmd-->
+
