@@ -10,7 +10,7 @@ data <- read.csv("_data/sample_landings_data_raw.csv")
 
 str(data)
 ```
-We can see that there are [`r nrow(data)`] observations (rows) in our dataframe and [`r ncol(data)`] variables (columns). First, let's give our columns  more descriptive column headings:
+We can see that there are `r nrow(data)`]observations (rows) in our dataframe and `r ncol(data)` variables (columns). First, let's give our columns  more descriptive column headings:
 ```{r}
 colnames(data) <- c("Year","Date","Trip_ID","Effort_Hours","Gear","Species","Length_cm","Weight_g")
 
@@ -107,7 +107,7 @@ str(data)
 
 ```
 
-We now have [`r nrow(data)`] observations, with [`r ncol(data)1`] variables, and the correct number of factor levels for each variable. We can compare this to our raw dataset of  and look back at our script and see that we removed 5 observations (2 observations had missing values and 3 had data errors). This script may come in handy if, for example, we realize that the maximum size of our species is actually 200 cm (not 100 cm). We will know that our dataset does not include any length observations over 100 cm because we have documented our cleaning process and can easily go back to this script and change the 100 to a 200 and rerun this script.
+We now have `r nrow(data)` observations, with `r ncol(data)` variables, and the correct number of factor levels for each variable. We can compare this to our raw dataset of  and look back at our script and see that we removed 5 observations (2 observations had missing values and 3 had data errors). This script may come in handy if, for example, we realize that the maximum size of our species is actually 200 cm (not 100 cm). We will know that our dataset does not include any length observations over 100 cm because we have documented our cleaning process and can easily go back to this script and change the 100 to a 200 and rerun this script.
 
 We can save this dataset using a new name so that we have a copy of both the raw, and clean data. Now, we are ready to summarize and analyze our clean dataset.
 
