@@ -11,9 +11,9 @@ Let's look at a data frame that is included in R as an example. This data frame 
 ```{r}
 head(mtcars)
 ```
-The columns in data frames can contain different types of information. In this particular data frame, all columns contain numbers, as denoted by the indication `<dbl>`, a type of number that allows numbers after the decimal point. Columns could also be integers (which don't allow numbers after the decimal point), booleans or logicals (`TRUE` or `FALSE`), characters (these contain text), or other types of data.
+The columns in data frames can contain different types of information. In this particular data frame, all columns contain numbers, as denoted by the indication `<dbl>`, a type of number that allows numbers after the decimal point. Columns could also be integers represented by `<int>` (which don't allow numbers after the decimal point), dates represented by `<date>`,booleans or logicals represented by `lgl` (`TRUE` or `FALSE`), characters represented by `<chr>` (these contain text), or factors represented by `<fctr>` (these are helpful for storing categorical information such as species names or gear types).
 
-These days, you may also see the word `tibble`, which is a modern version of the R data frame and is being used more and more widely. Tibbles generally function much like data frames, but do away with some frustrating features.
+These days, you may also see the word `tibble`, which is a modern version of the R data frame and is being used more and more widely. Tibbles generally function much like data frames, but do away with some frustrating features and are generally cleaner. We recommend using tibbles.
 
 ## Vectors
 Another very common data type is the vector, which stores 1-dimensional information, such as a list of numbers or characters. Vectors are built using the `c` function. Below are two examples:

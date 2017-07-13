@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>An introduction to basic fisheries analysis with R</title>
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+  <meta name="description" content="This is an introduction to using R for basic fisheries analysis">
+  <meta name="generator" content="bookdown 0.3 and GitBook 2.6.7">
+
+  <meta property="og:title" content="An introduction to basic fisheries analysis with R" />
+  <meta property="og:type" content="book" />
+  <meta property="og:url" content="https://sfg-ucsb.github.io/fishery-manageR/" />
+  
+  <meta property="og:description" content="This is an introduction to using R for basic fisheries analysis" />
+  <meta name="github-repo" content="sfg-ucsb/fishery-manageR" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="An introduction to basic fisheries analysis with R" />
+  
+  <meta name="twitter:description" content="This is an introduction to using R for basic fisheries analysis" />
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  <link rel="shortcut icon" href="images/SFG_BW.png" type="image/x-icon">
+<link rel="prev" href="r-as-a-programming-language.html">
+<link rel="next" href="packages-1.html">
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">An introduction to basic fisheries analysis with R</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Objective</a></li>
+<li class="chapter" data-level="2" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>2</b> Installation</a><ul>
+<li class="chapter" data-level="2.1" data-path="installation.html"><a href="installation.html#r"><i class="fa fa-check"></i><b>2.1</b> R</a></li>
+<li class="chapter" data-level="2.2" data-path="installation.html"><a href="installation.html#rstudio"><i class="fa fa-check"></i><b>2.2</b> RStudio</a></li>
+<li class="chapter" data-level="2.3" data-path="installation.html"><a href="installation.html#helpful-resources"><i class="fa fa-check"></i><b>2.3</b> Helpful Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="getting-started-with-rstudio.html"><a href="getting-started-with-rstudio.html"><i class="fa fa-check"></i><b>3</b> Getting Started with RStudio</a><ul>
+<li class="chapter" data-level="3.1" data-path="getting-started-with-rstudio.html"><a href="getting-started-with-rstudio.html#rstudio-interface"><i class="fa fa-check"></i><b>3.1</b> RStudio Interface</a></li>
+<li class="chapter" data-level="3.2" data-path="getting-started-with-rstudio.html"><a href="getting-started-with-rstudio.html#work-dir"><i class="fa fa-check"></i><b>3.2</b> Working Directory</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="getting-started-with-rstudio.html"><a href="getting-started-with-rstudio.html#pathnames-path"><i class="fa fa-check"></i><b>3.2.1</b> Pathnames (Path)</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="getting-started-with-rstudio.html"><a href="getting-started-with-rstudio.html#packages"><i class="fa fa-check"></i><b>3.3</b> Packages</a></li>
+<li class="chapter" data-level="3.4" data-path="getting-started-with-rstudio.html"><a href="getting-started-with-rstudio.html#helpful-resources-1"><i class="fa fa-check"></i><b>3.4</b> Helpful Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="data-entry-management.html"><a href="data-entry-management.html"><i class="fa fa-check"></i><b>4</b> Data Entry &amp; Management</a><ul>
+<li class="chapter" data-level="4.1" data-path="data-entry-management.html"><a href="data-entry-management.html#best-practices"><i class="fa fa-check"></i><b>4.1</b> Best Practices</a></li>
+<li class="chapter" data-level="4.2" data-path="data-entry-management.html"><a href="data-entry-management.html#helpful-resources-2"><i class="fa fa-check"></i><b>4.2</b> Helpful Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="data-cleaning-qaqc.html"><a href="data-cleaning-qaqc.html"><i class="fa fa-check"></i><b>5</b> Data Cleaning (QA/QC)</a><ul>
+<li class="chapter" data-level="5.1" data-path="data-cleaning-qaqc.html"><a href="data-cleaning-qaqc.html#data-structure"><i class="fa fa-check"></i><b>5.1</b> Data structure</a></li>
+<li class="chapter" data-level="5.2" data-path="data-cleaning-qaqc.html"><a href="data-cleaning-qaqc.html#missing-values"><i class="fa fa-check"></i><b>5.2</b> Missing values</a></li>
+<li class="chapter" data-level="5.3" data-path="data-cleaning-qaqc.html"><a href="data-cleaning-qaqc.html#typos"><i class="fa fa-check"></i><b>5.3</b> Typos</a></li>
+<li class="chapter" data-level="5.4" data-path="data-cleaning-qaqc.html"><a href="data-cleaning-qaqc.html#errors"><i class="fa fa-check"></i><b>5.4</b> Errors</a></li>
+<li class="chapter" data-level="5.5" data-path="data-cleaning-qaqc.html"><a href="data-cleaning-qaqc.html#saving-clean-data"><i class="fa fa-check"></i><b>5.5</b> Saving clean data</a></li>
+<li class="chapter" data-level="5.6" data-path="data-cleaning-qaqc.html"><a href="data-cleaning-qaqc.html#helpful-resources-3"><i class="fa fa-check"></i><b>5.6</b> Helpful Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="r-as-a-programming-language.html"><a href="r-as-a-programming-language.html"><i class="fa fa-check"></i><b>6</b> R as a Programming Language</a><ul>
+<li class="chapter" data-level="6.1" data-path="r-as-a-programming-language.html"><a href="r-as-a-programming-language.html#data-frames"><i class="fa fa-check"></i><b>6.1</b> Data frames</a></li>
+<li class="chapter" data-level="6.2" data-path="r-as-a-programming-language.html"><a href="r-as-a-programming-language.html#vectors"><i class="fa fa-check"></i><b>6.2</b> Vectors</a></li>
+<li class="chapter" data-level="6.3" data-path="r-as-a-programming-language.html"><a href="r-as-a-programming-language.html#functions"><i class="fa fa-check"></i><b>6.3</b> Functions</a></li>
+<li class="chapter" data-level="6.4" data-path="r-as-a-programming-language.html"><a href="r-as-a-programming-language.html#tips-on-coding-and-style"><i class="fa fa-check"></i><b>6.4</b> Tips on coding and style</a></li>
+<li class="chapter" data-level="6.5" data-path="r-as-a-programming-language.html"><a href="r-as-a-programming-language.html#helpful-resources-4"><i class="fa fa-check"></i><b>6.5</b> Helpful resources</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="data-cleaning-qaqc-1.html"><a href="data-cleaning-qaqc-1.html"><i class="fa fa-check"></i><b>7</b> Data Cleaning (QA/QC)</a><ul>
+<li class="chapter" data-level="7.1" data-path="data-cleaning-qaqc-1.html"><a href="data-cleaning-qaqc-1.html#data-structure-1"><i class="fa fa-check"></i><b>7.1</b> Data structure</a></li>
+<li class="chapter" data-level="7.2" data-path="data-cleaning-qaqc-1.html"><a href="data-cleaning-qaqc-1.html#missing-values-1"><i class="fa fa-check"></i><b>7.2</b> Missing values</a></li>
+<li class="chapter" data-level="7.3" data-path="data-cleaning-qaqc-1.html"><a href="data-cleaning-qaqc-1.html#typos-1"><i class="fa fa-check"></i><b>7.3</b> Typos</a></li>
+<li class="chapter" data-level="7.4" data-path="data-cleaning-qaqc-1.html"><a href="data-cleaning-qaqc-1.html#errors-1"><i class="fa fa-check"></i><b>7.4</b> Errors</a></li>
+<li class="chapter" data-level="7.5" data-path="data-cleaning-qaqc-1.html"><a href="data-cleaning-qaqc-1.html#saving-clean-data-1"><i class="fa fa-check"></i><b>7.5</b> Saving clean data</a></li>
+<li class="chapter" data-level="7.6" data-path="data-cleaning-qaqc-1.html"><a href="data-cleaning-qaqc-1.html#helpful-resources-5"><i class="fa fa-check"></i><b>7.6</b> Helpful Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="packages-1.html"><a href="packages-1.html"><i class="fa fa-check"></i><b>8</b> Packages</a></li>
+<li class="chapter" data-level="9" data-path="loading-fisheries-data.html"><a href="loading-fisheries-data.html"><i class="fa fa-check"></i><b>9</b> Loading Fisheries Data</a></li>
+<li class="chapter" data-level="10" data-path="basic-fisheries-statistics.html"><a href="basic-fisheries-statistics.html"><i class="fa fa-check"></i><b>10</b> Basic Fisheries Statistics</a><ul>
+<li class="chapter" data-level="10.1" data-path="basic-fisheries-statistics.html"><a href="basic-fisheries-statistics.html#calculating-landings"><i class="fa fa-check"></i><b>10.1</b> Calculating Landings</a></li>
+<li class="chapter" data-level="10.2" data-path="basic-fisheries-statistics.html"><a href="basic-fisheries-statistics.html#calculating-catch-per-unit-effort-cpue"><i class="fa fa-check"></i><b>10.2</b> Calculating Catch-per-Unit-Effort (CPUE)</a></li>
+<li class="chapter" data-level="10.3" data-path="basic-fisheries-statistics.html"><a href="basic-fisheries-statistics.html#calculating-percent-mature"><i class="fa fa-check"></i><b>10.3</b> Calculating Percent Mature</a></li>
+<li class="chapter" data-level="10.4" data-path="basic-fisheries-statistics.html"><a href="basic-fisheries-statistics.html#helpful-resources-6"><i class="fa fa-check"></i><b>10.4</b> Helpful Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="plotting-fisheries-data.html"><a href="plotting-fisheries-data.html"><i class="fa fa-check"></i><b>11</b> Plotting Fisheries Data</a><ul>
+<li class="chapter" data-level="11.1" data-path="plotting-fisheries-data.html"><a href="plotting-fisheries-data.html#plotting-landings"><i class="fa fa-check"></i><b>11.1</b> Plotting Landings</a></li>
+<li class="chapter" data-level="11.2" data-path="plotting-fisheries-data.html"><a href="plotting-fisheries-data.html#plotting-cpue"><i class="fa fa-check"></i><b>11.2</b> Plotting CPUE</a></li>
+<li class="chapter" data-level="11.3" data-path="plotting-fisheries-data.html"><a href="plotting-fisheries-data.html#plotting-length-frequency"><i class="fa fa-check"></i><b>11.3</b> Plotting Length Frequency</a></li>
+<li class="chapter" data-level="11.4" data-path="plotting-fisheries-data.html"><a href="plotting-fisheries-data.html#helpful-resources-7"><i class="fa fa-check"></i><b>11.4</b> Helpful Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="wrapping-up.html"><a href="wrapping-up.html"><i class="fa fa-check"></i><b>12</b> Wrapping Up</a><ul>
+<li class="chapter" data-level="12.1" data-path="wrapping-up.html"><a href="wrapping-up.html#r-packages-for-fishery-analysis"><i class="fa fa-check"></i><b>12.1</b> R Packages for Fishery Analysis</a></li>
+<li class="chapter" data-level="12.2" data-path="wrapping-up.html"><a href="wrapping-up.html#additional-resources"><i class="fa fa-check"></i><b>12.2</b> Additional Resources</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">An introduction to basic fisheries analysis with R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="data-cleaning-qaqc-1" class="section level1">
+<h1><span class="header-section-number">7</span> Data Cleaning (QA/QC)</h1>
+<p>Screening and cleaning your data to identify and fix any potential errors (missing data, typos, errors, etc.) is an important step before conducting any analyses. This is known as Quality Assurance/Quality Control, or QA/QC. This section includes an overview of steps that should be taken to properly screen your data and introduces some functions that can come in handy when cleaning your data. If you have a small dataset that won’t be updated often, screening and cleaning your data may be easiest in Microsoft Excel by sorting and filtering your data columns. However, we recommend performing your data cleaning using R. This has the advantage that all changes made to a raw dataset will be recorded in a script that is reproducible, which may be especially useful when working with large datasets, if you want to quickly modify any steps of your cleaning process, or if you receive additional data.</p>
+<div id="data-structure-1" class="section level2">
+<h2><span class="header-section-number">7.1</span> Data structure</h2>
+<p>First, let’s read a dataset into R and determine the structure of the dataset. We can look at the raw data just by typing <code>data</code>, or can also get more information using the function <code>str</code></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">data &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;_data/sample_landings_data_raw.csv&quot;</span>)
+
+data</code></pre></div>
+<pre><code>## # A tibble: 7,214 × 8
+##       yy     dat  trip effort    gr             sp  l_cm      w_cm
+##    &lt;int&gt;   &lt;chr&gt; &lt;int&gt;  &lt;int&gt; &lt;chr&gt;          &lt;chr&gt; &lt;dbl&gt;     &lt;dbl&gt;
+## 1   2003 4/30/03     1     10  Trap Caesoi cunning    36 1089.1402
+## 2   2003 4/30/03     1     10  trap  Caesio cuning    29  565.3879
+## 3   2003 4/30/03     1     10  Trap  Caesio cuning    34  915.8276
+## 4   2003 4/30/03     1     10  Trap  Caesio cuning    36 1089.1402
+## 5   2003 4/30/03     1     10  Trap  Caesio cuning    34  915.8276
+## 6   2003 4/30/03     1     10  Trap Caesoi cunning    28  508.3185
+## 7   2003 4/30/03     1     10  Trap  Caesio cuning    30  626.6000
+## 8   2003 4/30/03     1     10  Trap  Caesio cuning    27  455.2443
+## 9   2003 4/30/03     1     10  Trap  Caesio cuning    33  836.5681
+## 10  2003 4/30/03     1     10  Trap  Caesio cuning    35  999.9688
+## # ... with 7,204 more rows</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(data)</code></pre></div>
+<pre><code>## Classes &#39;tbl_df&#39;, &#39;tbl&#39; and &#39;data.frame&#39;:    7214 obs. of  8 variables:
+##  $ yy    : int  2003 2003 2003 2003 2003 2003 2003 2003 2003 2003 ...
+##  $ dat   : chr  &quot;4/30/03&quot; &quot;4/30/03&quot; &quot;4/30/03&quot; &quot;4/30/03&quot; ...
+##  $ trip  : int  1 1 1 1 1 1 1 1 1 1 ...
+##  $ effort: int  10 10 10 10 10 10 10 10 10 10 ...
+##  $ gr    : chr  &quot;Trap&quot; &quot;trap&quot; &quot;Trap&quot; &quot;Trap&quot; ...
+##  $ sp    : chr  &quot;Caesoi cunning&quot; &quot;Caesio cuning&quot; &quot;Caesio cuning&quot; &quot;Caesio cuning&quot; ...
+##  $ l_cm  : num  36 29 34 36 34 28 30 27 33 35 ...
+##  $ w_cm  : num  1089 565 916 1089 916 ...
+##  - attr(*, &quot;spec&quot;)=List of 2
+##   ..$ cols   :List of 8
+##   .. ..$ yy    : list()
+##   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_integer&quot; &quot;collector&quot;
+##   .. ..$ dat   : list()
+##   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_character&quot; &quot;collector&quot;
+##   .. ..$ trip  : list()
+##   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_integer&quot; &quot;collector&quot;
+##   .. ..$ effort: list()
+##   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_integer&quot; &quot;collector&quot;
+##   .. ..$ gr    : list()
+##   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_character&quot; &quot;collector&quot;
+##   .. ..$ sp    : list()
+##   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_character&quot; &quot;collector&quot;
+##   .. ..$ l_cm  : list()
+##   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_double&quot; &quot;collector&quot;
+##   .. ..$ w_cm  : list()
+##   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_double&quot; &quot;collector&quot;
+##   ..$ default: list()
+##   .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_guess&quot; &quot;collector&quot;
+##   ..- attr(*, &quot;class&quot;)= chr &quot;col_spec&quot;</code></pre>
+<p>We can see that there are [7214] observations (rows) in our data frame and [8] variables (columns). First, let’s give our columns more descriptive column headings. We can rename columns using the <code>rename</code> function from the <code>dplyr</code> package.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">data &lt;-<span class="st"> </span>data <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">rename</span>(<span class="dt">Year =</span> yy,
+         <span class="dt">Date =</span> dat,
+         <span class="dt">Trip_ID =</span> trip,
+         <span class="dt">Effort_Hours =</span> effort,
+         <span class="dt">Gear =</span> gr,
+         <span class="dt">Species =</span> sp,
+         <span class="dt">Length_cm =</span> l_cm,
+         <span class="dt">Weight_g =</span> w_cm)
+
+data</code></pre></div>
+<pre><code>## # A tibble: 7,214 × 8
+##     Year    Date Trip_ID Effort_Hours  Gear        Species Length_cm
+##    &lt;int&gt;   &lt;chr&gt;   &lt;int&gt;        &lt;int&gt; &lt;chr&gt;          &lt;chr&gt;     &lt;dbl&gt;
+## 1   2003 4/30/03       1           10  Trap Caesoi cunning        36
+## 2   2003 4/30/03       1           10  trap  Caesio cuning        29
+## 3   2003 4/30/03       1           10  Trap  Caesio cuning        34
+## 4   2003 4/30/03       1           10  Trap  Caesio cuning        36
+## 5   2003 4/30/03       1           10  Trap  Caesio cuning        34
+## 6   2003 4/30/03       1           10  Trap Caesoi cunning        28
+## 7   2003 4/30/03       1           10  Trap  Caesio cuning        30
+## 8   2003 4/30/03       1           10  Trap  Caesio cuning        27
+## 9   2003 4/30/03       1           10  Trap  Caesio cuning        33
+## 10  2003 4/30/03       1           10  Trap  Caesio cuning        35
+## # ... with 7,204 more rows, and 1 more variables: Weight_g &lt;dbl&gt;</code></pre>
+<p>We can see that the variables containing numbers are in the integer (int) or numeric (num) class. The variables containing characters are classified as factors. Although the variable Year is numeric, we will to treat it as a factor, and not a continuous variable. For any future analyses, we will now be able to perform calculations on integer and numeric class variables across the <code>Year</code> variable. Similarly, we will want to convert the <code>Date</code> variable to a date format.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">data &lt;-<span class="st"> </span>data <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Date =</span> <span class="kw">mdy</span>(Date),
+         <span class="dt">Year =</span> <span class="kw">factor</span>(Year))
+
+<span class="kw">class</span>(data<span class="op">$</span>Year)</code></pre></div>
+<pre><code>## [1] &quot;factor&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">class</span>(data<span class="op">$</span>Date)</code></pre></div>
+<pre><code>## [1] &quot;Date&quot;</code></pre>
+</div>
+<div id="missing-values-1" class="section level2">
+<h2><span class="header-section-number">7.2</span> Missing values</h2>
+<p>Next, let’s check our data frame to determine if there are any missing values by subsetting observations (rows) in our dataframe that have missing values using the <code>complete_cases</code> function and the logical operator for negation, <code>!</code> .</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">data[<span class="op">!</span><span class="kw">complete.cases</span>(data),]</code></pre></div>
+<pre><code>## # A tibble: 3 × 8
+##     Year       Date Trip_ID Effort_Hours     Gear       Species Length_cm
+##   &lt;fctr&gt;     &lt;date&gt;   &lt;int&gt;        &lt;int&gt;    &lt;chr&gt;         &lt;chr&gt;     &lt;dbl&gt;
+## 1   2003 2003-05-01      10           10     &lt;NA&gt; Caesio cuning    19.000
+## 2   2003 2003-05-01      10           10 Handline Caesio cuning    19.000
+## 3   2004 2004-12-18      NA            9     Trap Caesio cuning    20.104
+## # ... with 1 more variables: Weight_g &lt;dbl&gt;</code></pre>
+<p>There are 3 rows in our dataframe with missing values. If we want to remove observations with missing data from our dataset we can use the <code>na.omit</code> function which will remove any rows with missing values from our dataset:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">data &lt;-<span class="st"> </span><span class="kw">na.omit</span>(data)
+
+data</code></pre></div>
+<pre><code>## # A tibble: 7,211 × 8
+##      Year       Date Trip_ID Effort_Hours  Gear        Species Length_cm
+##    &lt;fctr&gt;     &lt;date&gt;   &lt;int&gt;        &lt;int&gt; &lt;chr&gt;          &lt;chr&gt;     &lt;dbl&gt;
+## 1    2003 2003-04-30       1           10  Trap Caesoi cunning        36
+## 2    2003 2003-04-30       1           10  trap  Caesio cuning        29
+## 3    2003 2003-04-30       1           10  Trap  Caesio cuning        34
+## 4    2003 2003-04-30       1           10  Trap  Caesio cuning        36
+## 5    2003 2003-04-30       1           10  Trap  Caesio cuning        34
+## 6    2003 2003-04-30       1           10  Trap Caesoi cunning        28
+## 7    2003 2003-04-30       1           10  Trap  Caesio cuning        30
+## 8    2003 2003-04-30       1           10  Trap  Caesio cuning        27
+## 9    2003 2003-04-30       1           10  Trap  Caesio cuning        33
+## 10   2003 2003-04-30       1           10  Trap  Caesio cuning        35
+## # ... with 7,201 more rows, and 1 more variables: Weight_g &lt;dbl&gt;</code></pre>
+<p>Checking the data structure again, we can see that the 3 rows containing <code>NA</code> values have been removed from our dataframe. You may not always wish to remove <code>NA</code> values from a dataset, if you still want to keep other values in that observation. Even if you want to keep observations with <code>NA</code> values in the dataset, it is still good to identify <code>NA</code>s and know where they occur to ensure they don’t create problems during analyses.</p>
+</div>
+<div id="typos-1" class="section level2">
+<h2><span class="header-section-number">7.3</span> Typos</h2>
+<p>We can check for typos in our factor variables by using the <code>unique</code> function, which will tell us all of the unique values found within each factor. As an example, let’s look at the <code>Gear</code> variable.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">unique</span>(data<span class="op">$</span>Gear)</code></pre></div>
+<pre><code>## [1] &quot;Trap&quot;     &quot;trap&quot;     &quot;Muroami&quot;  &quot;Handline&quot; &quot;Gillnet&quot;  &quot;Trolling&quot;
+## [7] &quot;Speargun&quot;</code></pre>
+<p>The gear variable has 7 unique values, however, we know there should only be 6 gears present in the dataset. We can see that “trap” appears twice because capitalization was inconsistent. The lower case ‘t’ causes R to read it as a unique value and its own factor level. We can fix this by making sure all of our values in the <code>Gear</code> variable are consistent and have all lowercase letters using the <code>tolower</code> function. Alternatively, we could change them to all uppercase using the <code>toupper</code>function. To make sure we don’t change the class of the variable we also use the <code>as.factor</code> function. Similarly to <code>Year</code>, this will allow us to do later analyses across the <code>Gear</code> column.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">data &lt;-<span class="st"> </span>data <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Gear =</span> <span class="kw">tolower</span>(Gear)) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Gear =</span> <span class="kw">as.factor</span>(Gear))
+
+<span class="kw">unique</span>(data<span class="op">$</span>Gear)</code></pre></div>
+<pre><code>## [1] trap     muroami  handline gillnet  trolling speargun
+## Levels: gillnet handline muroami speargun trap trolling</code></pre>
+<p>Now we have the correct number (6) of unique gears in our dataset.</p>
+<p>Now, let’s check another our <code>Species</code> variable for typos:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">unique</span>(data<span class="op">$</span>Species)</code></pre></div>
+<pre><code>## [1] &quot;Caesoi cunning&quot; &quot;Caesio cuning&quot;</code></pre>
+<p>The <code>species</code> is showing 2 unique values, but we know there should only be one species in our dataset. It appears there is a spelling error on one of our species names. We can check how many times each of the 2 species spellings occurs in our dataset by using the <code>nrow</code> function on a filtered subset of data for each of the two <code>Species</code> values:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">data <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">filter</span>(Species <span class="op">==</span><span class="st"> &quot;Caesoi cunning&quot;</span>) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">nrow</span>()</code></pre></div>
+<pre><code>## [1] 2</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">data <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">filter</span>(Species <span class="op">==</span><span class="st"> &quot;Caesio cuning&quot;</span>) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">nrow</span>()</code></pre></div>
+<pre><code>## [1] 7209</code></pre>
+<p>It looks like “Caesoi cunning” likely the typo because it only appears once in our dataset, while “Caesoi cunning” appears (7209) times. We can fix this by replacing the misspelled <code>Species</code> value and replacing it with the value that is spelled correctly. We do this using <code>mutate</code> and <code>replace</code>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">data &lt;-<span class="st"> </span>data <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Species =</span> <span class="kw">replace</span>(Species,Species <span class="op">==</span><span class="st"> &quot;Caesoi cunning&quot;</span>, <span class="st">&quot;Caesio cuning&quot;</span>)) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Species =</span> <span class="kw">as.factor</span>(Species))
+
+<span class="kw">unique</span>(data<span class="op">$</span>Species)</code></pre></div>
+<pre><code>## [1] Caesio cuning
+## Levels: Caesio cuning</code></pre>
+<p>Now we have only one species value in our <code>Species</code> variable in our dataset, which is correct. The unique values of all categorical columns (i.e., gear type, species name, etc) should be examined during the data screening and cleaning process.</p>
+</div>
+<div id="errors-1" class="section level2">
+<h2><span class="header-section-number">7.4</span> Errors</h2>
+<p>Errors in numeric/integer values may be caused from typos during data entry or from an error during the data collection process (for example, maybe the scale was broken or not zeroed out before weighing). To look at the range and distribution of a numeric variable, the <code>summary</code> function can be used.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(data<span class="op">$</span>Length_cm)</code></pre></div>
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##    2.00   23.00   25.00   25.81   27.00 2400.00</code></pre>
+<p>Looks like we have a max <code>Length_cm</code> value that is order of magnitude higher than the mean and median values. Visualizing numeric data is another great way to screen continuous data and identify data outlines that may be caused from errors in the dataset:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(data<span class="op">$</span>Length_cm)</code></pre></div>
+<p><img src="r-fisheries-introduction_files/figure-html/unnamed-chunk-123-1.png" width="672" /> We can clearly see there is an outlier in our data (upper left corner of the plot). We are not sure how this error occurred, but we know that this is not correct. In fact, we know that the maximum possible size of our species 100 cm. We know that a measurement or typo error must have occurred for any <code>Length_cm</code> values that are over 100 cm We can remove these erroneous data by only including observations in our dataset with values over 100 cm (species maximum size) using the <code>filter</code> function:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">data &lt;-<span class="st"> </span>data <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">filter</span>(Length_cm <span class="op">&lt;</span><span class="st"> </span><span class="dv">100</span>)
+
+<span class="kw">plot</span>(data<span class="op">$</span>Length_cm)</code></pre></div>
+<p><img src="r-fisheries-introduction_files/figure-html/unnamed-chunk-124-1.png" width="672" /> Now all of our data contains accurate length observations that are in the range of our species length. This process of plotting and examining should be conducted for each of our numeric variables before conducting any analyses to identify any outliers and to remove any erroneous data.</p>
+</div>
+<div id="saving-clean-data-1" class="section level2">
+<h2><span class="header-section-number">7.5</span> Saving clean data</h2>
+<p>Now that we have completed our data cleaning and screening, let’s examine the structure of our data frame again:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">data</code></pre></div>
+<pre><code>## # A tibble: 7,208 × 8
+##      Year       Date Trip_ID Effort_Hours   Gear       Species Length_cm
+##    &lt;fctr&gt;     &lt;date&gt;   &lt;int&gt;        &lt;int&gt; &lt;fctr&gt;        &lt;fctr&gt;     &lt;dbl&gt;
+## 1    2003 2003-04-30       1           10   trap Caesio cuning        36
+## 2    2003 2003-04-30       1           10   trap Caesio cuning        29
+## 3    2003 2003-04-30       1           10   trap Caesio cuning        34
+## 4    2003 2003-04-30       1           10   trap Caesio cuning        36
+## 5    2003 2003-04-30       1           10   trap Caesio cuning        34
+## 6    2003 2003-04-30       1           10   trap Caesio cuning        28
+## 7    2003 2003-04-30       1           10   trap Caesio cuning        30
+## 8    2003 2003-04-30       1           10   trap Caesio cuning        27
+## 9    2003 2003-04-30       1           10   trap Caesio cuning        33
+## 10   2003 2003-04-30       1           10   trap Caesio cuning        35
+## # ... with 7,198 more rows, and 1 more variables: Weight_g &lt;dbl&gt;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(data)</code></pre></div>
+<pre><code>## Classes &#39;tbl_df&#39;, &#39;tbl&#39; and &#39;data.frame&#39;:    7208 obs. of  8 variables:
+##  $ Year        : Factor w/ 9 levels &quot;2003&quot;,&quot;2004&quot;,..: 1 1 1 1 1 1 1 1 1 1 ...
+##  $ Date        : Date, format: &quot;2003-04-30&quot; &quot;2003-04-30&quot; ...
+##  $ Trip_ID     : int  1 1 1 1 1 1 1 1 1 1 ...
+##  $ Effort_Hours: int  10 10 10 10 10 10 10 10 10 10 ...
+##  $ Gear        : Factor w/ 6 levels &quot;gillnet&quot;,&quot;handline&quot;,..: 5 5 5 5 5 5 5 5 5 5 ...
+##  $ Species     : Factor w/ 1 level &quot;Caesio cuning&quot;: 1 1 1 1 1 1 1 1 1 1 ...
+##  $ Length_cm   : num  36 29 34 36 34 28 30 27 33 35 ...
+##  $ Weight_g    : num  1089 565 916 1089 916 ...</code></pre>
+<p>We now have [7208] observations, with [8] variables, and the correct number of factor levels for each variable. We can compare this to our raw dataset of and look back at our script and see that we removed 5 observations (3 observations had missing values and 3 had error). This script may come in handy if, for example, we realize that the maximum size of our species is actually 200 cm (not 100 cm). We will know that our dataset does not include any length observations over 100 cm because we have documented our cleaning process and can easily go back to this script and change the 100 to a 200 and rerun this script.</p>
+<p>We can save this dataset using a new name so that we have a copy of both the raw, and clean data. Now, we are ready to summarize and analyze our clean dataset.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">write_csv</span>(data,<span class="st">&quot;_data/sample_landings_data_clean.csv&quot;</span>)</code></pre></div>
+</div>
+<div id="helpful-resources-5" class="section level2">
+<h2><span class="header-section-number">7.6</span> Helpful Resources</h2>
+<ul>
+<li><p><a href="https://cran.r-project.org/doc/contrib/de_Jonge+van_der_Loo-Introduction_to_data_cleaning_with_R.pdf">Introduction to data cleaning with R</a></p></li>
+<li><p><a href="https://www.r-bloggers.com/a-data-cleaning-example/">A data cleaning example</a></p></li>
+<li><p><a href="http://qsel.columbia.edu/formhub.R/demo/RemoveOutliers.html">Removing outliers</a></p></li>
+</ul>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="r-as-a-programming-language.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="packages-1.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
+
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/05-qaqc.Rmd",
+"text": "Edit"
+},
+"download": ["r-fisheries-introduction.pdf"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

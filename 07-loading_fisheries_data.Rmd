@@ -18,10 +18,10 @@ landings_data <- read_csv("_data/sample_landings_data.csv")
 life_history_parameters <- read_csv("_data/life_history_parameters.csv")
 ```
 
-Let's take a quick look at what's in each of these data frames. We can use the `head` function to get a quick summary.
+Let's take a quick look at what's in each of these data frames.
 
 ```{r}
-head(landings_data)
+landings_data
 ```
 
 The `landings_data` data frame is from a fishery-dependent landing site survey. The species included in this data set is *Caesio cuning*, a yellowtail fusilier. You can see the data frame has eight columns, with each row being an individual fish catch measurement. The columns include the year and date when the measurement was collected, the fishing trip ID, how many hours were fished for each trip, what gear was used, the species, the length of the fish, and the weight of the fish. We'll be able to use these data to create length-frequency histograms that describe the size structure of the population, as well as trends in catch and CPUE. 
@@ -33,8 +33,10 @@ One thing we should do is format the year and date columns to ensure that R know
 landings_data <- landings_data %>% 
   # Turn the date column into a date format that R recognizes
   mutate(Date = mdy(Date)) %>% 
-  # Create a year column using a year format R recognizes
-  mutate(Year = year(Date))
+  # Conver the gear column to a categorical factor
+  mutate(Gear = as.factor(Gear)) %>%
+  # Conver the gear column to a categorical factor
+  mutate(Species = as.factor(Species))
 ```
 
 One of the first things you should always do is quickly plot your raw data using `ggplot`. This can help you familiarize yourself with what's contained in the data set, as well as look for any potential outliers or errors. We will come back to a more detailed description of plots and visualizations later, but below is some quick code to look at things. When using `ggplot`, first start with your data frame and initialize the ggplot by specifying the plot's *aesthetics* (variables) using `aes()`. Then use the `+` operation to add at least one *geometry* (type of plot, such as a scatter plot) and any additional features to the plot. To learn more about `ggplot`, the [Data Visualization with ggplot2 Cheat Sheet](https://www.rstudio.com/wp-content/uploads/2016/11/ggplot2-cheatsheet-2.1.pdf) is a very helpful resource, as is this [ggplot cookbook](http://www.cookbook-r.com/Graphs/).
