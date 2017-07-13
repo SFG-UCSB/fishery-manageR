@@ -63,13 +63,16 @@ cpue_data
 
 ## Calculating Percent Mature
 
-You may also wish to analyze your length data. One analysis would be to determine the percentage of mature fish in the catch in every year of the data frame. To do this, we add a column to the data frame using the `mutate` function that represents whether each fish is mature or not (represented by a `TRUE` or `FALSE`), group the data frame by year, and then summarize for each year the percentage of mature fish out of the total number of sampled fish. To determine if a fish is mature or not, it is compared against *m95*, the length at which 95% of fish are mature. The value for `m95` is taken from the `life_history_parameters` data frame and is referenced using a `$` and the code `life_history_parameters$m95`.
+You may also wish to analyze your length data. One analysis would be to determine the percentage of mature fish in the catch in every year of the data frame. First let's define `m95`, the length at which 95% of fish are mature. For *Caesio cuning*, we know this is 15.9cm. Next, let's add a column to the data frame using the `mutate` function that represents whether each fish is mature or not (represented by a `TRUE` or `FALSE`), group the data frame by year, and then summarize for each year the percentage of mature fish out of the total number of sampled fish.
 
 ```{r}
+# Define m95, the length at which 95% of fish are mature
+m95 = 15.9
+
 # Start with the landings data frame
 landings_data %>% 
   # Add a column to the data that indicates whether each length measurement is from a mature or immature fish. If it's mature, this value should be TRUE; if immature, FALSE.
-  mutate(Mature = Length_cm > life_history_parameters$m95) %>% 
+  mutate(Mature = Length_cm > m95) %>% 
   # Group by year so we can see the percent mature for every year
   group_by(Year) %>% 
   # The percentage mature is equal to the  number of mature fish divided by the total number of fish and multiplied by 100

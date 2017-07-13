@@ -1,0 +1,143 @@
+# Loading Data and Data Cleaning
+
+Screening and cleaning your data to identify and fix any potential errors (missing data, typos, errors, etc.) is an important step before conducting any analyses. This is known as Quality Assurance/Quality Control, or QA/QC. This section includes an overview of steps that should be taken to properly screen your data and introduces some functions that can come in handy when cleaning your data. If you have a small dataset that won't be updated often, screening and cleaning your data may be easiest in Microsoft Excel by sorting and filtering your data columns. However, we recommend performing your data cleaning using R. This has the advantage that all changes made to a raw dataset will be recorded in a script that is reproducible, which may be especially useful when working with large datasets, if you want to quickly modify any steps of your cleaning process, or if you receive additional data.
+
+## Loading Data
+
+Throughout this section and the following fisheries analysis and plotting sections, we'll use a common data set. First, create a new folder in your [working directory](#work-dir) called "_data". Next, download the following file onto your computer. Right click on the link, and save it in your  "_data" folder.
+
+[Right click and save-link-as to download landings data](https://raw.githubusercontent.com/SFG-UCSB/fishery-manageR/master/_data/sample_landings_data_raw.csv)
+
+Let's read this dataset into R and determine the structure of the dataset. The `landings_data` data frame is from a fishery-dependent landing site survey. The species included in this data set is *Caesio cuning*, a yellowtail fusilier. We'll be able to use these data to create length-frequency histograms that describe the size structure of the population, as well as trends in catch and CPUE. 
+
+We can look at the raw data just by typing `landings_data`.
+```{r}
+landings_data <- read_csv("_data/sample_landings_data_raw.csv")
+
+landings_data
+```
+
+You'll first notice that R calls this data frame a `tibble`, which is just another word for a nice clean version of a landings_data frame. This format is automatically used when you read in data using `read_csv`, which we always recommend. e can see that there are [`r nrow(landings_data)`] individual fish catch observations (rows) in our data frame and [`r ncol(landings_data)`] variables (columns). The columns include the year and date when the measurement was collected, the fishing trip ID, how many hours were fished for each trip, what gear was used, the species, the length of the fish, and the weight of the fish.
+
+## Data Structure
+
+First, let's give our columns  more descriptive column headings. We can rename columns using the `rename` function from the `dplyr` package. Let's also convert the `Date` variable to a date format using the `mdy` function from the `lubridate` package. We start by taking the landings data frame we loaded into R, and working through a series of "pipes", designated by the `%>%` operation, which progressively analyzes the data from one step to the next. Essentially, the output of one line is fed into the input of the next line. 
+```{r}
+# Start with the landings_data data frame
+landings_data <- landings_data %>%
+  # Rename the columns
+  rename(Year = yy,
+         Date = dat,
+         Trip_ID = trip,
+         Effort_Hours = effort,
+         Gear = gr,
+         Species = sp,
+         Length_cm = l_cm,
+         Weight_g = w_cm) %>%
+  # Turn the date column into a date format that R recognizes
+  mutate(Date = mdy(Date)) 
+
+landings_data
+```
+
+## Missing values
+
+Next, let's check our data frame to determine if there are any missing values by subsetting observations (rows) in our dataframe that have missing values using the `complete_cases` function and the logical operator for negation, `!` .
+```{r}
+data[!complete.cases(landings_data),]
+```
+
+There are 3 rows in our dataframe with missing values. If we want to remove observations with missing data from our dataset we can use the `na.omit` function which will remove any rows with missing values from our dataset:
+```{r}
+landings_data <- na.omit(landings_data)
+
+landings_data
+```
+
+Checking the data structure again, we can see that the 3 rows containing `NA` values have been removed from our dataframe. You may not always wish to remove `NA` values from a dataset, if you still want to keep other values in that observation. Even if you want to keep observations with `NA` values in the dataset, it is still good to identify `NA`s and know where they occur to ensure they don't create problems during analyses.
+
+## Typos
+
+We can check for typos by using the `unique` function, which will tell us all of the unique values found within a particular column. As an example, let's look at the `Gear` variable.
+
+```{r}
+unique(landings_data$Gear)
+```
+The gear variable has 7 unique values, however, we know there should only be 6 gears present in the dataset. We can see that "trap" appears twice because capitalization was inconsistent. The lower case 't' causes R to read it as a unique value gear type. We can fix this by making sure all of our values in the `Gear` variable are consistent and have all lowercase letters using the `tolower` function. Alternatively, we could change them to all uppercase using the `toupper`function.
+```{r}
+landings_data <- landings_data %>%
+  mutate(Gear = tolower(Gear))
+
+unique(landings_data$Gear)
+```
+Now we have the correct number (6) of unique gears in our dataset.
+
+Now, let's check another our `Species` variable for typos:
+
+```{r}
+unique(landings_data$Species)
+```
+The `species` is showing 2 unique values, but we know there should only be one species in our dataset. It appears there is a spelling error on one of our species names. We can check how many times each of the 2 species spellings occurs in our dataset by using the `nrow` function on a filtered subset of data for each of the two `Species` values:
+
+```{r}
+landings_data %>%
+  filter(Species == "Caesoi cunning") %>%
+  nrow()
+
+landings_data %>%
+  filter(Species == "Caesio cuning") %>%
+  nrow()
+```
+It looks like "Caesoi cunning" likely the typo because it only appears once in our dataset, while "Caesoi cunning" appears (`r length(data$Species[data$Species=="Caesio cuning"])`) times. We can fix this by replacing the misspelled `Species` value and replacing it with the value that is spelled correctly. We do this using `mutate` and `replace`.
+```{r}
+landings_data <- landings_data %>%
+  mutate(Species = replace(Species,Species == "Caesoi cunning", "Caesio cuning"))
+
+unique(landings_data$Species)
+```
+Now we have only one species value in our `Species` variable in our dataset, which is correct. The unique values of all categorical columns (i.e., gear type, species name, etc) should be examined during the data screening and cleaning process.
+
+## Errors
+
+Errors in numeric/integer values may be caused from typos during data entry or from an error during the data collection process (for example, maybe the scale was broken or not zeroed out before weighing). To look at the range and distribution of a numeric variable, the `summary` function can be used. 
+
+```{r}
+summary(landings_data$Length_cm)
+```
+Looks like we have a max `Length_cm` value that is order of magnitude higher than the mean and median values. Visualizing numeric data is another great way to screen continuous data and identify data outlines that may be caused from errors in the dataset:
+
+```{r}
+plot(landings_data$Length_cm)
+```
+We can clearly see there is an outlier in our data (upper left corner of the plot). We are not sure how this error occurred, but we know that this is not correct. In fact, we know that the maximum possible size of our species 100 cm. We know that a measurement or typo error must have occurred for any `Length_cm` values that are over 100 cm  We can remove these erroneous data by only including observations in our dataset with values over 100 cm (species maximum size) using the `filter` function:
+```{r}
+landings_data <- landings_data %>%
+  filter(Length_cm < 100)
+
+plot(landings_data$Length_cm)
+```
+Now all of our data contains accurate length observations that are in the range of our species length. This process of plotting and examining should be conducted for each of our numeric variables before conducting any analyses to identify any outliers and to remove any erroneous data. In this example, we will skip this step for the `Weight_g` and `Effort_Hours` column, although you may wish to do this as a learning exercise on your own.
+
+## Saving clean data
+
+Now that we have completed our data cleaning and screening, let's examine the structure of our data frame again:
+
+```{r} 
+landings_data
+```
+
+We now have [`r nrow(landings_data)`] observations, with [`r ncol(landings_data)`] variables, and with each variable being the correct data type. We can compare this to our raw dataset and see that we removed 6 observations (3 observations had missing values and 3 had error). This script may come in handy if, for example, we realize that the maximum size of our species is actually 200 cm (not 100 cm). We will know that our dataset does not include any length observations over 100 cm because we have documented our cleaning process and can easily go back to this script and change the 100 to a 200 and rerun this script. If we receive more data, we can also simply re-run this script, and all data cleaning steps will be performed again automatically.
+
+We can save this dataset using a new name so that we have a copy of both the raw, and clean data. Now, we are ready to summarize and analyze our clean dataset.
+
+```{r}
+write_csv(landings_data,"_data/sample_landings_data_clean.csv")
+```
+
+## Helpful Resources
+
++ [Introduction to data cleaning with R](https://cran.r-project.org/doc/contrib/de_Jonge+van_der_Loo-Introduction_to_data_cleaning_with_R.pdf)
+
++ [A data cleaning example](https://www.r-bloggers.com/a-data-cleaning-example/)
+
++ [Removing outliers](http://qsel.columbia.edu/formhub.R/demo/RemoveOutliers.html)

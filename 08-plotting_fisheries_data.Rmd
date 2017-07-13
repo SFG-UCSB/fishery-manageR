@@ -87,8 +87,8 @@ landings_data %>%
   xlab("Length [cm]") + 
   # Add figure title
   ggtitle("Length histogram of Caesio cuning in the catch\nLength at 95% maturity shown as a red line.") + 
-  # Add a red vertical line for m95, the length at which 95% of fish are mature. Any fish below this length may be immature. Use the life_history_parameter data frame to get this value.
-  geom_vline(aes(xintercept=life_history_parameters$m95),color="red") 
+  # Add a red vertical line for m95, the length at which 95% of fish are mature. Any fish below this length may be immature. Use the m95 value defined in the previous section
+  geom_vline(aes(xintercept=m95),color="red") 
 ```
 
 You might also be interested in seeing how the size composition varies by gear type. You can recreate the figure above, but separate the histograms out by gear type using ggplot's "facet" function.
@@ -106,8 +106,8 @@ landings_data %>%
   xlab("Length [cm]") + 
   # Add figure title
   ggtitle("Length histogram of Caesio cuning in the catch by gear type\nLength at 95% maturity shown as a red line.") + 
-  # Add a red line form95, the length at which 95% of fish are mature. Any fish below this length may be immature. Use the life_history_parameter data frame to get this value.
-  geom_vline(aes(xintercept=life_history_parameters$m95),color="red") + 
+  # Add a red line for m95, the length at which 95% of fish are mature. Any fish below this length may be immature. Use the life_history_parameter data frame to get this value.
+  geom_vline(aes(xintercept=m95),color="red") + 
   # This tells the figure to plot by all different gear types, known as facetting
   facet_wrap(~Gear) 
 ```
