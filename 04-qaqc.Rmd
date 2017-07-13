@@ -1,1 +1,124 @@
 # Data Cleaning (QA/QC)
+
+Screening and cleaning your data to identify and fix any potential errors ( missing data, typos, errors, etc.) is an important step before conducting any analyses. This section includes an overview of steps that should be taken to properly screen your data and introduces some functions that can come in handy when cleaning your data. If you have a small dataset screening and cleaning your data may be easiest in excel by sorting and filtering your data columns. Using R for data screening as the advantage that all changes made to a raw dataset will be recorded in a script and reproducible, which may be especially useful when working with large datasets, or if you want to quickly modify any steps of your cleaning process.
+
+## Data structure
+
+First, let's read a dataset into R and determine the structure of the dataset:
+```{r}
+data <- read.csv("_data/sample_landings_data_raw.csv")
+
+str(data)
+```
+We can see that there are [`r nrow(data)`] observations (rows) in our dataframe and [`r ncol(data)`] variables (columns). First, let's give our columns  more descriptive column headings:
+```{r}
+colnames(data) <- c("Year","Date","Trip_ID","Effort_Hours","Gear","Species","Length_cm","Weight_g")
+
+str(data)
+```
+We can see that the variables containing numbers are in the integer (int) or numeric (num) class. The variables containing characters are classified as factors. Although the variable `Year` is numeric, we will to treat it as a factor, and not a continuous variable. 
+```{r}
+data$Year<-as.factor(data$Year)
+
+class(data$Year)
+```
+For any future analyses, we will now be able to perform calculations on integer and numeric class variables across the `Year` variable.
+
+## Missing values
+
+Next, let's check our dataframe to determine if there are any missing values by subsetting observations (rows) in our dataframe that have missing values using the 'complete_cases' function and the logical operator for negation, `!` .
+```{r}
+data[!complete.cases(data),]
+```
+
+There are 2 rows in our dataframe with missing values. If we want to remove observations with missing data from our dataset we can use the `na.omit` function which will remove any rows with missing values from our dataset:
+```{r}
+data <- na.omit(data)
+
+str(data)
+```
+
+Checking the data structure again, we can see that the 2 rows containing `NA` values have been removed from our dataframe. You may not always wish to remove `NA` values from a dataset, if you still want to keep other values in that observation. Even if you want to keep observations with `NA` values in the dataset, it is still good to identify `NA`s and know where they occur to ensure they don't create problems during analyses.
+
+## Typos
+
+We can check for typos in our factor variables by using the `unique` function, which will tell us all of the unique values found within each factor. As an example, let's look at the `Gear` variable.
+
+```{r}
+unique(data$Gear)
+```
+The gear variable has 7 unique values, however, we know there should only be 6 gears present in the dataset. We can see that "trap" appears twice because capitalization was inconsistent. The lower case 't' causes R to read it as a unique value and its own factor level. We can fix this by making sure all of our values in the `Gear` variable are consistent and have all lowercase letters using the `tolower` function. Alternatively, we could change them to all uppercase using the `toupper`function. To make sure we don't change the class of the variable we also use the `as.factor` function.
+```{r}
+data$Gear<-as.factor(tolower(data$Gear))
+
+unique(data$Gear)
+```
+Now we have the correct number (6) of unique gears in our dataset
+
+Now, let's check another our `Species` variable for typos:
+
+```{r}
+unique(data$Species)
+```
+The `species` is showing 2 unique values, but we know there should only be one species in our dataset. It appears there is a spelling error on one of our species names. We can check how many times each of the 2 species spellings occurs in our dataset by using the `length` function on a the subset of data for each of the two `Species` values:
+
+```{r}
+length(data$Species[data$Species=="Caesoi cunning"])
+
+length(data$Species[data$Species=="Caesio cuning"])
+```
+It looks like "Caesoi cunning" likely the typo because it only appears once in our dataset, while "Caesoi cunning" appears (`r length(data$Species[data$Species=="Caesio cuning"])`) times. We can fix this by subsetting the misspelled `Species` value and replacing it with the value that is spelled correctly:
+```{r}
+data$Species[data$Species=="Caesoi cunning"]<-("Caesio cuning")
+
+data$Species<-factor(data$Species)
+
+unique(data$Species)
+```
+Now we have only one species value in our `Species` variable in our dataset, which is correct. The unique values of all factor levels should be examined during the data screening and cleaning process.
+
+## Errors
+
+Errors in numeric/integer values may be caused from typos during data entry or from an error during the data collection process (for example, maybe the scale was broken or not zeroed out before weighing). To look at the range and distribution of a numeric variable the `summary` function can be used. 
+
+```{r}
+summary(data$Length_cm)
+```
+Looks like we have a max `Length_cm` value that is order of magnitude higher than the mean and median values. Visualizing numeric data is another great way to screen continuous data and identify data outlines that may be caused from errors in the dataset:
+
+```{r}
+plot(data$Length_cm)
+```
+We can clearly see there is an outlier in our data (upper left corner of the plot). We are not sure how this error occurred, but we know that this is not correct. In fact, we know that the maximum possible size of our species 100 cm. We know that a measurement or typo error must have occurred for any `Length_cm` values that are over 100 cm  We can remove these erroneous data by only including observations in our dataset with values over 100 cm (species maximum size) using the `subset` function:
+```{r}
+data<-subset(data,Length_cm < 100)
+
+plot(data$Length_cm)
+```
+Now all of our data contains accurate length observations that are in the range of our species length. This process of plotting and examining should be conducted for each of our numeric variables before conducting any analyses to identify any outliers and to remove any erroneous data.
+
+## Saving clean data
+
+Now that we have completed our data cleaning and screening, let's examine the structure of our data frame again:
+
+```{r} 
+
+str(data)
+
+```
+
+We now have [`r nrow(data)`] observations, with [`r ncol(data)1`] variables, and the correct number of factor levels for each variable. We can compare this to our raw dataset of  and look back at our script and see that we removed 5 observations (2 observations had missing values and 3 had data errors). This script may come in handy if, for example, we realize that the maximum size of our species is actually 200 cm (not 100 cm). We will know that our dataset does not include any length observations over 100 cm because we have documented our cleaning process and can easily go back to this script and change the 100 to a 200 and rerun this script.
+
+We can save this dataset using a new name so that we have a copy of both the raw, and clean data. Now, we are ready to summarize and analyze our clean dataset.
+
+```{r}
+write.csv(data,"_data/sample_landings_data_clean.csv")
+```
+
+## Helpful Resources
+
++ [Introduction to data cleaning with R](https://cran.r-project.org/doc/contrib/de_Jonge+van_der_Loo-Introduction_to_data_cleaning_with_R.pdf)
+
++ [A data cleaning example](https://www.r-bloggers.com/a-data-cleaning-example/)
+
++ [Removing outliers](http://qsel.columbia.edu/formhub.R/demo/RemoveOutliers.html)
