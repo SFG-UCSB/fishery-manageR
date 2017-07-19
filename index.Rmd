@@ -14,8 +14,10 @@ favicon: "images/SFG_BW.png"
 ---
 
 ```{r include=FALSE}
-knitr::opts_chunk$set(warning = F, message = F, error = F)
-
+knitr::opts_chunk$set(warning = F, message = F, error = F, 
+                      tidy.opts = list(width.cutoff = 60),
+                      tidy = TRUE, 
+                      out.width = "90%")
 library(tidyverse)
 library(lubridate) 
 library(knitr)
