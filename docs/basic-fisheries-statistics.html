@@ -189,7 +189,7 @@ annual_landings &lt;-<span class="st"> </span>landings_data <span class="op">%&g
 
 ## Display a table of the annual landings data
 annual_landings</code></pre></div>
-<pre><code>## # A tibble: 9 × 2
+<pre><code>## # A tibble: 9 x 2
 ##    Year Annual_Landings_kg
 ##   &lt;int&gt;              &lt;dbl&gt;
 ## 1  2003          310.40914
@@ -214,20 +214,19 @@ annual_gear_landings &lt;-<span class="st"> </span>landings_data <span class="op
 
 ## Display a table of the annual landings data by gear type
 annual_gear_landings</code></pre></div>
-<pre><code>## Source: local data frame [39 x 3]
-## Groups: Year [?]
-## 
+<pre><code>## # A tibble: 39 x 3
+## # Groups:   Year [?]
 ##     Year     Gear Annual_Landings_kg
 ##    &lt;int&gt;    &lt;chr&gt;              &lt;dbl&gt;
-## 1   2003  gillnet          13.413401
-## 2   2003 handline           2.874861
-## 3   2003  muroami         247.879049
-## 4   2003     trap          46.241825
-## 5   2004  gillnet           4.189301
-## 6   2004 handline          57.705893
-## 7   2004  muroami         370.866460
-## 8   2004 speargun           9.476406
-## 9   2004     trap         118.683464
+##  1  2003  gillnet          13.413401
+##  2  2003 handline           2.874861
+##  3  2003  muroami         247.879049
+##  4  2003     trap          46.241825
+##  5  2004  gillnet           4.189301
+##  6  2004 handline          57.705893
+##  7  2004  muroami         370.866460
+##  8  2004 speargun           9.476406
+##  9  2004     trap         118.683464
 ## 10  2004 trolling           4.386547
 ## # ... with 29 more rows</code></pre>
 </div>
@@ -249,7 +248,7 @@ cpue_data &lt;-<span class="st"> </span>landings_data <span class="op">%&gt;%</s
 
 <span class="co"># Display a table of the CPUE data</span>
 cpue_data</code></pre></div>
-<pre><code>## # A tibble: 9 × 2
+<pre><code>## # A tibble: 9 x 2
 ##    Year Median_CPUE_kg_hour
 ##   &lt;int&gt;               &lt;dbl&gt;
 ## 1  2003          0.31834277
@@ -276,7 +275,7 @@ landings_data <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">group_by</span>(Year) <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="co"># The percentage mature is equal to the  number of mature fish divided by the total number of fish and multiplied by 100</span>
 <span class="st">  </span><span class="kw">summarize</span>(<span class="dt">Percent_Mature =</span> <span class="kw">sum</span>(Mature) <span class="op">/</span><span class="st"> </span><span class="kw">n</span>() <span class="op">*</span><span class="st"> </span><span class="dv">100</span>) </code></pre></div>
-<pre><code>## # A tibble: 9 × 2
+<pre><code>## # A tibble: 9 x 2
 ##    Year Percent_Mature
 ##   &lt;int&gt;          &lt;dbl&gt;
 ## 1  2003       98.56916

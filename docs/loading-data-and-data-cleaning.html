@@ -185,18 +185,18 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">landings_data &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;_data/sample_landings_data_raw.csv&quot;</span>)
 
 landings_data</code></pre></div>
-<pre><code>## # A tibble: 7,214 × 8
+<pre><code>## # A tibble: 7,214 x 8
 ##       yy     dat  trip effort    gr             sp  l_cm      w_cm
 ##    &lt;int&gt;   &lt;chr&gt; &lt;int&gt;  &lt;int&gt; &lt;chr&gt;          &lt;chr&gt; &lt;dbl&gt;     &lt;dbl&gt;
-## 1   2003 4/30/03     1     10  Trap Caesoi cunning    36 1089.1402
-## 2   2003 4/30/03     1     10  trap  Caesio cuning    29  565.3879
-## 3   2003 4/30/03     1     10  Trap  Caesio cuning    34  915.8276
-## 4   2003 4/30/03     1     10  Trap  Caesio cuning    36 1089.1402
-## 5   2003 4/30/03     1     10  Trap  Caesio cuning    34  915.8276
-## 6   2003 4/30/03     1     10  Trap Caesoi cunning    28  508.3185
-## 7   2003 4/30/03     1     10  Trap  Caesio cuning    30  626.6000
-## 8   2003 4/30/03     1     10  Trap  Caesio cuning    27  455.2443
-## 9   2003 4/30/03     1     10  Trap  Caesio cuning    33  836.5681
+##  1  2003 4/30/03     1     10  Trap Caesoi cunning    36 1089.1402
+##  2  2003 4/30/03     1     10  trap  Caesio cuning    29  565.3879
+##  3  2003 4/30/03     1     10  Trap  Caesio cuning    34  915.8276
+##  4  2003 4/30/03     1     10  Trap  Caesio cuning    36 1089.1402
+##  5  2003 4/30/03     1     10  Trap  Caesio cuning    34  915.8276
+##  6  2003 4/30/03     1     10  Trap Caesoi cunning    28  508.3185
+##  7  2003 4/30/03     1     10  Trap  Caesio cuning    30  626.6000
+##  8  2003 4/30/03     1     10  Trap  Caesio cuning    27  455.2443
+##  9  2003 4/30/03     1     10  Trap  Caesio cuning    33  836.5681
 ## 10  2003 4/30/03     1     10  Trap  Caesio cuning    35  999.9688
 ## # ... with 7,204 more rows</code></pre>
 <p>You’ll first notice that R calls this data frame a <code>tibble</code>, which is just another word for a nice clean version of a landings_data frame. This format is automatically used when you read in data using <code>read_csv</code>, which we always recommend. e can see that there are [7214] individual fish catch observations (rows) in our data frame and [8] variables (columns). The columns include the year and date when the measurement was collected, the fishing trip ID, how many hours were fished for each trip, what gear was used, the species, the length of the fish, and the weight of the fish.</p>
@@ -219,48 +219,48 @@ landings_data &lt;-<span class="st"> </span>landings_data <span class="op">%&gt;
 <span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Date =</span> <span class="kw">mdy</span>(Date)) 
 
 landings_data</code></pre></div>
-<pre><code>## # A tibble: 7,214 × 8
+<pre><code>## # A tibble: 7,214 x 8
 ##     Year       Date Trip_ID Effort_Hours  Gear        Species Length_cm
 ##    &lt;int&gt;     &lt;date&gt;   &lt;int&gt;        &lt;int&gt; &lt;chr&gt;          &lt;chr&gt;     &lt;dbl&gt;
-## 1   2003 2003-04-30       1           10  Trap Caesoi cunning        36
-## 2   2003 2003-04-30       1           10  trap  Caesio cuning        29
-## 3   2003 2003-04-30       1           10  Trap  Caesio cuning        34
-## 4   2003 2003-04-30       1           10  Trap  Caesio cuning        36
-## 5   2003 2003-04-30       1           10  Trap  Caesio cuning        34
-## 6   2003 2003-04-30       1           10  Trap Caesoi cunning        28
-## 7   2003 2003-04-30       1           10  Trap  Caesio cuning        30
-## 8   2003 2003-04-30       1           10  Trap  Caesio cuning        27
-## 9   2003 2003-04-30       1           10  Trap  Caesio cuning        33
+##  1  2003 2003-04-30       1           10  Trap Caesoi cunning        36
+##  2  2003 2003-04-30       1           10  trap  Caesio cuning        29
+##  3  2003 2003-04-30       1           10  Trap  Caesio cuning        34
+##  4  2003 2003-04-30       1           10  Trap  Caesio cuning        36
+##  5  2003 2003-04-30       1           10  Trap  Caesio cuning        34
+##  6  2003 2003-04-30       1           10  Trap Caesoi cunning        28
+##  7  2003 2003-04-30       1           10  Trap  Caesio cuning        30
+##  8  2003 2003-04-30       1           10  Trap  Caesio cuning        27
+##  9  2003 2003-04-30       1           10  Trap  Caesio cuning        33
 ## 10  2003 2003-04-30       1           10  Trap  Caesio cuning        35
 ## # ... with 7,204 more rows, and 1 more variables: Weight_g &lt;dbl&gt;</code></pre>
 </div>
 <div id="missing-values" class="section level2">
 <h2><span class="header-section-number">7.3</span> Missing values</h2>
 <p>Next, let’s check our data frame to determine if there are any missing values by subsetting observations (rows) in our dataframe that have missing values using the <code>complete_cases</code> function and the logical operator for negation, <code>!</code> .</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">data[<span class="op">!</span><span class="kw">complete.cases</span>(landings_data),]</code></pre></div>
-<pre><code>## # A tibble: 3 × 8
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">landings_data[<span class="op">!</span><span class="kw">complete.cases</span>(landings_data),]</code></pre></div>
+<pre><code>## # A tibble: 3 x 8
 ##    Year       Date Trip_ID Effort_Hours     Gear       Species Length_cm
-##   &lt;int&gt;     &lt;date&gt;   &lt;int&gt;        &lt;int&gt;   &lt;fctr&gt;         &lt;chr&gt;     &lt;dbl&gt;
-## 1  2003 2003-05-01      10           10 handline Caesio cuning    16.000
-## 2  2003 2003-05-01      10           10 handline Caesio cuning    16.000
-## 3  2004 2004-12-18     527            9     trap Caesio cuning    27.609
+##   &lt;int&gt;     &lt;date&gt;   &lt;int&gt;        &lt;int&gt;    &lt;chr&gt;         &lt;chr&gt;     &lt;dbl&gt;
+## 1  2003 2003-05-01      10           10     &lt;NA&gt; Caesio cuning    19.000
+## 2  2003 2003-05-01      10           10 Handline Caesio cuning    19.000
+## 3  2004 2004-12-18      NA            9     Trap Caesio cuning    20.104
 ## # ... with 1 more variables: Weight_g &lt;dbl&gt;</code></pre>
 <p>There are 3 rows in our dataframe with missing values. If we want to remove observations with missing data from our dataset we can use the <code>na.omit</code> function which will remove any rows with missing values from our dataset:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">landings_data &lt;-<span class="st"> </span><span class="kw">na.omit</span>(landings_data)
 
 landings_data</code></pre></div>
-<pre><code>## # A tibble: 7,211 × 8
+<pre><code>## # A tibble: 7,211 x 8
 ##     Year       Date Trip_ID Effort_Hours  Gear        Species Length_cm
 ##    &lt;int&gt;     &lt;date&gt;   &lt;int&gt;        &lt;int&gt; &lt;chr&gt;          &lt;chr&gt;     &lt;dbl&gt;
-## 1   2003 2003-04-30       1           10  Trap Caesoi cunning        36
-## 2   2003 2003-04-30       1           10  trap  Caesio cuning        29
-## 3   2003 2003-04-30       1           10  Trap  Caesio cuning        34
-## 4   2003 2003-04-30       1           10  Trap  Caesio cuning        36
-## 5   2003 2003-04-30       1           10  Trap  Caesio cuning        34
-## 6   2003 2003-04-30       1           10  Trap Caesoi cunning        28
-## 7   2003 2003-04-30       1           10  Trap  Caesio cuning        30
-## 8   2003 2003-04-30       1           10  Trap  Caesio cuning        27
-## 9   2003 2003-04-30       1           10  Trap  Caesio cuning        33
+##  1  2003 2003-04-30       1           10  Trap Caesoi cunning        36
+##  2  2003 2003-04-30       1           10  trap  Caesio cuning        29
+##  3  2003 2003-04-30       1           10  Trap  Caesio cuning        34
+##  4  2003 2003-04-30       1           10  Trap  Caesio cuning        36
+##  5  2003 2003-04-30       1           10  Trap  Caesio cuning        34
+##  6  2003 2003-04-30       1           10  Trap Caesoi cunning        28
+##  7  2003 2003-04-30       1           10  Trap  Caesio cuning        30
+##  8  2003 2003-04-30       1           10  Trap  Caesio cuning        27
+##  9  2003 2003-04-30       1           10  Trap  Caesio cuning        33
 ## 10  2003 2003-04-30       1           10  Trap  Caesio cuning        35
 ## # ... with 7,201 more rows, and 1 more variables: Weight_g &lt;dbl&gt;</code></pre>
 <p>Checking the data structure again, we can see that the 3 rows containing <code>NA</code> values have been removed from our dataframe. You may not always wish to remove <code>NA</code> values from a dataset, if you still want to keep other values in that observation. Even if you want to keep observations with <code>NA</code> values in the dataset, it is still good to identify <code>NA</code>s and know where they occur to ensure they don’t create problems during analyses.</p>
@@ -290,7 +290,7 @@ landings_data</code></pre></div>
 <span class="st">  </span><span class="kw">filter</span>(Species <span class="op">==</span><span class="st"> &quot;Caesio cuning&quot;</span>) <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">nrow</span>()</code></pre></div>
 <pre><code>## [1] 7209</code></pre>
-<p>It looks like “Caesoi cunning” likely the typo because it only appears once in our dataset, while “Caesoi cunning” appears (7209) times. We can fix this by replacing the misspelled <code>Species</code> value and replacing it with the value that is spelled correctly. We do this using <code>mutate</code> and <code>replace</code>.</p>
+<p>It looks like “Caesoi cunning” likely the typo because it only appears twice in our dataset, while “Caesio cunning” appears (7209) times. We can fix this by replacing the misspelled <code>Species</code> value and replacing it with the value that is spelled correctly. We do this using <code>mutate</code> and <code>replace</code>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">landings_data &lt;-<span class="st"> </span>landings_data <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Species =</span> <span class="kw">replace</span>(Species,Species <span class="op">==</span><span class="st"> &quot;Caesoi cunning&quot;</span>, <span class="st">&quot;Caesio cuning&quot;</span>))
 
@@ -317,18 +317,18 @@ landings_data</code></pre></div>
 <h2><span class="header-section-number">7.6</span> Saving clean data</h2>
 <p>Now that we have completed our data cleaning and screening, let’s examine the structure of our data frame again:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">landings_data</code></pre></div>
-<pre><code>## # A tibble: 7,208 × 8
+<pre><code>## # A tibble: 7,208 x 8
 ##     Year       Date Trip_ID Effort_Hours  Gear       Species Length_cm
 ##    &lt;int&gt;     &lt;date&gt;   &lt;int&gt;        &lt;int&gt; &lt;chr&gt;         &lt;chr&gt;     &lt;dbl&gt;
-## 1   2003 2003-04-30       1           10  trap Caesio cuning        36
-## 2   2003 2003-04-30       1           10  trap Caesio cuning        29
-## 3   2003 2003-04-30       1           10  trap Caesio cuning        34
-## 4   2003 2003-04-30       1           10  trap Caesio cuning        36
-## 5   2003 2003-04-30       1           10  trap Caesio cuning        34
-## 6   2003 2003-04-30       1           10  trap Caesio cuning        28
-## 7   2003 2003-04-30       1           10  trap Caesio cuning        30
-## 8   2003 2003-04-30       1           10  trap Caesio cuning        27
-## 9   2003 2003-04-30       1           10  trap Caesio cuning        33
+##  1  2003 2003-04-30       1           10  trap Caesio cuning        36
+##  2  2003 2003-04-30       1           10  trap Caesio cuning        29
+##  3  2003 2003-04-30       1           10  trap Caesio cuning        34
+##  4  2003 2003-04-30       1           10  trap Caesio cuning        36
+##  5  2003 2003-04-30       1           10  trap Caesio cuning        34
+##  6  2003 2003-04-30       1           10  trap Caesio cuning        28
+##  7  2003 2003-04-30       1           10  trap Caesio cuning        30
+##  8  2003 2003-04-30       1           10  trap Caesio cuning        27
+##  9  2003 2003-04-30       1           10  trap Caesio cuning        33
 ## 10  2003 2003-04-30       1           10  trap Caesio cuning        35
 ## # ... with 7,198 more rows, and 1 more variables: Weight_g &lt;dbl&gt;</code></pre>
 <p>We now have [7208] observations, with [8] variables, and with each variable being the correct data type. We can compare this to our raw dataset and see that we removed 6 observations (3 observations had missing values and 3 had error). This script may come in handy if, for example, we realize that the maximum size of our species is actually 200 cm (not 100 cm). We will know that our dataset does not include any length observations over 100 cm because we have documented our cleaning process and can easily go back to this script and change the 100 to a 200 and rerun this script. If we receive more data, we can also simply re-run this script, and all data cleaning steps will be performed again automatically.</p>
