@@ -44,7 +44,7 @@ landings_data
 
 Next, let's check our data frame to determine if there are any missing values by subsetting observations (rows) in our dataframe that have missing values using the `complete_cases` function and the logical operator for negation, `!` .
 ```{r}
-data[!complete.cases(landings_data),]
+landings_data[!complete.cases(landings_data),]
 ```
 
 There are 3 rows in our dataframe with missing values. If we want to remove observations with missing data from our dataset we can use the `na.omit` function which will remove any rows with missing values from our dataset:
